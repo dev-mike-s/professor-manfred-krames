@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prof. h.c. Manfred P. Krames — Nervensystem-Regeneration &amp; Resilienz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --washi:#EAE6DC;
+    --washi-2:#E2DDD0;
+    --ink:#1B211D;
+    --ink-soft:#39423C;
+    --indigo:#1F3347;
+    --indigo-deep:#152736;
+    --indigo-text:#D9E2E8;
+    --moss:#C3CFB9;
+    --moss-text:#2A3324;
+    --vermillion:#9C3B2C;
+    --vermillion-dark:#7C2E22;
+    --gold:#B08D4F;
+    --gold-bg:#E7DCC3;
+    --murasaki-deep:#2A1B36;
+    --murasaki-mid:#7A4F8C;
+    --murasaki-light:#E4D4EC;
+    --line:rgba(27,33,29,0.14);
+    --radius:2px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'IBM Plex Sans', sans-serif;
+    color:var(--ink);
+    background:var(--washi);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    font-size:15.5px;
+  }
+  h1,h2,h3{
+    font-family:'Shippori Mincho', serif;
+    font-weight:700;
+    line-height:1.28;
+    margin:0;
+    letter-spacing:0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.13em;
+    text-transform:uppercase;
+    opacity:0.7;
+    display:block;
+    margin-bottom:0.8rem;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px;}
+  section{padding:56px 0;}
+  .ph{
+    background:repeating-linear-gradient(135deg, rgba(0,0,0,0.05) 0 12px, rgba(0,0,0,0.02) 12px 24px);
+    border:1px dashed var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; font-size:11px;
+    letter-spacing:0.05em; text-transform:uppercase; text-align:center; padding:8px;
+  }
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(234,230,220,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:14px 20px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .logo-ph{width:110px; height:30px; font-size:9px;}
+  .nav-links{display:none;}
+  .design-switch{
+    display:flex; gap:5px; font-family:'IBM Plex Mono', monospace; font-size:11px;
+  }
+  .design-switch a{
+    padding:4px 9px; border:1px solid var(--line); color:var(--ink-soft);
+    text-decoration:none; border-radius:var(--radius);
+  }
+  .design-switch a.active{background:var(--ink); color:var(--washi); border-color:var(--ink);}
+  .design-switch a:not(.active):hover{border-color:var(--ink-soft); color:var(--ink);}
+
+  /* CTA */
+  .cta{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    background:var(--vermillion); color:#F6EFE7;
+    font-family:'IBM Plex Sans', sans-serif; font-weight:500; font-size:14.5px;
+    padding:14px 26px; text-decoration:none; border-radius:var(--radius);
+    border:1px solid var(--vermillion);
+    transition:background .2s, transform .2s;
+    width:100%;
+  }
+  .cta:hover, .cta:focus-visible{background:var(--vermillion-dark);}
+  .cta:active{transform:scale(0.98);}
+  .cta-ghost{
+    display:inline-flex; align-items:center; gap:8px;
+    color:inherit; text-decoration:none; font-size:14px;
+    border-bottom:1px solid var(--line); padding-bottom:2px;
+  }
+  .cta-violet{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    background:var(--murasaki-mid); color:var(--murasaki-light);
+    font-weight:500; font-size:14.5px;
+    padding:14px 26px; text-decoration:none; border-radius:var(--radius);
+    border:1px solid var(--murasaki-mid);
+    transition:background .2s;
+    width:100%;
+  }
+  .cta-violet:hover, .cta-violet:focus-visible{background:#65416F;}
+
+  /* HERO */
+  .hero{padding-top:36px; padding-bottom:44px;}
+  .hero h1{font-size:30px;}
+  .hero p.lede{font-size:16.5px; color:var(--ink-soft); margin:20px 0 28px;}
+  .enso-wrap{display:flex; justify-content:center; margin-bottom:20px;}
+  .enso{width:100%; max-width:220px; height:auto;}
+  .enso path{
+    fill:none; stroke:var(--ink); stroke-width:7; stroke-linecap:round;
+    stroke-dasharray:900; stroke-dashoffset:900;
+    animation:draw 2.1s ease-out 0.2s forwards;
+  }
+  @keyframes draw{ to{stroke-dashoffset:0;} }
+  .hero-img{width:100%; aspect-ratio:4/3;}
+
+  /* CREDENTIALS */
+  .credentials{background:var(--indigo); color:var(--indigo-text);}
+  .cred-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px 20px;}
+  .cred-item .num{
+    font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:500;
+    color:#EDE3C8;
+  }
+  .cred-item .label{font-size:12.5px; margin-top:6px; opacity:0.85;}
+
+  /* PROBLEM */
+  .problem h2{font-size:22px; margin-bottom:30px;}
+  .statement{
+    padding:20px 0; border-top:1px solid var(--line);
+    display:grid; grid-template-columns:34px 1fr; gap:14px; align-items:baseline;
+  }
+  .statement:last-child{border-bottom:1px solid var(--line);}
+  .statement .mark{font-family:'IBM Plex Mono', monospace; color:var(--vermillion); font-size:13px;}
+  .statement p{margin:0; font-size:15px; color:var(--ink-soft);}
+
+  /* GRAYZONE ORIGIN */
+  .origin{background:var(--washi-2);}
+  .origin h2{font-size:22px; margin-bottom:20px;}
+  .origin p{font-size:15px; color:var(--ink-soft); margin:0 0 14px;}
+  .origin-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
+  .origin-tags span{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; padding:6px 11px;
+    border:1px solid var(--line); border-radius:var(--radius); color:var(--ink-soft);
+  }
+
+  /* METHOD */
+  .method{background:var(--moss); color:var(--moss-text);}
+  .method h2{font-size:22px; margin-bottom:30px;}
+  .method-grid{display:grid; grid-template-columns:1fr; gap:1px; background:rgba(42,51,36,0.16);}
+  .method-card{background:var(--moss); padding:24px 20px;}
+  .method-card h3{font-size:17px; margin-bottom:10px;}
+  .method-card p{font-size:13.5px; margin:0; opacity:0.85; line-height:1.6;}
+
+  /* RETREAT */
+  .retreat{background:var(--indigo-deep); color:var(--indigo-text);}
+  .retreat h2{font-size:24px; color:#F3EEE3;}
+  .retreat p{color:var(--indigo-text); opacity:0.9; margin:18px 0 26px; font-size:15px;}
+  .retreat-img{width:100%; aspect-ratio:4/3; margin-bottom:24px;}
+
+  /* THERAPEUTEN */
+  .therapists h2{font-size:21px; margin:10px 0 16px;}
+  .therapists .eyebrow{color:var(--vermillion); opacity:1;}
+  .therapists p{color:var(--ink-soft); font-size:14.5px;}
+
+  /* INNER CIRCLE */
+  .inner-circle{background:var(--murasaki-deep); color:var(--murasaki-light);}
+  .inner-circle .eyebrow{color:#C9AED9; opacity:1;}
+  .inner-circle h2{font-size:23px; color:#F1E7F6; margin-bottom:14px;}
+  .inner-circle > .wrap > p{opacity:0.85; font-size:14.5px; margin:0 0 28px;}
+  .ic-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.08em;
+    text-transform:uppercase; border:1px solid var(--murasaki-mid); color:var(--murasaki-light);
+    padding:5px 12px; border-radius:20px; margin-bottom:18px;
+  }
+  .ic-badge::before{content:"●"; color:#C9AED9; font-size:8px;}
+  .ic-list{display:grid; gap:1px; background:rgba(228,212,236,0.14); margin-bottom:28px;}
+  .ic-item{
+    background:var(--murasaki-deep); padding:18px 18px 18px 46px; position:relative;
+  }
+  .ic-item::before{
+    content:"🔒"; position:absolute; left:16px; top:18px; font-size:13px; filter:grayscale(1) brightness(2);
+    opacity:0.7;
+  }
+  .ic-item h3{font-family:'IBM Plex Sans'; font-weight:500; font-size:14.5px; margin:0 0 4px; color:#F1E7F6;}
+  .ic-item p{margin:0; font-size:13px; opacity:0.7;}
+
+  /* CLOSING */
+  .closing{background:var(--gold-bg); text-align:center;}
+  .closing h2{font-size:24px; margin:0 auto 16px;}
+  .closing p{color:var(--ink-soft); margin:0 auto 30px; font-size:15px;}
+  .closing-ctas{display:flex; flex-direction:column; gap:14px;}
+  .cta-secondary{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    background:transparent; color:var(--ink);
+    font-weight:500; font-size:14.5px;
+    padding:14px 26px; text-decoration:none; border-radius:var(--radius);
+    border:1px solid var(--ink); width:100%;
+  }
+  .cta-secondary:hover{background:var(--ink); color:var(--gold-bg);}
+
+  /* FOOTER */
+  footer{background:var(--ink); color:rgba(234,230,220,0.75); padding:44px 0 26px;}
+  .footer-top{display:grid; grid-template-columns:1fr; gap:28px; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:30px; margin-bottom:22px;}
+  footer h4{font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(234,230,220,0.5); margin:0 0 14px;}
+  footer ul{list-style:none; margin:0; padding:0; display:grid; gap:9px;}
+  footer a{color:inherit; text-decoration:none; font-size:13.5px;}
+  footer a:hover{color:#F6EFE7;}
+  .footer-logo-ph{width:110px; height:30px; border-color:rgba(255,255,255,0.25); color:rgba(234,230,220,0.6);}
+  .footer-bottom{display:flex; flex-direction:column; gap:8px; font-size:12px; opacity:0.6;}
+
+  :focus-visible{outline:2px solid var(--vermillion); outline-offset:2px;}
+
+  /* ===== DESKTOP ENHANCEMENTS (mobile-first: base above is mobile) ===== */
+  @media (min-width:700px){
+    body{font-size:16px;}
+    section{padding:96px 0;}
+    .wrap{padding:0 40px;}
+    .nav-inner{padding:18px 40px;}
+    .logo-ph{width:150px; height:34px; font-size:10px;}
+    .nav-links{display:flex; gap:32px; list-style:none; margin:0; padding:0;}
+    .nav-links a{color:var(--ink); text-decoration:none; font-size:14.5px; border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .2s;}
+    .nav-links a:hover, .nav-links a:focus-visible{border-color:var(--vermillion);}
+    .design-switch a{padding:5px 11px; font-size:12px;}
+
+    .cta, .cta-secondary, .cta-violet{width:auto;}
+
+    .hero{padding-top:56px; padding-bottom:88px;}
+    .hero .wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
+    .hero h1{font-size:clamp(36px,4.2vw,52px);}
+    .hero p.lede{font-size:18px; max-width:46ch; margin:26px 0 36px;}
+    .enso{max-width:320px;}
+    .hero-img{aspect-ratio:16/10; margin-top:24px;}
+
+    .cred-grid{grid-template-columns:repeat(4,1fr); gap:40px;}
+    .cred-item .num{font-size:32px;}
+    .cred-item .label{font-size:13.5px; max-width:22ch;}
+
+    .problem .wrap{max-width:820px;}
+    .problem h2{font-size:clamp(26px,3vw,34px); margin-bottom:44px; max-width:20ch;}
+    .statement{padding:26px 0; grid-template-columns:56px 1fr; gap:20px;}
+    .statement p{font-size:16.5px; max-width:58ch;}
+
+    .origin .wrap{max-width:760px;}
+    .origin h2{font-size:clamp(24px,2.8vw,30px); margin-bottom:24px;}
+    .origin p{font-size:16px;}
+
+    .method h2{font-size:clamp(26px,3vw,34px); max-width:18ch; margin-bottom:56px;}
+    .method-grid{grid-template-columns:repeat(4,1fr);}
+    .method-card{padding:34px 26px; min-height:230px;}
+    .method-card h3{font-size:19px;}
+    .method-card p{font-size:14.5px;}
+
+    .retreat .wrap{display:grid; grid-template-columns:0.95fr 1.05fr; gap:64px; align-items:center;}
+    .retreat h2{font-size:clamp(26px,3.4vw,38px);}
+    .retreat p{max-width:44ch; font-size:16px;}
+    .retreat-img{aspect-ratio:4/5; margin-bottom:0;}
+
+    .therapists .wrap{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+    .therapists h2{font-size:clamp(24px,2.8vw,30px); max-width:16ch; margin-top:0;}
+    .therapists p{font-size:15.5px; max-width:52ch;}
+
+    .inner-circle .wrap{max-width:820px;}
+    .inner-circle h2{font-size:clamp(26px,3vw,32px); max-width:20ch;}
+    .ic-list{grid-template-columns:repeat(3,1fr);}
+    .ic-item{padding:22px 20px 20px 46px;}
+
+    .closing h2{font-size:clamp(28px,3.6vw,42px); max-width:18ch;}
+    .closing p{max-width:48ch; font-size:16.5px;}
+    .closing-ctas{flex-direction:row; justify-content:center; gap:18px;}
+
+    .footer-top{grid-template-columns:1.4fr 1fr 1fr; gap:48px;}
+    .footer-logo-ph{width:150px; height:34px;}
+    .footer-bottom{flex-direction:row; justify-content:space-between;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .enso path{animation:none; stroke-dashoffset:0;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="ph logo-ph">Logo</div>
+    <ul class="nav-links">
+      <li><a href="#methode">Methode</a></li>
+      <li><a href="#retreat">Retreat</a></li>
+      <li><a href="#therapeuten">Für Therapeuten</a></li>
+      <li><a href="#innerer-kreis">Innerer Kreis</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <div class="design-switch">
+      <a href="/design-1" class="active">Design 1</a>
+      <a href="/design-2">Design 2</a>
+      <a href="/design-3">Design 3</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Psychosomatik &amp; Nervensystem-Regeneration</span>
+      <h1>Ist die Seele erschöpft,<br>wird der Körper krank.</h1>
+      <p class="lede">Prof. h. c. Manfred P. Krames berät seit 26 Jahren Führungskräfte und Therapeuten bei Erschöpfung, Burnout und chronischer Stressbelastung — fundiert in fernöstlicher Medizin und westlicher Psychologie.</p>
+      <a href="#retreat" class="cta">Retreat entdecken</a>
+    </div>
+    <div>
+      <div class="enso-wrap">
+        <svg class="enso" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ensō, handgezeichneter Tuschekreis">
+          <path d="M 150 40 A 110 110 0 1 1 55 100"/>
+        </svg>
+      </div>
+      <div class="ph hero-img">Bild-Platzhalter — Porträt / Raum</div>
+    </div>
+  </div>
+</section>
+
+<section class="credentials">
+  <div class="wrap">
+    <div class="cred-grid">
+      <div class="cred-item">
+        <div class="num">26</div>
+        <div class="label">Fach- und Sachbücher, veröffentlicht in 5 Sprachen</div>
+      </div>
+      <div class="cred-item">
+        <div class="num">3</div>
+        <div class="label">Kontinente Lehrtätigkeit — Sri Lanka, Indien, Japan</div>
+      </div>
+      <div class="cred-item">
+        <div class="num">500+</div>
+        <div class="label">Ausgebildete Therapeuten und Berater</div>
+      </div>
+      <div class="cred-item">
+        <div class="num">32</div>
+        <div class="label">Klinikleiter auf Sri Lanka — mit 32 Jahren</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap">
+    <span class="eyebrow">Der Ausgangspunkt</span>
+    <h2>Erschöpfung ist selten nur körperlich.</h2>
+    <div class="statements">
+      <div class="statement">
+        <span class="mark">01</span>
+        <p>Anhaltender Leistungsdruck verschiebt das vegetative Nervensystem dauerhaft in den Alarmzustand — Schlaf, Verdauung und Konzentration leiden zuerst.</p>
+      </div>
+      <div class="statement">
+        <span class="mark">02</span>
+        <p>Klassische Erholung — Urlaub, Wellness, ein verlängertes Wochenende — wirkt oft nur für die Dauer der Auszeit, weil die eigentliche Ursache unberührt bleibt.</p>
+      </div>
+      <div class="statement">
+        <span class="mark">03</span>
+        <p>Nachhaltige Regeneration setzt an der Ursache an, nicht am Symptom — durch eine ausführliche, persönliche Ursachenklärung statt schneller Diagnose.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="origin">
+  <div class="wrap">
+    <span class="eyebrow">Herkunft der Methode</span>
+    <h2>26 Jahre Ostasien — nicht als Kur-Exotik, sondern als Grundlage.</h2>
+    <p>Die Methode entstand nicht am Schreibtisch, sondern in der klinischen Praxis: als junger Klinikleiter auf Sri Lanka, in der langjährigen Mitarbeit an einer Tokioter Psychosomatik-Klinik und im Austausch mit einem Ayurveda-Arzt in siebter Generation.</p>
+    <p>Zentral ist die Beobachtung, dass viele körperliche Beschwerden europäischer Kurgäste ihren Ursprung im geistig-seelischen Bereich hatten — eine Beobachtung, die westliche Psychologie und fernöstliche Medizinlehren zusammenführt, statt sie gegeneinander auszuspielen.</p>
+    <div class="origin-tags">
+      <span>Sri Lanka</span>
+      <span>Indien</span>
+      <span>Japan</span>
+      <span>Ayurveda-Praxis</span>
+      <span>Vata als Fachbegriff</span>
+      <span>5-Elemente-Tradition</span>
+    </div>
+  </div>
+</section>
+
+<section class="method" id="methode">
+  <div class="wrap">
+    <span class="eyebrow">Die Methode</span>
+    <h2>Vier Bereiche, ein zusammenhängendes System.</h2>
+  </div>
+  <div class="method-grid">
+    <div class="method-card">
+      <h3>Stressregulation</h3>
+      <p>Konkrete Techniken zur Beruhigung des Nervensystems im Alltag — Atmung, Rhythmus, Belastungssteuerung.</p>
+    </div>
+    <div class="method-card">
+      <h3>Burnout-Prävention</h3>
+      <p>Frühzeitiges Erkennen von Erschöpfungsmustern, bevor sie zu einem klinischen Zusammenbruch führen.</p>
+    </div>
+    <div class="method-card">
+      <h3>Resilienz</h3>
+      <p>Aufbau innerer Stabilität, die auch unter dauerhafter beruflicher Belastung trägt.</p>
+    </div>
+    <div class="method-card">
+      <h3>Nervensystem-Regeneration</h3>
+      <p>Langfristige Wiederherstellung von Schlaf, Energie und emotionaler Balance.</p>
+    </div>
+  </div>
+</section>
+
+<section class="retreat" id="retreat">
+  <div class="wrap">
+    <div class="ph retreat-img">Bild-Platzhalter — Retreat-Räumlichkeiten</div>
+    <div>
+      <span class="eyebrow" style="color:#EDE3C8; opacity:1;">Der Raum</span>
+      <h2>Ein Ort für die Ursachenklärung — ohne Ablenkung.</h2>
+      <p>Das Retreat findet in kleiner, persönlicher Runde statt. Kein Wellness-Programm nebenbei, sondern ausschließlich Zeit für Ihre Situation — begleitet, ausführlich, ohne Zeitdruck.</p>
+      <a href="#kontakt" class="cta">Retreat buchen</a>
+    </div>
+  </div>
+</section>
+
+<section class="therapists" id="therapeuten">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Für Therapeuten und Berater</span>
+      <h2>Fachliche Weiterbildung, keine Wellness-Zertifizierung.</h2>
+    </div>
+    <div>
+      <p>Über 500 Therapeuten und Berater wurden bislang ausgebildet. Die Weiterbildung vermittelt eine diagnostische Methode aus 26 Jahren klinischer Praxis in Ostasien, kombiniert mit westlicher Psychologie — für Kollegen, die ganzheitlich und fundiert arbeiten wollen.</p>
+      <p style="margin-top:16px;"><a href="#kontakt" class="cta-ghost">Ausbildung anfragen →</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="inner-circle" id="innerer-kreis">
+  <div class="wrap">
+    <span class="ic-badge">Nur auf Anfrage</span>
+    <span class="eyebrow">Innerer Kreis</span>
+    <h2>Tiefergehendes Wissen aus 26 Jahren Praxis — nicht für die öffentliche Seite bestimmt.</h2>
+    <p>Ein begrenzter Kreis aus Klienten und Therapeuten erhält Zugang zu weiterführenden Inhalten, die über die allgemeine Beratung hinausgehen. Zugang nach persönlichem Gespräch.</p>
+    <div class="ic-list">
+      <div class="ic-item">
+        <h3>Vata-Diagnostik im Detail</h3>
+        <p>Die vollständige Methode zur Bestimmung individueller Vata-Muster.</p>
+      </div>
+      <div class="ic-item">
+        <h3>Die 5-Elemente-Analyse</h3>
+        <p>Vertiefende Anwendung der fernöstlichen Elementelehre auf persönliche Fallbilder.</p>
+      </div>
+      <div class="ic-item">
+        <h3>Das Geheimnis der Methode</h3>
+        <p>Hintergründe, die Prof. Krames sonst nur im direkten Gespräch teilt.</p>
+      </div>
+    </div>
+    <a href="#kontakt" class="cta-violet">Zutritt beantragen</a>
+  </div>
+</section>
+
+<section class="closing" id="kontakt">
+  <div class="wrap">
+    <span class="eyebrow">Nächster Schritt</span>
+    <h2>Zwei Wege, den ersten Schritt zu machen.</h2>
+    <p>Beratungen finden persönlich, per Zoom, Telefon oder WhatsApp statt — weltweit, mit besonderer Erfahrung im deutschsprachigen Raum.</p>
+    <div class="closing-ctas">
+      <a href="#" class="cta">Retreat buchen</a>
+      <a href="#" class="cta-secondary">Therapieplatz anfragen</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="ph footer-logo-ph">Logo</div>
+        <p style="margin-top:16px; font-size:13.5px; opacity:0.75;">Prof. h. c. Manfred P. Krames — Psychosomatik, Stressregulation und Nervensystem-Regeneration.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#methode">Methode</a></li>
+          <li><a href="#retreat">Retreat</a></li>
+          <li><a href="#therapeuten">Für Therapeuten</a></li>
+          <li><a href="#innerer-kreis">Innerer Kreis</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:Prof.Krames@gmail.com">Prof.Krames@gmail.com</a></li>
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Manfred P. Krames</span>
+      <span>Design 1 · Washi / Sumi / Indigo / Murasaki</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
