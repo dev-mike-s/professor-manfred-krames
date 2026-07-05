@@ -9,25 +9,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --washi:#EAE6DC;
-    --washi-2:#E2DDD0;
-    --ink:#1B211D;
-    --ink-soft:#39423C;
-    --indigo:#1F3347;
-    --indigo-deep:#152736;
-    --indigo-text:#D9E2E8;
-    --moss:#C3CFB9;
-    --moss-text:#2A3324;
-    --vermillion:#9C3B2C;
-    --vermillion-dark:#7C2E22;
+    --paper:#FBF9F6;
+    --paper-tint:#F4EEF7;
+    --paper-tint-gold:#F6F0E4;
+    --ink:#221B29;
+    --ink-soft:#5B4F66;
+    --violet:#5B2E68;
+    --violet-dark:#432150;
+    --violet-deep:#2A1533;
+    --violet-light:#C9A2DC;
+    --violet-pale:#EEE1F4;
     --gold:#B08D4F;
-    --gold-bg:#E7DCC3;
-    --murasaki-deep:#2A1B36;
-    --murasaki-mid:#7A4F8C;
-    --murasaki-light:#E4D4EC;
-    --line:rgba(27,33,29,0.14);
-    --radius:2px;
-    --maxw:1120px;
+    --gold-soft:#D8C9A3;
+    --indigo-deep:#16232F;
+    --line:rgba(34,27,41,0.13);
+    --radius:4px;
+    --maxw:1180px;
+    --shadow:0 10px 30px -12px rgba(43,21,51,0.18);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -35,10 +33,10 @@
     margin:0;
     font-family:'IBM Plex Sans', sans-serif;
     color:var(--ink);
-    background:var(--washi);
-    line-height:1.65;
+    background:var(--paper);
+    line-height:1.68;
     -webkit-font-smoothing:antialiased;
-    font-size:15.5px;
+    font-size:17px;
   }
   h1,h2,h3{
     font-family:'Shippori Mincho', serif;
@@ -47,244 +45,364 @@
     margin:0;
     letter-spacing:0.01em;
   }
+  em{font-style:italic; color:var(--violet-dark);}
+  strong{font-weight:600;}
   .eyebrow{
     font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
+    font-size:12.5px;
     letter-spacing:0.13em;
     text-transform:uppercase;
-    opacity:0.7;
-    display:block;
-    margin-bottom:0.8rem;
+    color:var(--violet);
+    opacity:0.85;
+    display:inline-flex; align-items:center; gap:8px;
+    margin-bottom:0.9rem;
   }
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px;}
-  section{padding:56px 0;}
+  .eyebrow::before{content:""; width:16px; height:1px; background:var(--gold);}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px; position:relative; z-index:2;}
+  section{padding:64px 0; position:relative; overflow:hidden;}
   .ph{
     background:repeating-linear-gradient(135deg, rgba(0,0,0,0.05) 0 12px, rgba(0,0,0,0.02) 12px 24px);
     border:1px dashed var(--line);
     display:flex; align-items:center; justify-content:center;
-    color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; font-size:11px;
-    letter-spacing:0.05em; text-transform:uppercase; text-align:center; padding:8px;
+    color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; font-size:12px;
+    letter-spacing:0.05em; text-transform:uppercase; text-align:center; padding:10px;
   }
+  img{max-width:100%; display:block;}
+
+  /* highlight underline span */
+  .hl{position:relative; white-space:nowrap;}
+  .hl::after{
+    content:""; position:absolute; left:0; right:0; bottom:2px; height:7px;
+    background:var(--gold); opacity:0.35; z-index:-1;
+    transform:scaleX(0); transform-origin:left; transition:transform 1s ease .1s;
+  }
+  .reveal.is-visible .hl::after{transform:scaleX(1);}
+
+  /* scroll reveal */
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+  .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;} .reveal.d3{transition-delay:.24s;} .reveal.d4{transition-delay:.32s;}
+
+  /* faint background flourish (ensō watermark) */
+  .flourish{
+    position:absolute; pointer-events:none; z-index:0; opacity:0.06;
+  }
+  .flourish svg{width:100%; height:100%;}
 
   /* NAV */
   nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(234,230,220,0.92);
+    background:rgba(251,249,246,0.92);
     backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line);
   }
   .nav-inner{
-    max-width:var(--maxw); margin:0 auto; padding:14px 20px;
+    max-width:var(--maxw); margin:0 auto; padding:15px 20px;
     display:flex; align-items:center; justify-content:space-between; gap:12px;
   }
-  .logo-ph{width:110px; height:30px; font-size:9px;}
+  .logo-ph{width:112px; height:30px; font-size:9px;}
   .nav-links{display:none;}
-  .design-switch{
-    display:flex; gap:5px; font-family:'IBM Plex Mono', monospace; font-size:11px;
-  }
+  .design-switch{display:flex; gap:5px; font-family:'IBM Plex Mono', monospace; font-size:11.5px;}
   .design-switch a{
     padding:4px 9px; border:1px solid var(--line); color:var(--ink-soft);
     text-decoration:none; border-radius:var(--radius);
   }
-  .design-switch a.active{background:var(--ink); color:var(--washi); border-color:var(--ink);}
-  .design-switch a:not(.active):hover{border-color:var(--ink-soft); color:var(--ink);}
+  .design-switch a.active{background:var(--violet); color:#fff; border-color:var(--violet);}
+  .design-switch a:not(.active):hover{border-color:var(--violet); color:var(--violet);}
 
   /* CTA */
   .cta{
     display:inline-flex; align-items:center; justify-content:center; gap:10px;
-    background:var(--vermillion); color:#F6EFE7;
-    font-family:'IBM Plex Sans', sans-serif; font-weight:500; font-size:14.5px;
-    padding:14px 26px; text-decoration:none; border-radius:var(--radius);
-    border:1px solid var(--vermillion);
-    transition:background .2s, transform .2s;
-    width:100%;
+    background:var(--violet); color:#F7F0FA;
+    font-weight:500; font-size:15.5px;
+    padding:15px 28px; text-decoration:none; border-radius:var(--radius);
+    border:1px solid var(--violet);
+    transition:background .2s, transform .15s, box-shadow .2s;
+    width:100%; box-shadow:0 8px 20px -8px rgba(91,46,104,0.45);
   }
-  .cta:hover, .cta:focus-visible{background:var(--vermillion-dark);}
+  .cta:hover, .cta:focus-visible{background:var(--violet-dark); box-shadow:0 10px 26px -8px rgba(91,46,104,0.55);}
   .cta:active{transform:scale(0.98);}
   .cta-ghost{
     display:inline-flex; align-items:center; gap:8px;
-    color:inherit; text-decoration:none; font-size:14px;
-    border-bottom:1px solid var(--line); padding-bottom:2px;
+    color:var(--violet-dark); text-decoration:none; font-size:14.5px; font-weight:500;
+    border-bottom:1px solid var(--violet); padding-bottom:2px;
   }
-  .cta-violet{
-    display:inline-flex; align-items:center; justify-content:center; gap:10px;
-    background:var(--murasaki-mid); color:var(--murasaki-light);
-    font-weight:500; font-size:14.5px;
-    padding:14px 26px; text-decoration:none; border-radius:var(--radius);
-    border:1px solid var(--murasaki-mid);
-    transition:background .2s;
-    width:100%;
-  }
-  .cta-violet:hover, .cta-violet:focus-visible{background:#65416F;}
-
-  /* HERO */
-  .hero{padding-top:36px; padding-bottom:44px;}
-  .hero h1{font-size:30px;}
-  .hero p.lede{font-size:16.5px; color:var(--ink-soft); margin:20px 0 28px;}
-  .enso-wrap{display:flex; justify-content:center; margin-bottom:20px;}
-  .enso{width:100%; max-width:220px; height:auto;}
-  .enso path{
-    fill:none; stroke:var(--ink); stroke-width:7; stroke-linecap:round;
-    stroke-dasharray:900; stroke-dashoffset:900;
-    animation:draw 2.1s ease-out 0.2s forwards;
-  }
-  @keyframes draw{ to{stroke-dashoffset:0;} }
-  .hero-img{width:100%; aspect-ratio:4/3;}
-
-  /* CREDENTIALS */
-  .credentials{background:var(--indigo); color:var(--indigo-text);}
-  .cred-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px 20px;}
-  .cred-item .num{
-    font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:500;
-    color:#EDE3C8;
-  }
-  .cred-item .label{font-size:12.5px; margin-top:6px; opacity:0.85;}
-
-  /* PROBLEM */
-  .problem h2{font-size:22px; margin-bottom:30px;}
-  .statement{
-    padding:20px 0; border-top:1px solid var(--line);
-    display:grid; grid-template-columns:34px 1fr; gap:14px; align-items:baseline;
-  }
-  .statement:last-child{border-bottom:1px solid var(--line);}
-  .statement .mark{font-family:'IBM Plex Mono', monospace; color:var(--vermillion); font-size:13px;}
-  .statement p{margin:0; font-size:15px; color:var(--ink-soft);}
-
-  /* GRAYZONE ORIGIN */
-  .origin{background:var(--washi-2);}
-  .origin h2{font-size:22px; margin-bottom:20px;}
-  .origin p{font-size:15px; color:var(--ink-soft); margin:0 0 14px;}
-  .origin-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
-  .origin-tags span{
-    font-family:'IBM Plex Mono', monospace; font-size:11px; padding:6px 11px;
-    border:1px solid var(--line); border-radius:var(--radius); color:var(--ink-soft);
-  }
-
-  /* METHOD */
-  .method{background:var(--moss); color:var(--moss-text);}
-  .method h2{font-size:22px; margin-bottom:30px;}
-  .method-grid{display:grid; grid-template-columns:1fr; gap:1px; background:rgba(42,51,36,0.16);}
-  .method-card{background:var(--moss); padding:24px 20px;}
-  .method-card h3{font-size:17px; margin-bottom:10px;}
-  .method-card p{font-size:13.5px; margin:0; opacity:0.85; line-height:1.6;}
-
-  /* RETREAT */
-  .retreat{background:var(--indigo-deep); color:var(--indigo-text);}
-  .retreat h2{font-size:24px; color:#F3EEE3;}
-  .retreat p{color:var(--indigo-text); opacity:0.9; margin:18px 0 26px; font-size:15px;}
-  .retreat-img{width:100%; aspect-ratio:4/3; margin-bottom:24px;}
-
-  /* THERAPEUTEN */
-  .therapists h2{font-size:21px; margin:10px 0 16px;}
-  .therapists .eyebrow{color:var(--vermillion); opacity:1;}
-  .therapists p{color:var(--ink-soft); font-size:14.5px;}
-
-  /* INNER CIRCLE */
-  .inner-circle{background:var(--murasaki-deep); color:var(--murasaki-light);}
-  .inner-circle .eyebrow{color:#C9AED9; opacity:1;}
-  .inner-circle h2{font-size:23px; color:#F1E7F6; margin-bottom:14px;}
-  .inner-circle > .wrap > p{opacity:0.85; font-size:14.5px; margin:0 0 28px;}
-  .ic-badge{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.08em;
-    text-transform:uppercase; border:1px solid var(--murasaki-mid); color:var(--murasaki-light);
-    padding:5px 12px; border-radius:20px; margin-bottom:18px;
-  }
-  .ic-badge::before{content:"●"; color:#C9AED9; font-size:8px;}
-  .ic-list{display:grid; gap:1px; background:rgba(228,212,236,0.14); margin-bottom:28px;}
-  .ic-item{
-    background:var(--murasaki-deep); padding:18px 18px 18px 46px; position:relative;
-  }
-  .ic-item::before{
-    content:"🔒"; position:absolute; left:16px; top:18px; font-size:13px; filter:grayscale(1) brightness(2);
-    opacity:0.7;
-  }
-  .ic-item h3{font-family:'IBM Plex Sans'; font-weight:500; font-size:14.5px; margin:0 0 4px; color:#F1E7F6;}
-  .ic-item p{margin:0; font-size:13px; opacity:0.7;}
-
-  /* CLOSING */
-  .closing{background:var(--gold-bg); text-align:center;}
-  .closing h2{font-size:24px; margin:0 auto 16px;}
-  .closing p{color:var(--ink-soft); margin:0 auto 30px; font-size:15px;}
-  .closing-ctas{display:flex; flex-direction:column; gap:14px;}
   .cta-secondary{
     display:inline-flex; align-items:center; justify-content:center; gap:10px;
     background:transparent; color:var(--ink);
-    font-weight:500; font-size:14.5px;
-    padding:14px 26px; text-decoration:none; border-radius:var(--radius);
+    font-weight:500; font-size:15.5px;
+    padding:15px 28px; text-decoration:none; border-radius:var(--radius);
     border:1px solid var(--ink); width:100%;
   }
-  .cta-secondary:hover{background:var(--ink); color:var(--gold-bg);}
+  .cta-secondary:hover{background:var(--ink); color:var(--paper);}
+  .cta-violet-outline{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    background:rgba(255,255,255,0.06); color:#F1E5F7;
+    font-weight:500; font-size:15.5px; padding:15px 28px; text-decoration:none;
+    border-radius:var(--radius); border:1px solid var(--violet-light); width:100%;
+    transition:background .2s;
+  }
+  .cta-violet-outline:hover{background:rgba(255,255,255,0.14);}
+
+  /* CARDS */
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:0 2px 10px -6px rgba(34,27,41,0.12);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .card:hover{transform:translateY(-5px); box-shadow:var(--shadow);}
+
+  /* HERO */
+  .hero{padding-top:32px; padding-bottom:44px;}
+  .hero-grid{display:grid; gap:32px;}
+  .hero h1{font-size:33px;}
+  .hero p.lede{font-size:17.5px; color:var(--ink-soft); margin:20px 0 28px;}
+  .hero-img-wrap{position:relative; border-radius:var(--radius); overflow:hidden;}
+  .hero-img-wrap img{width:100%; aspect-ratio:4/5; object-fit:cover;}
+  .enso-corner{position:absolute; top:-18px; left:-18px; width:90px; height:90px; opacity:0.9;}
+  .enso-corner path{
+    fill:none; stroke:var(--violet); stroke-width:6; stroke-linecap:round;
+    stroke-dasharray:900; stroke-dashoffset:900;
+    animation:draw 2s ease-out .2s forwards;
+  }
+  @keyframes draw{ to{stroke-dashoffset:0;} }
+
+  /* CREDENTIALS */
+  .credentials{background:var(--paper-tint);}
+  .cred-layout{display:grid; gap:28px;}
+  .cred-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .cred-item{padding:20px 16px;}
+  .cred-item .num{font-family:'IBM Plex Mono', monospace; font-size:28px; font-weight:500; color:var(--violet);}
+  .cred-item .label{font-size:13.5px; margin-top:6px; color:var(--ink-soft);}
+  .cred-img{border-radius:var(--radius); overflow:hidden;}
+  .cred-img img{width:100%; aspect-ratio:16/11; object-fit:cover;}
+
+  /* PROBLEM */
+  .problem h2{font-size:24px; margin-bottom:28px;}
+  .statement{
+    padding:20px 0 20px 20px; border-top:1px solid var(--line); border-left:3px solid var(--violet-pale);
+    display:grid; grid-template-columns:36px 1fr; gap:14px; align-items:baseline;
+    transition:border-color .3s;
+  }
+  .statement:hover{border-left-color:var(--violet);}
+  .statement:last-child{border-bottom:1px solid var(--line);}
+  .statement .mark{font-family:'IBM Plex Mono', monospace; color:var(--violet); font-size:13.5px;}
+  .statement p{margin:0; font-size:15.5px; color:var(--ink-soft);}
+
+  /* ORIGIN */
+  .origin h2{font-size:24px; margin-bottom:18px;}
+  .origin p{font-size:15.5px; color:var(--ink-soft); margin:0 0 14px;}
+  .origin-imgs{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:24px 0;}
+  .origin-imgs img{width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:var(--radius);}
+  .origin-tags{display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 8px;}
+  .origin-tags span{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; padding:6px 11px;
+    border:1px solid var(--line); border-radius:20px; color:var(--ink-soft); background:#fff;
+  }
+
+  /* IMAGE ROWS */
+  .row-block{margin-top:38px;}
+  .row-title{font-size:13.5px; font-weight:600; color:var(--violet-dark); margin-bottom:12px; letter-spacing:0.02em;}
+  .row-scroll{
+    display:flex; gap:14px; overflow-x:auto; padding:4px 4px 14px;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+  }
+  .row-scroll::-webkit-scrollbar{height:6px;}
+  .row-scroll::-webkit-scrollbar-thumb{background:var(--violet-pale); border-radius:10px;}
+  .row-item{
+    flex:0 0 210px; scroll-snap-align:start; border-radius:var(--radius); overflow:hidden;
+    border:1px solid var(--line); background:#fff;
+  }
+  .row-item img{width:100%; aspect-ratio:4/3; object-fit:cover;}
+  .row-item .cap{padding:9px 11px; font-size:12px; color:var(--ink-soft);}
+  .row-item.empty{
+    display:flex; align-items:center; justify-content:center; aspect-ratio:4/3;
+    background:repeating-linear-gradient(135deg, rgba(91,46,104,0.05) 0 12px, rgba(91,46,104,0.02) 12px 24px);
+    border:1px dashed var(--violet-pale); color:var(--ink-soft); font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; text-align:center; padding:14px;
+  }
+
+  /* METHOD */
+  .method h2{font-size:24px; max-width:18ch; margin-bottom:30px;}
+  .method-grid{display:grid; grid-template-columns:1fr; gap:14px;}
+  .method-card{padding:26px 22px;}
+  .method-card .idx{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--gold); margin-bottom:10px; display:block;}
+  .method-card h3{font-size:18.5px; margin-bottom:10px; color:var(--violet-dark);}
+  .method-card p{font-size:14.5px; margin:0; color:var(--ink-soft); line-height:1.65;}
+
+  /* BUCHREIHE */
+  .buchreihe{background:var(--paper-tint-gold);}
+  .buchreihe h2{font-size:24px; margin-bottom:10px;}
+  .buchreihe > .wrap > p{font-size:15.5px; color:var(--ink-soft); max-width:60ch; margin:0 0 26px;}
+  .book-card{flex:0 0 190px; scroll-snap-align:start; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); background:#fff;}
+  .book-card img{width:100%; aspect-ratio:3/4; object-fit:cover;}
+  .book-card .cap{padding:10px 12px; font-size:12.5px; color:var(--ink-soft);}
+  .book-card.empty{
+    display:flex; align-items:center; justify-content:center; aspect-ratio:3/4;
+    background:repeating-linear-gradient(135deg, rgba(176,141,79,0.08) 0 12px, rgba(176,141,79,0.03) 12px 24px);
+    border:1px dashed var(--gold-soft); color:var(--ink-soft); font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; text-align:center; padding:14px;
+  }
+
+  /* PRESSE / ZEITUNGSARTIKEL */
+  .presse h2{font-size:22px; margin-bottom:8px;}
+  .presse > .wrap > p{font-size:14.5px; color:var(--ink-soft); margin:0 0 22px;}
+  .press-card{
+    flex:0 0 230px; scroll-snap-align:start; aspect-ratio:3/4;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+    background:repeating-linear-gradient(135deg, rgba(34,27,41,0.04) 0 12px, rgba(34,27,41,0.015) 12px 24px);
+    border:1px dashed var(--line); border-radius:var(--radius); color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; text-align:center; padding:16px;
+  }
+
+  /* VIDEO */
+  .video-sec h2{font-size:23px; margin-bottom:20px; text-align:center;}
+  .video-card{
+    position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/9;
+    box-shadow:var(--shadow);
+  }
+  .video-card img{width:100%; height:100%; object-fit:cover; filter:brightness(0.72);}
+  .play-btn{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:64px; height:64px; border-radius:50%; background:var(--violet);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 10px 26px -6px rgba(0,0,0,0.5);
+    transition:transform .25s;
+  }
+  .video-card:hover .play-btn{transform:translate(-50%,-50%) scale(1.08);}
+  .play-btn svg{width:22px; height:22px; margin-left:3px;}
+  .video-caption{
+    position:absolute; bottom:14px; left:14px; color:#fff; font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px; letter-spacing:0.05em; background:rgba(0,0,0,0.35); padding:5px 10px; border-radius:20px;
+  }
+
+  /* RETREAT (Bildhintergrund) */
+  .retreat{color:#F3EEF6; position:relative;}
+  .retreat-bg{position:absolute; inset:0; z-index:0;}
+  .retreat-bg img{width:100%; height:100%; object-fit:cover;}
+  .retreat-bg::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(42,21,51,0.78), rgba(42,21,51,0.9));
+  }
+  .retreat h2{font-size:25px; color:#FBF3FF;}
+  .retreat p{opacity:0.92; margin:18px 0 26px; font-size:15.5px; max-width:44ch;}
+
+  /* SEMINARE / THERAPEUTEN */
+  .therapists .eyebrow{color:var(--violet);}
+  .therapists h2{font-size:21px; margin:8px 0 14px;}
+  .therapists p{color:var(--ink-soft); font-size:14.5px;}
+
+  /* INNER CIRCLE */
+  .inner-circle{color:var(--violet-light); position:relative;}
+  .ic-bg{position:absolute; inset:0; z-index:0;}
+  .ic-bg img{width:100%; height:100%; object-fit:cover;}
+  .ic-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(160deg, rgba(42,21,51,0.92), rgba(42,21,51,0.82));}
+  .inner-circle .eyebrow{color:#D9B6EC; opacity:1;}
+  .inner-circle .eyebrow::before{background:var(--violet-light);}
+  .inner-circle h2{font-size:24px; color:#F5E9FA; margin-bottom:14px;}
+  .inner-circle > .wrap > p{opacity:0.85; font-size:14.5px; margin:0 0 26px;}
+  .ic-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.08em;
+    text-transform:uppercase; border:1px solid var(--violet-light); color:#F5E9FA;
+    padding:5px 12px; border-radius:20px; margin-bottom:18px;
+  }
+  .ic-badge::before{content:"●"; color:#D9B6EC; font-size:8px;}
+  .ic-list{display:grid; gap:12px; margin-bottom:28px;}
+  .ic-item{
+    background:rgba(255,255,255,0.045); border:1px solid rgba(255,255,255,0.12);
+    border-radius:var(--radius); padding:16px 16px 16px 44px; position:relative;
+  }
+  .ic-item::before{content:"🔒"; position:absolute; left:15px; top:16px; font-size:13px; opacity:0.7;}
+  .ic-item h3{font-family:'IBM Plex Sans'; font-weight:500; font-size:14.5px; margin:0 0 4px; color:#F5E9FA;}
+  .ic-item p{margin:0; font-size:12.5px; opacity:0.75;}
+
+  /* CLOSING */
+  .closing{position:relative; color:#F6F2F8; text-align:center;}
+  .closing-bg{position:absolute; inset:0; z-index:0;}
+  .closing-bg img{width:100%; height:100%; object-fit:cover;}
+  .closing-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,10,26,0.72), rgba(20,10,26,0.88));}
+  .closing h2{font-size:26px; margin:0 auto 16px;}
+  .closing p{opacity:0.9; margin:0 auto 28px; font-size:15.5px;}
+  .closing-ctas{display:flex; flex-direction:column; gap:14px; max-width:340px; margin:0 auto;}
 
   /* FOOTER */
-  footer{background:var(--ink); color:rgba(234,230,220,0.75); padding:44px 0 26px;}
-  .footer-top{display:grid; grid-template-columns:1fr; gap:28px; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:30px; margin-bottom:22px;}
-  footer h4{font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(234,230,220,0.5); margin:0 0 14px;}
+  footer{background:var(--ink); color:rgba(251,249,246,0.75); padding:44px 0 26px;}
+  .footer-top{display:grid; grid-template-columns:1fr; gap:26px; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:28px; margin-bottom:20px;}
+  footer h4{font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(251,249,246,0.5); margin:0 0 14px;}
   footer ul{list-style:none; margin:0; padding:0; display:grid; gap:9px;}
-  footer a{color:inherit; text-decoration:none; font-size:13.5px;}
-  footer a:hover{color:#F6EFE7;}
-  .footer-logo-ph{width:110px; height:30px; border-color:rgba(255,255,255,0.25); color:rgba(234,230,220,0.6);}
+  footer a{color:inherit; text-decoration:none; font-size:14px;}
+  footer a:hover{color:#fff;}
+  .footer-logo-ph{width:112px; height:30px; border-color:rgba(255,255,255,0.25); color:rgba(251,249,246,0.6);}
   .footer-bottom{display:flex; flex-direction:column; gap:8px; font-size:12px; opacity:0.6;}
 
-  :focus-visible{outline:2px solid var(--vermillion); outline-offset:2px;}
+  :focus-visible{outline:2px solid var(--violet); outline-offset:2px;}
 
-  /* ===== DESKTOP ENHANCEMENTS (mobile-first: base above is mobile) ===== */
+  /* ===== DESKTOP (min-width) ===== */
   @media (min-width:700px){
-    body{font-size:16px;}
-    section{padding:96px 0;}
+    body{font-size:18px;}
+    section{padding:104px 0;}
     .wrap{padding:0 40px;}
     .nav-inner{padding:18px 40px;}
     .logo-ph{width:150px; height:34px; font-size:10px;}
     .nav-links{display:flex; gap:32px; list-style:none; margin:0; padding:0;}
-    .nav-links a{color:var(--ink); text-decoration:none; font-size:14.5px; border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .2s;}
-    .nav-links a:hover, .nav-links a:focus-visible{border-color:var(--vermillion);}
+    .nav-links a{color:var(--ink); text-decoration:none; font-size:15px; border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .2s, color .2s;}
+    .nav-links a:hover, .nav-links a:focus-visible{border-color:var(--violet); color:var(--violet);}
     .design-switch a{padding:5px 11px; font-size:12px;}
 
-    .cta, .cta-secondary, .cta-violet{width:auto;}
+    .cta, .cta-secondary, .cta-violet-outline{width:auto;}
 
-    .hero{padding-top:56px; padding-bottom:88px;}
-    .hero .wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;}
-    .hero h1{font-size:clamp(36px,4.2vw,52px);}
-    .hero p.lede{font-size:18px; max-width:46ch; margin:26px 0 36px;}
-    .enso{max-width:320px;}
-    .hero-img{aspect-ratio:16/10; margin-top:24px;}
+    .hero{padding-top:60px; padding-bottom:96px;}
+    .hero-grid{grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:center;}
+    .hero h1{font-size:clamp(38px,4.4vw,56px);}
+    .hero p.lede{font-size:19px; max-width:46ch; margin:28px 0 38px;}
+    .hero-img-wrap img{aspect-ratio:4/5;}
+    .enso-corner{width:120px; height:120px; top:-26px; left:-26px;}
 
-    .cred-grid{grid-template-columns:repeat(4,1fr); gap:40px;}
-    .cred-item .num{font-size:32px;}
-    .cred-item .label{font-size:13.5px; max-width:22ch;}
+    .cred-layout{grid-template-columns:1.2fr 0.8fr; align-items:center;}
+    .cred-grid{grid-template-columns:repeat(2,1fr); gap:24px;}
+    .cred-item .num{font-size:34px;}
+    .cred-item .label{font-size:14px; max-width:22ch;}
+    .cred-img img{aspect-ratio:3/4;}
 
-    .problem .wrap{max-width:820px;}
-    .problem h2{font-size:clamp(26px,3vw,34px); margin-bottom:44px; max-width:20ch;}
-    .statement{padding:26px 0; grid-template-columns:56px 1fr; gap:20px;}
-    .statement p{font-size:16.5px; max-width:58ch;}
+    .problem .wrap{max-width:840px;}
+    .problem h2{font-size:clamp(28px,3vw,36px); margin-bottom:46px; max-width:20ch;}
+    .statement{padding:28px 0 28px 26px; grid-template-columns:56px 1fr; gap:20px;}
+    .statement p{font-size:17px; max-width:58ch;}
 
-    .origin .wrap{max-width:760px;}
-    .origin h2{font-size:clamp(24px,2.8vw,30px); margin-bottom:24px;}
-    .origin p{font-size:16px;}
+    .origin .wrap{max-width:900px;}
+    .origin h2{font-size:clamp(26px,2.8vw,32px); margin-bottom:22px;}
+    .origin-content{display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:start;}
+    .origin p{font-size:16.5px;}
+    .origin-imgs{margin:0;}
+    .row-item{flex:0 0 250px;}
+    .book-card{flex:0 0 210px;}
 
-    .method h2{font-size:clamp(26px,3vw,34px); max-width:18ch; margin-bottom:56px;}
+    .method h2{font-size:clamp(28px,3vw,36px); max-width:18ch; margin-bottom:52px;}
     .method-grid{grid-template-columns:repeat(4,1fr);}
-    .method-card{padding:34px 26px; min-height:230px;}
-    .method-card h3{font-size:19px;}
-    .method-card p{font-size:14.5px;}
+    .method-card{padding:30px 24px;}
+    .method-card h3{font-size:20px;}
+    .method-card p{font-size:15px;}
 
-    .retreat .wrap{display:grid; grid-template-columns:0.95fr 1.05fr; gap:64px; align-items:center;}
-    .retreat h2{font-size:clamp(26px,3.4vw,38px);}
-    .retreat p{max-width:44ch; font-size:16px;}
-    .retreat-img{aspect-ratio:4/5; margin-bottom:0;}
+    .buchreihe h2{font-size:clamp(26px,2.8vw,32px);}
+    .buchreihe > .wrap > p{font-size:16.5px;}
 
-    .therapists .wrap{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
-    .therapists h2{font-size:clamp(24px,2.8vw,30px); max-width:16ch; margin-top:0;}
-    .therapists p{font-size:15.5px; max-width:52ch;}
+    .video-sec h2{font-size:clamp(24px,2.6vw,30px);}
 
-    .inner-circle .wrap{max-width:820px;}
-    .inner-circle h2{font-size:clamp(26px,3vw,32px); max-width:20ch;}
+    .retreat .wrap{max-width:640px;}
+    .retreat h2{font-size:clamp(28px,3.4vw,40px);}
+    .retreat p{font-size:17px;}
+
+    .therapists .origin-content, .seminar-wrap{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+    .therapists h2{font-size:clamp(24px,2.6vw,28px); max-width:20ch; margin-top:0;}
+    .therapists p{font-size:16px; max-width:52ch;}
+
+    .inner-circle .wrap{max-width:860px;}
+    .inner-circle h2{font-size:clamp(28px,3vw,34px); max-width:22ch;}
     .ic-list{grid-template-columns:repeat(3,1fr);}
-    .ic-item{padding:22px 20px 20px 46px;}
 
-    .closing h2{font-size:clamp(28px,3.6vw,42px); max-width:18ch;}
-    .closing p{max-width:48ch; font-size:16.5px;}
-    .closing-ctas{flex-direction:row; justify-content:center; gap:18px;}
+    .closing h2{font-size:clamp(30px,3.6vw,44px); max-width:18ch;}
+    .closing p{max-width:48ch; font-size:17.5px;}
+    .closing-ctas{flex-direction:row; justify-content:center; max-width:none;}
 
     .footer-top{grid-template-columns:1.4fr 1fr 1fr; gap:48px;}
     .footer-logo-ph{width:150px; height:34px;}
@@ -292,7 +410,9 @@
   }
 
   @media (prefers-reduced-motion: reduce){
-    .enso path{animation:none; stroke-dashoffset:0;}
+    .enso-corner path{animation:none; stroke-dashoffset:0;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    .reveal .hl::after{transform:scaleX(1); transition:none;}
     html{scroll-behavior:auto;}
   }
 </style>
@@ -304,6 +424,7 @@
     <div class="ph logo-ph">Logo</div>
     <ul class="nav-links">
       <li><a href="#methode">Methode</a></li>
+      <li><a href="#buchreihe">Bücher</a></li>
       <li><a href="#retreat">Retreat</a></li>
       <li><a href="#therapeuten">Für Therapeuten</a></li>
       <li><a href="#innerer-kreis">Innerer Kreis</a></li>
@@ -318,42 +439,47 @@
 </nav>
 
 <section class="hero">
-  <div class="wrap">
-    <div>
+  <div class="wrap hero-grid">
+    <div class="reveal is-visible">
       <span class="eyebrow">Psychosomatik &amp; Nervensystem-Regeneration</span>
-      <h1>Ist die Seele erschöpft,<br>wird der Körper krank.</h1>
-      <p class="lede">Prof. h. c. Manfred P. Krames berät seit 26 Jahren Führungskräfte und Therapeuten bei Erschöpfung, Burnout und chronischer Stressbelastung — fundiert in fernöstlicher Medizin und westlicher Psychologie.</p>
+      <h1>Ist die Seele <em>erschöpft</em>,<br>wird der Körper krank.</h1>
+      <p class="lede">Prof. h. c. Manfred P. Krames berät seit <strong>26 Jahren</strong> Führungskräfte und Therapeuten bei Erschöpfung, Burnout und chronischer Stressbelastung — fundiert in <span class="hl">fernöstlicher Medizin</span> und westlicher Psychologie.</p>
       <a href="#retreat" class="cta">Retreat entdecken</a>
     </div>
-    <div>
-      <div class="enso-wrap">
-        <svg class="enso" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ensō, handgezeichneter Tuschekreis">
+    <div class="reveal is-visible d1">
+      <div class="hero-img-wrap">
+        <svg class="enso-corner" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M 150 40 A 110 110 0 1 1 55 100"/>
         </svg>
+        <img src="images/hero-krames-mount-fuji.jpg" alt="Prof. Krames vor dem Mount Fuji">
       </div>
-      <div class="ph hero-img">Bild-Platzhalter — Porträt / Raum</div>
     </div>
   </div>
 </section>
 
 <section class="credentials">
   <div class="wrap">
-    <div class="cred-grid">
-      <div class="cred-item">
-        <div class="num">26</div>
-        <div class="label">Fach- und Sachbücher, veröffentlicht in 5 Sprachen</div>
+    <div class="cred-layout">
+      <div class="cred-grid reveal">
+        <div class="card cred-item">
+          <div class="num">26</div>
+          <div class="label">Fach- und Sachbücher, veröffentlicht in 5 Sprachen</div>
+        </div>
+        <div class="card cred-item">
+          <div class="num">3</div>
+          <div class="label">Kontinente Lehrtätigkeit — Sri Lanka, Indien, Japan</div>
+        </div>
+        <div class="card cred-item">
+          <div class="num">500+</div>
+          <div class="label">Ausgebildete Therapeuten und Berater</div>
+        </div>
+        <div class="card cred-item">
+          <div class="num">32</div>
+          <div class="label">Klinikleiter auf Sri Lanka — mit 32 Jahren</div>
+        </div>
       </div>
-      <div class="cred-item">
-        <div class="num">3</div>
-        <div class="label">Kontinente Lehrtätigkeit — Sri Lanka, Indien, Japan</div>
-      </div>
-      <div class="cred-item">
-        <div class="num">500+</div>
-        <div class="label">Ausgebildete Therapeuten und Berater</div>
-      </div>
-      <div class="cred-item">
-        <div class="num">32</div>
-        <div class="label">Klinikleiter auf Sri Lanka — mit 32 Jahren</div>
+      <div class="cred-img reveal d2">
+        <img src="images/atmosphaere-fuji-bluetenfeld.jpg" alt="Mount Fuji mit violettem Blütenfeld">
       </div>
     </div>
   </div>
@@ -361,18 +487,18 @@
 
 <section class="problem">
   <div class="wrap">
-    <span class="eyebrow">Der Ausgangspunkt</span>
-    <h2>Erschöpfung ist selten nur körperlich.</h2>
+    <span class="eyebrow reveal">Der Ausgangspunkt</span>
+    <h2 class="reveal">Erschöpfung ist selten nur <span class="hl">körperlich</span>.</h2>
     <div class="statements">
-      <div class="statement">
+      <div class="statement reveal">
         <span class="mark">01</span>
-        <p>Anhaltender Leistungsdruck verschiebt das vegetative Nervensystem dauerhaft in den Alarmzustand — Schlaf, Verdauung und Konzentration leiden zuerst.</p>
+        <p>Anhaltender Leistungsdruck verschiebt das vegetative Nervensystem dauerhaft in den Alarmzustand — <strong>Schlaf, Verdauung und Konzentration</strong> leiden zuerst.</p>
       </div>
-      <div class="statement">
+      <div class="statement reveal d1">
         <span class="mark">02</span>
-        <p>Klassische Erholung — Urlaub, Wellness, ein verlängertes Wochenende — wirkt oft nur für die Dauer der Auszeit, weil die eigentliche Ursache unberührt bleibt.</p>
+        <p>Klassische Erholung — Urlaub, Wellness, ein verlängertes Wochenende — wirkt oft <em>nur für die Dauer der Auszeit</em>, weil die eigentliche Ursache unberührt bleibt.</p>
       </div>
-      <div class="statement">
+      <div class="statement reveal d2">
         <span class="mark">03</span>
         <p>Nachhaltige Regeneration setzt an der Ursache an, nicht am Symptom — durch eine ausführliche, persönliche Ursachenklärung statt schneller Diagnose.</p>
       </div>
@@ -382,76 +508,159 @@
 
 <section class="origin">
   <div class="wrap">
-    <span class="eyebrow">Herkunft der Methode</span>
-    <h2>26 Jahre Ostasien — nicht als Kur-Exotik, sondern als Grundlage.</h2>
-    <p>Die Methode entstand nicht am Schreibtisch, sondern in der klinischen Praxis: als junger Klinikleiter auf Sri Lanka, in der langjährigen Mitarbeit an einer Tokioter Psychosomatik-Klinik und im Austausch mit einem Ayurveda-Arzt in siebter Generation.</p>
-    <p>Zentral ist die Beobachtung, dass viele körperliche Beschwerden europäischer Kurgäste ihren Ursprung im geistig-seelischen Bereich hatten — eine Beobachtung, die westliche Psychologie und fernöstliche Medizinlehren zusammenführt, statt sie gegeneinander auszuspielen.</p>
-    <div class="origin-tags">
-      <span>Sri Lanka</span>
-      <span>Indien</span>
-      <span>Japan</span>
-      <span>Ayurveda-Praxis</span>
-      <span>Vata als Fachbegriff</span>
-      <span>5-Elemente-Tradition</span>
+    <div class="origin-content">
+      <div class="reveal">
+        <span class="eyebrow">Herkunft der Methode</span>
+        <h2>26 Jahre Ostasien — nicht als Kur-Exotik, sondern als <span class="hl">Grundlage</span>.</h2>
+        <p>Die Methode entstand nicht am Schreibtisch, sondern in der klinischen Praxis: als junger Klinikleiter auf Sri Lanka, in der langjährigen Mitarbeit an einer Tokioter Psychosomatik-Klinik und im Austausch mit einem Ayurveda-Arzt in siebter Generation.</p>
+        <p>Zentral ist die Beobachtung, dass viele körperliche Beschwerden europäischer Kurgäste ihren Ursprung im geistig-seelischen Bereich hatten — eine Beobachtung, die westliche Psychologie und fernöstliche Medizinlehren zusammenführt, statt sie gegeneinander auszuspielen.</p>
+        <div class="origin-tags">
+          <span>Sri Lanka</span>
+          <span>Indien</span>
+          <span>Japan</span>
+          <span>Ayurveda-Praxis</span>
+          <span>Vata als Fachbegriff</span>
+          <span>5-Elemente-Tradition</span>
+        </div>
+      </div>
+      <div class="origin-imgs reveal d1">
+        <img src="images/herkunft-srilanka-boot.jpg" alt="Fischerboot vor Sri Lanka">
+        <img src="images/herkunft-indien-tempel.jpg" alt="Goldener Tempel in Indien">
+      </div>
+    </div>
+
+    <div class="row-block reveal">
+      <div class="row-title">Ausbildung &amp; Praxis in Asien</div>
+      <div class="row-scroll">
+        <div class="row-item"><img src="images/ausbildung-pulsdiagnose.png" alt="Krames bei der Pulsdiagnose in Ausbildung"><div class="cap">Pulsdiagnose-Praxis, frühe Ausbildungsjahre</div></div>
+        <div class="row-item"><img src="images/ausbildung-gruppe-asien.jpg" alt="Krames mit Ausbildungsgruppe in Asien"><div class="cap">Ausbildungsgruppe, Asien</div></div>
+        <div class="row-item"><img src="images/ausbildung-novizen-gruppe.png" alt="Krames mit Novizen-Gruppe in weißen Gewändern"><div class="cap">Mit Novizen-Kollegen, Sri Lanka/Indien</div></div>
+      </div>
+    </div>
+
+    <div class="row-block reveal">
+      <div class="row-title">Lehrtätigkeit &amp; Konferenzen</div>
+      <div class="row-scroll">
+        <div class="row-item"><img src="images/asien-seminar-jury-lachend.png" alt="Krames als Vortragender in Thailand"><div class="cap">Vortrag „Perfect Health &amp; Happiness", Thailand</div></div>
+        <div class="row-item"><img src="images/konferenz-indien-ayurveda.jpg" alt="Krames bei einer Ayurveda-Konferenz in Indien"><div class="cap">Ayurveda-Konferenz, Indien</div></div>
+        <div class="row-item"><img src="images/lehrtaetigkeit-japan-moenche.jpg" alt="Krames mit japanischen Mönchen"><div class="cap">Austausch mit japanischen Mönchen</div></div>
+        <div class="row-item"><img src="images/lehrtaetigkeit-klassenzimmer.png" alt="Krames unterrichtet in einem Klassenzimmer"><div class="cap">Unterricht vor Ort, Sri Lanka/Indien</div></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="method" id="methode">
   <div class="wrap">
-    <span class="eyebrow">Die Methode</span>
-    <h2>Vier Bereiche, ein zusammenhängendes System.</h2>
+    <span class="eyebrow reveal">Die Methode</span>
+    <h2 class="reveal">Vier Bereiche, <span class="hl">ein zusammenhängendes System</span>.</h2>
   </div>
-  <div class="method-grid">
-    <div class="method-card">
-      <h3>Stressregulation</h3>
-      <p>Konkrete Techniken zur Beruhigung des Nervensystems im Alltag — Atmung, Rhythmus, Belastungssteuerung.</p>
+  <div class="wrap">
+    <div class="method-grid">
+      <div class="card method-card reveal">
+        <span class="idx">01</span>
+        <h3>Stressregulation</h3>
+        <p>Konkrete Techniken zur Beruhigung des Nervensystems im Alltag — Atmung, Rhythmus, Belastungssteuerung.</p>
+      </div>
+      <div class="card method-card reveal d1">
+        <span class="idx">02</span>
+        <h3>Burnout-Prävention</h3>
+        <p>Frühzeitiges Erkennen von Erschöpfungsmustern, bevor sie zu einem klinischen Zusammenbruch führen.</p>
+      </div>
+      <div class="card method-card reveal d2">
+        <span class="idx">03</span>
+        <h3>Resilienz</h3>
+        <p>Aufbau innerer Stabilität, die auch unter dauerhafter beruflicher Belastung trägt.</p>
+      </div>
+      <div class="card method-card reveal d3">
+        <span class="idx">04</span>
+        <h3>Nervensystem-Regeneration</h3>
+        <p>Langfristige Wiederherstellung von Schlaf, Energie und emotionaler Balance.</p>
+      </div>
     </div>
-    <div class="method-card">
-      <h3>Burnout-Prävention</h3>
-      <p>Frühzeitiges Erkennen von Erschöpfungsmustern, bevor sie zu einem klinischen Zusammenbruch führen.</p>
+  </div>
+</section>
+
+<section class="buchreihe" id="buchreihe">
+  <div class="wrap">
+    <span class="eyebrow reveal">Buchreihe</span>
+    <h2 class="reveal">26 Bücher — <span class="hl">Standardwerke</span> für ganzheitlich arbeitende Fachleute.</h2>
+    <p class="reveal">Das Fachbuch <em>„Vata Syndrom"</em> erschien auf Deutsch, Japanisch und Englisch und gilt als Standardwerk für Heilpraktiker, Psychologen und Therapeuten.</p>
+    <div class="row-scroll reveal d1">
+      <div class="book-card">
+        <img src="images/buchreihe-japan-praesentation.png" alt="Prof. Krames präsentiert die japanische Buchausgabe">
+        <div class="cap">„Vata Syndrom" — Japanische Ausgabe</div>
+      </div>
+      <div class="book-card empty">Weiterer Titel<br>folgt</div>
+      <div class="book-card empty">Weiterer Titel<br>folgt</div>
+      <div class="book-card empty">Weiterer Titel<br>folgt</div>
     </div>
-    <div class="method-card">
-      <h3>Resilienz</h3>
-      <p>Aufbau innerer Stabilität, die auch unter dauerhafter beruflicher Belastung trägt.</p>
+  </div>
+</section>
+
+<section class="presse">
+  <div class="wrap">
+    <span class="eyebrow reveal">Presse</span>
+    <h2 class="reveal">Zeitungsartikel</h2>
+    <p class="reveal">Presseerwähnungen folgen in Kürze.</p>
+    <div class="row-scroll reveal d1">
+      <div class="press-card">Zeitungsartikel<br>folgt</div>
+      <div class="press-card">Zeitungsartikel<br>folgt</div>
+      <div class="press-card">Zeitungsartikel<br>folgt</div>
     </div>
-    <div class="method-card">
-      <h3>Nervensystem-Regeneration</h3>
-      <p>Langfristige Wiederherstellung von Schlaf, Energie und emotionaler Balance.</p>
+  </div>
+</section>
+
+<section class="video-sec">
+  <div class="wrap">
+    <h2 class="reveal">Prof. Krames im Gespräch</h2>
+    <div class="video-card reveal d1">
+      <img src="images/atmosphaere-wasserfall.jpg" alt="Video-Platzhalter">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <span class="video-caption">Video folgt in Kürze</span>
     </div>
   </div>
 </section>
 
 <section class="retreat" id="retreat">
-  <div class="wrap">
-    <div class="ph retreat-img">Bild-Platzhalter — Retreat-Räumlichkeiten</div>
-    <div>
-      <span class="eyebrow" style="color:#EDE3C8; opacity:1;">Der Raum</span>
-      <h2>Ein Ort für die Ursachenklärung — ohne Ablenkung.</h2>
-      <p>Das Retreat findet in kleiner, persönlicher Runde statt. Kein Wellness-Programm nebenbei, sondern ausschließlich Zeit für Ihre Situation — begleitet, ausführlich, ohne Zeitdruck.</p>
-      <a href="#kontakt" class="cta">Retreat buchen</a>
-    </div>
+  <div class="retreat-bg"><img src="images/atmosphaere-see-violett.jpg" alt="Mystische Seelandschaft, Hintergrundbild"></div>
+  <div class="wrap reveal">
+    <span class="eyebrow" style="color:#E7D3F2; opacity:1;">Der Raum</span>
+    <h2>Ein Ort für die Ursachenklärung — <em>ohne Ablenkung</em>.</h2>
+    <p>Das Retreat findet in kleiner, persönlicher Runde statt. Kein Wellness-Programm nebenbei, sondern ausschließlich Zeit für Ihre Situation — begleitet, ausführlich, ohne Zeitdruck.</p>
+    <a href="#kontakt" class="cta-violet-outline">Retreat buchen</a>
   </div>
 </section>
 
 <section class="therapists" id="therapeuten">
   <div class="wrap">
-    <div>
-      <span class="eyebrow">Für Therapeuten und Berater</span>
-      <h2>Fachliche Weiterbildung, keine Wellness-Zertifizierung.</h2>
-    </div>
-    <div>
-      <p>Über 500 Therapeuten und Berater wurden bislang ausgebildet. Die Weiterbildung vermittelt eine diagnostische Methode aus 26 Jahren klinischer Praxis in Ostasien, kombiniert mit westlicher Psychologie — für Kollegen, die ganzheitlich und fundiert arbeiten wollen.</p>
-      <p style="margin-top:16px;"><a href="#kontakt" class="cta-ghost">Ausbildung anfragen →</a></p>
+    <div class="seminar-wrap">
+      <div class="reveal">
+        <span class="eyebrow">Für Therapeuten und Berater</span>
+        <h2>Fachliche Weiterbildung, <span class="hl">keine Wellness-Zertifizierung</span>.</h2>
+        <p>Über 500 Therapeuten und Berater wurden bislang ausgebildet. Die Weiterbildung vermittelt eine diagnostische Methode aus 26 Jahren klinischer Praxis in Ostasien, kombiniert mit westlicher Psychologie — für Kollegen, die ganzheitlich und fundiert arbeiten wollen.</p>
+        <p style="margin-top:16px;"><a href="#kontakt" class="cta-ghost">Ausbildung anfragen →</a></p>
+      </div>
+      <div class="row-block reveal d1" style="margin-top:0;">
+        <div class="row-title">Seminare in Deutschland</div>
+        <div class="row-scroll">
+          <div class="row-item"><img src="images/seminar-deutschland-gruppenbild.png" alt="Krames als Seminarleiter mit deutschen Kunden"><div class="cap">Seminarleitung, Gruppenbild</div></div>
+          <div class="row-item"><img src="images/seminar-deutschland-1.jpg" alt="Seminar mit deutschen Teilnehmern"><div class="cap">Seminarrunde, Deutschland</div></div>
+          <div class="row-item"><img src="images/seminar-deutschland-2.jpg" alt="Seminar mit deutschen Teilnehmern, zweites Bild"><div class="cap">Seminarrunde, Deutschland</div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="inner-circle" id="innerer-kreis">
-  <div class="wrap">
+  <div class="ic-bg"><img src="images/atmosphaere-laternen.jpg" alt="Aufsteigende Himmelslaternen, Hintergrundbild"></div>
+  <div class="wrap reveal">
     <span class="ic-badge">Nur auf Anfrage</span>
     <span class="eyebrow">Innerer Kreis</span>
-    <h2>Tiefergehendes Wissen aus 26 Jahren Praxis — nicht für die öffentliche Seite bestimmt.</h2>
+    <h2>Tiefergehendes Wissen aus 26 Jahren Praxis — <em>nicht für die öffentliche Seite bestimmt</em>.</h2>
     <p>Ein begrenzter Kreis aus Klienten und Therapeuten erhält Zugang zu weiterführenden Inhalten, die über die allgemeine Beratung hinausgehen. Zugang nach persönlichem Gespräch.</p>
     <div class="ic-list">
       <div class="ic-item">
@@ -467,18 +676,19 @@
         <p>Hintergründe, die Prof. Krames sonst nur im direkten Gespräch teilt.</p>
       </div>
     </div>
-    <a href="#kontakt" class="cta-violet">Zutritt beantragen</a>
+    <a href="#kontakt" class="cta-violet-outline">Zutritt beantragen</a>
   </div>
 </section>
 
 <section class="closing" id="kontakt">
-  <div class="wrap">
-    <span class="eyebrow">Nächster Schritt</span>
+  <div class="closing-bg"><img src="images/atmosphaere-hoffnung-licht.jpg" alt="Hand, die nach Licht greift, Hintergrundbild"></div>
+  <div class="wrap reveal">
+    <span class="eyebrow" style="color:#E7D3F2; opacity:1;">Nächster Schritt</span>
     <h2>Zwei Wege, den ersten Schritt zu machen.</h2>
     <p>Beratungen finden persönlich, per Zoom, Telefon oder WhatsApp statt — weltweit, mit besonderer Erfahrung im deutschsprachigen Raum.</p>
     <div class="closing-ctas">
       <a href="#" class="cta">Retreat buchen</a>
-      <a href="#" class="cta-secondary">Therapieplatz anfragen</a>
+      <a href="#" class="cta-violet-outline">Therapieplatz anfragen</a>
     </div>
   </div>
 </section>
@@ -488,7 +698,7 @@
     <div class="footer-top">
       <div>
         <div class="ph footer-logo-ph">Logo</div>
-        <p style="margin-top:16px; font-size:13.5px; opacity:0.75;">Prof. h. c. Manfred P. Krames — Psychosomatik, Stressregulation und Nervensystem-Regeneration.</p>
+        <p style="margin-top:16px; font-size:14px; opacity:0.75;">Prof. h. c. Manfred P. Krames — Psychosomatik, Stressregulation und Nervensystem-Regeneration.</p>
       </div>
       <div>
         <h4>Navigation</h4>
@@ -510,10 +720,29 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 Manfred P. Krames</span>
-      <span>Design 1 · Washi / Sumi / Indigo / Murasaki</span>
+      <span>Design 1 · Violett / Washi / Gold</span>
     </div>
   </div>
 </footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal:not(.is-visible)');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
 
 </body>
 </html>
