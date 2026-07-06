@@ -38,16 +38,16 @@
   body{margin:0; font-family:'IBM Plex Sans', sans-serif; color:var(--ink); background:var(--paper); line-height:1.7; -webkit-font-smoothing:antialiased; font-size:17px;}
   h1,h2,h3{font-family:'Shippori Mincho', serif; font-weight:700; line-height:1.3; margin:0; letter-spacing:0.01em;}
   
-  /* Zwischenüberschriften um eins größer, mehr Abstand nach unten & leichter Schatten */
+  /* Zwischenüberschriften: Eine Stufe größer, deutlich mehr Abstand nach unten & leichter Textschatten */
   h2{
-    font-size:36px; 
-    margin-bottom:40px !important; 
-    text-shadow: 1px 1px 2px rgba(34, 27, 41, 0.12);
+    font-size:42px; 
+    margin-bottom:56px !important; 
+    text-shadow: 2px 2px 4px rgba(34, 27, 41, 0.15);
   }
   h3{
-    font-size:28px; 
-    margin-bottom:24px !important;
-    text-shadow: 1px 1px 2px rgba(34, 27, 41, 0.1);
+    font-size:32px; 
+    margin-bottom:32px !important;
+    text-shadow: 1px 1px 3px rgba(34, 27, 41, 0.12);
   }
   
   em{font-style:italic; color:var(--violet-dark);}
@@ -71,13 +71,13 @@
   }
   img{max-width:100%; display:block;}
 
-  /* Zwei Arten von Unterstreichungen */
+  /* Zwei Arten von Unterstreichungen (Blau und Violett) */
   .hl-blue{position:relative; white-space:nowrap;}
-  .hl-blue::after{content:""; position:absolute; left:0; right:0; bottom:-3px; height:6px; background:var(--accent-light-blue); opacity:0.5; z-index:-1; transform:scaleX(0); transform-origin:left; transition:transform 1s ease .1s;}
+  .hl-blue::after{content:""; position:absolute; left:0; right:0; bottom:-3px; height:6px; background:var(--accent-light-blue); opacity:0.6; z-index:-1; transform:scaleX(0); transform-origin:left; transition:transform 1s ease .1s;}
   .reveal.is-visible .hl-blue::after{transform:scaleX(1);}
 
   .hl-violet{position:relative; white-space:nowrap;}
-  .hl-violet::after{content:""; position:absolute; left:0; right:0; bottom:-3px; height:6px; background:var(--violet-light); opacity:0.5; z-index:-1; transform:scaleX(0); transform-origin:left; transition:transform 1s ease .1s;}
+  .hl-violet::after{content:""; position:absolute; left:0; right:0; bottom:-3px; height:6px; background:var(--violet-light); opacity:0.6; z-index:-1; transform:scaleX(0); transform-origin:left; transition:transform 1s ease .1s;}
   .reveal.is-visible .hl-violet::after{transform:scaleX(1);}
 
   .reveal{opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease;}
@@ -102,7 +102,7 @@
   }
   .nav-toggle svg{width:18px; height:18px;}
 
-  /* Zwei mächtig wirkende CTA-Buttons: lila und blau */
+  /* Zwei mächtig wirkende CTA-Buttons (lila und blau) */
   .cta-lila, .cta-blau, .cta-violet-outline{
     display:inline-flex; align-items:center; justify-content:center; gap:12px;
     font-weight:600; font-size:16px; padding:18px 40px; text-decoration:none; border-radius:40px;
@@ -123,7 +123,7 @@
     color:#fff;
   }
   .cta-blau::after{content:"→"; transition:transform .2s ease;}
-  .cta-blau:hover{transform:translateY(-4px); box-shadow:0 16px 32px rgba(35,85,122,0.4.5); filter: brightness(1.1);}
+  .cta-blau:hover{transform:translateY(-4px); box-shadow:0 16px 32px rgba(35,85,122,0.45); filter: brightness(1.1);}
   .cta-blau:hover::after{transform:translateX(5px);}
 
   .cta-violet-outline{background:rgba(255,255,255,0.05); color:#F8ECFB; border:2px solid var(--violet-light); box-shadow: none;}
@@ -138,6 +138,13 @@
   /* Herkunft: Bilderrahmen-Korrektur */
   .framed{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:0px; overflow:hidden;}
   .framed img{width:100%; object-fit:cover; display:block;}
+  
+  /* Erstes Bild ohne Rand, zweites Bild mit weißem Rahmen im Inneren gefixt */
+  .framed-inner-white {
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:12px; overflow:hidden;
+  }
+  .framed-inner-white img {width:100%; object-fit:cover; display:block;}
+
   .photo-box{background:#14121a; border-radius:var(--radius); overflow:hidden;}
   .photo-box img{width:100%; height:100%; object-fit:contain;}
 
@@ -180,13 +187,13 @@
   .gallery-dot{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.45); border:none; padding:0; cursor:pointer;}
   .gallery-dot.active{background:#fff;}
 
-  /* PROBLEM — Text mit ganz leichtem grau-weißem Schatten versehen */
+  /* PROBLEM / AUSGANGSPUNKT — Ganzer Text mit feinem, edlem grau-weißem Schatten hinterlegt */
   .problem{background:var(--deep-blue); color:var(--deep-blue-text); position:relative;}
   .problem-bg{position:absolute; inset:0; z-index:0;}
   .problem-bg img{width:100%; height:100%; object-fit:cover;}
-  .problem-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(16,30,51,0.55), rgba(16,30,51,0.72));}
+  .problem-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(16,30,51,0.60), rgba(16,30,51,0.78));}
   .problem .wrap {
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.15), 0px 1px 1px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.6);
   }
   .problem .eyebrow{color:#9FB6D9;}
   .problem h2{color:#F1F5FA;}
@@ -201,17 +208,18 @@
   .statement .mark{font-family:'IBM Plex Mono', monospace; color:var(--accent-light-blue); font-size:14px;}
   .statement p{margin:0; font-size:16px; color:var(--deep-blue-text-soft);}
 
-  /* HERKUNFT — Mehr Platz zwischen den Reihen & lila Schlagworte */
+  /* HERKUNFT — Deutlich mehr Platz zwischen Reihe 1 und 2 & runde lila Keywords mit weißer Schrift */
   .origin{padding:100px 0;}
   .origin p{font-size:16px; color:var(--ink-soft); margin:0 0 24px;}
-  .origin-grid{display:grid; grid-template-columns:1fr; gap:54px;} /* Erhöhter Reihenabstand */
-  .origin-images {display: grid; grid-template-columns: 1fr 1fr; gap: 20px;}
+  .origin-grid{display:grid; grid-template-columns:1fr; gap:72px;} /* Erhöhtes Gap für deutlich mehr Platz zwischen den Reihen */
+  .origin-images {display: grid; grid-template-columns: 1fr 1fr; gap: 24px;}
   .origin-img-a img, .origin-img-b img{aspect-ratio:4/3; object-fit: cover;}
   .origin-tags{display:flex; flex-wrap:wrap; gap:10px; margin:28px 0 4px;}
   .origin-tags span{
-    font-family:'IBM Plex Mono', monospace; font-size:12px; padding:6px 14px; 
-    border:none; border-radius:20px; color:#fff; background:var(--violet);
-    box-shadow: 0 2px 6px rgba(91,46,104,0.2);
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; padding:8px 18px; 
+    border:none; border-radius:30px; color:#ffffff !important; background:var(--violet);
+    box-shadow: 0 4px 10px rgba(91,46,104,0.25);
+    font-weight: 500;
   }
 
   /* BILDARCHIV */
@@ -219,34 +227,34 @@
   .gallery-layout{display:grid; gap:36px; align-items:center;}
   .gallery-layout p{font-size:15.5px; color:var(--ink-soft); margin:0;}
 
-  /* METHODE — Alles zentriert, neue Anordnung */
+  /* METHODE — Komplett zentriert, neue strukturelle Reihenfolge */
   .method{text-align: center;}
-  .method .section-head {margin-bottom: 32px;}
+  .method .section-head {margin-bottom: 32px; display: flex; flex-direction: column; align-items: center;}
   .method .sub-intro-text {
-    font-family:'Shippori Mincho', serif; font-size: 24px; font-weight: 700;
+    font-family:'Shippori Mincho', serif; font-size: 26px; font-weight: 700;
     color: var(--violet); margin-bottom: 48px; display: block;
   }
   .method .sub-outro-text {
-    font-family:'Shippori Mincho', serif; font-size: 24px; font-weight: 700;
-    color: var(--ink); margin-top: 48px; display: block;
+    font-family:'Shippori Mincho', serif; font-size: 26px; font-weight: 700;
+    color: var(--ink); margin-top: 52px; display: block;
   }
-  .method-grid{display:grid; grid-template-columns:1fr; gap:20px; text-align: left;}
-  .method-card{padding:36px 28px; background:linear-gradient(150deg, var(--violet) 0%, var(--violet-dark) 100%); border:none;}
+  .method-grid{display:grid; grid-template-columns:1fr; gap:24px; text-align: center;}
+  .method-card{padding:40px 32px; background:linear-gradient(150deg, var(--violet) 0%, var(--violet-dark) 100%); border:none; display: flex; flex-direction: column; align-items: center;}
   .method-card:hover{box-shadow:0 14px 34px -10px rgba(91,46,104,0.55);}
   .method-card .idx{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--violet-light); margin-bottom:14px; display:block;}
-  .method-card h3{font-size:21px; margin-bottom:12px; color:#FBF3FF; border:none;}
+  .method-card h3{font-size:22px; margin-bottom:14px; color:#FBF3FF; border:none;}
   .method-card p{font-size:15px; margin:0; color:#E4D3EC; line-height:1.65;}
 
-  /* BÜCHER & PRESSE — Split-Reihen Layout */
+  /* BÜCHER & PRESSE — Links/Rechts-Text & dynamische Galerien */
   .presse-buch{background:var(--paper-tint-gold); padding:100px 0;}
   .pb-row-block {
-    display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 64px; align-items: center;
+    display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 80px; align-items: center;
   }
   .pb-row-block:last-child {margin-bottom: 0;}
   .pb-text-side {display: flex; flex-direction: column;}
-  .pb-text-side p {font-size: 16.5px; color: var(--ink-soft); margin: 12px 0 0 0;}
-  .pb-gallery-side {display: flex; justify-content: flex-start;}
-  .pb-gallery-side .gallery {width: 100%; max-width: 320px;}
+  .pb-text-side p {font-size: 16.5px; color: var(--ink-soft); margin: 16px 0 0 0;}
+  .pb-gallery-side {display: flex; justify-content: center;}
+  .pb-gallery-side .gallery {width: 100%; max-width: 340px;}
 
   /* VIDEO */
   .video-sec h2{margin-bottom:32px; text-align:center;}
@@ -254,84 +262,92 @@
   .video-frame{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/9; box-shadow:var(--shadow); background:#000;}
   .video-frame iframe{width:100%; height:100%; border:0; display:block;}
 
-  /* RETREAT — "ohne Ablenkung" in blau & CTA blau */
+  /* RETREAT — "ohne Ablenkung" in strahlendem Blau & CTA Blau */
   .retreat{color:#F5Eefa; position:relative;}
   .retreat-bg{position:absolute; inset:0; z-index:0;}
   .retreat-bg img{width:100%; height:100%; object-fit:cover;}
-  .retreat-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(42,21,51,0.55), rgba(42,21,51,0.72));}
-  .retreat .hl-blue-text {color: var(--accent-light-blue); font-style: normal;}
-  .retreat p{opacity:0.95; margin:24px 0 32px; font-size:16.5px; max-width:48ch; color:#F0E9F2;}
-  .retreat .cta-blau{max-width:280px;}
+  .retreat-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(42,21,51,0.6), rgba(42,21,51,0.78));}
+  .retreat .hl-blue-text {color: #4A90E2; font-style: normal; font-weight: 700;}
+  .retreat p {opacity:0.95; margin:28px 0 36px; font-size:17px; max-width:48ch; color:#F0E9F2;}
+  .retreat .cta-blau{max-width:300px;}
 
-  /* FÜR THERAPEUTEN — Erhöhte Abstände & lila Text-Chip */
-  .therapists{background:var(--paper-tint); padding:120px 0;} /* Mehr Platz */
-  .therapists .eyebrow{color:var(--violet);}
-  .therapists p{color:var(--ink-soft); font-size:16px; margin-bottom: 24px;}
+  /* FÜR THERAPEUTEN — Drastisch mehr Margin/Padding, markante Unterstreichungen & lila Text-Block */
+  .therapists{background:var(--paper-tint); padding:140px 0;} /* Erhöhtes Gesamt-Padding */
+  .therapists .eyebrow{color:var(--violet); margin-bottom: 2rem;}
+  .therapists p{color:var(--ink-soft); font-size:17px; margin-bottom: 32px; line-height: 1.8;}
   .therapists-headline {
     text-decoration: underline;
-    text-decoration-color: var(--violet);
-    text-underline-offset: 6px;
+    text-decoration-color: var(--accent2);
+    text-underline-offset: 8px;
+    text-decoration-thickness: 3px;
+    margin-bottom: 40px !important;
   }
   .t-chip-lila{
-    display:inline-flex; align-items:center; background:var(--violet); border:none; border-radius:4px;
-    padding:10px 20px; font-size:14px; color:#fff; margin:14px 0 24px; font-family:'IBM Plex Mono', monospace;
-    font-weight: 500; box-shadow: 0 4px 12px rgba(91,46,104,0.2);
+    display:inline-flex; align-items:center; background:var(--violet); border:none; border-radius:6px;
+    padding:14px 28px; font-size:15px; color:#ffffff !important; margin:20px 0 36px; font-family:'IBM Plex Mono', monospace;
+    font-weight: 600; box-shadow: 0 6px 16px rgba(91,46,104,0.3);
+    letter-spacing: 0.02em;
   }
-  .pull-quote{border-left:3px solid var(--violet); padding:8px 0 8px 20px; margin:28px 0 32px; font-style:italic; color:var(--violet-dark); font-size:16.5px;}
+  .pull-quote{border-left:4px solid var(--violet); padding:12px 0 12px 24px; margin:36px 0 40px; font-style:italic; color:var(--violet-dark); font-size:17.5px;}
 
-  /* NEWSLETTER — Erhöhte Text-Abstände & CTA Blau */
-  .inner-circle{color:#F5E9FA; position:relative; padding:120px 0;}
+  /* NEWSLETTER — Erhöhte Abstände der Texte & Button in Blau */
+  .inner-circle{color:#F5E9FA; position:relative; padding:140px 0;}
   .ic-bg{position:absolute; inset:0; z-index:0;}
   .ic-bg img{width:100%; height:100%; object-fit:cover;}
-  .ic-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(160deg, rgba(42,21,51,0.6), rgba(42,21,51,0.55));}
+  .ic-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(160deg, rgba(42,21,51,0.65), rgba(42,21,51,0.6));}
   .inner-circle .wrap{max-width:720px; margin-left: 0; text-align: left;}
-  .inner-circle h2{margin-bottom:28px;}
-  .inner-circle p{opacity:0.92; font-size:16.5px; margin:0 0 40px; line-height: 1.8;}
+  .inner-circle h2{margin-bottom:40px;}
+  .inner-circle p{opacity:0.92; font-size:17.5px; margin:0 0 48px; line-height: 1.85;}
   .ic-badge{
     display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono', monospace; font-size:11px;
     letter-spacing:0.08em; text-transform:uppercase; border:1px solid var(--violet-light); color:#F5E9FA;
-    padding:6px 14px; border-radius:20px; margin-bottom:28px;
+    padding:6px 14px; border-radius:20px; margin-bottom:32px;
   }
-  .ic-form{display:flex; flex-wrap:wrap; gap:14px; max-width:540px;}
-  .ic-form input{flex:1 1 220px; padding:16px 20px; border-radius:40px; border:1.5px solid rgba(255,255,255,0.35); background:rgba(255,255,255,0.12); color:#fff; font-size:15px;}
+  .ic-form{display:flex; flex-wrap:wrap; gap:16px; max-width:560px; margin-bottom: 24px;}
+  .ic-form input{flex:1 1 240px; padding:18px 24px; border-radius:40px; border:1.5px solid rgba(255,255,255,0.35); background:rgba(255,255,255,0.12); color:#fff; font-size:15px;}
   .ic-form input::placeholder{color:rgba(255,255,255,0.65);}
   .ic-form .cta-blau{width:auto; flex:0 0 auto;}
+  .ic-note {margin-top: 16px !important;}
 
-  /* NÄCHSTER SCHRITT — Weißer Hintergrund ohne Bild, erhöhter Platz */
-  .closing{background: var(--paper); color: var(--ink); padding: 120px 0; position: relative;}
-  .closing-panel{background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 48px 32px; box-shadow: var(--shadow);}
-  .closing-grid{display:grid; gap:48px;}
-  .closing h2{margin:0 0 24px; color: var(--ink);}
-  .closing p{margin:0 0 36px; font-size:17px; color: var(--ink-soft);}
-  .closing-ctas{display:flex; flex-direction:column; gap:16px;}
-  .closing-row-title{font-size:13px; font-family:'IBM Plex Mono', monospace; letter-spacing:0.08em; text-transform:uppercase; color:var(--violet); margin-bottom:16px; display:block;}
+  /* NÄCHSTER SCHRITT — Weißer Hintergrund ohne Ablenkung, großzügiges Spacing */
+  .closing{background: #ffffff; color: var(--ink); padding: 140px 0; position: relative;}
+  .closing-panel{background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 56px 40px; box-shadow: var(--shadow);}
+  .closing-grid{display:grid; gap:56px;}
+  .closing h2{margin:0 0 32px; color: var(--ink);}
+  .closing p{margin:0 0 44px; font-size:17.5px; color: var(--ink-soft); line-height: 1.8;}
+  .closing-ctas{display:flex; flex-direction:column; gap:20px;}
+  .closing-row-title{font-size:13px; font-family:'IBM Plex Mono', monospace; letter-spacing:0.08em; text-transform:uppercase; color:var(--violet); margin-bottom:24px; display:block;}
 
-  /* FOOTER — Navigation & Kontakt zentriert mit Trennlinie & Email-Icon & Copyright */
-  footer{background:var(--violet-footer); color:rgba(251,249,246,0.85); padding:80px 0 40px;}
+  /* FOOTER — Navigation & Kontakt perfekt in Bereichen zentriert, vertikale Trennlinie & Email-Icon */
+  footer{background:var(--violet-footer); color:rgba(251,249,246,0.85); padding:90px 0 40px;}
   .footer-grid-split {
     display: grid; grid-template-columns: 1fr; gap: 48px; position: relative; text-align: center;
   }
-  footer h4{font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(251,249,246,0.6); margin:0 0 24px;}
-  footer ul{list-style:none; margin:0; padding:0; display:grid; gap:14px; justify-content: center;}
-  footer a{color:inherit; text-decoration:none; font-size:15px; transition: color 0.2s;}
+  footer h4{font-size:14px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(251,249,246,0.65); margin:0 0 28px;}
+  footer ul{list-style:none; margin:0; padding:0; display:grid; gap:16px; justify-content: center; text-align: center;}
+  footer ul li {text-align: center;}
+  footer a{color:inherit; text-decoration:none; font-size:15.5px; transition: color 0.2s;}
   footer a:hover{color:#fff;}
   
   .email-link {
-    display: inline-flex; align-items: center; gap: 8px; justify-content: center;
+    display: inline-flex; align-items: center; gap: 10px; justify-content: center;
   }
-  .email-icon {width: 16px; height: 16px; fill: currentColor; display: inline-block; vertical-align: middle;}
+  .email-icon {width: 18px; height: 18px; fill: currentColor; display: inline-block; vertical-align: middle;}
 
   .footer-copyright {
-    margin-top: 40px; font-family:'IBM Plex Mono', monospace; font-size: 13px; 
+    margin-top: 56px; font-family:'IBM Plex Mono', monospace; font-size: 13px; 
     color: rgba(251,249,246,0.5); text-align: center; display: block;
   }
 
-  /* Unterste Leiste (msTech) in komplett weißer Schrift */
+  /* Unterste Leiste (msTech) in komplett strahlend weißer Schrift */
   .footer-credit-bar{
-    background:var(--deep-blue-footer-bar); color:#fff; padding:22px 20px; font-family:'IBM Plex Mono', monospace; font-size:12.5px;
-    display:flex; flex-direction:column; gap:10px; align-items:center; text-align:center; border-top:1px solid rgba(255,255,255,0.05);
+    background:var(--deep-blue-footer-bar); color:#ffffff !important; padding:24px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px;
+    display:flex; flex-direction:column; gap:12px; align-items:center; text-align:center; border-top:1px solid rgba(255,255,255,0.05);
   }
-  .footer-credit-bar a{color:#fff; text-decoration:underline; font-weight:600;}
+  .footer-credit-bar span, .footer-credit-bar a {
+    color:#ffffff !important;
+  }
+  .footer-credit-bar a{text-decoration:underline; font-weight:600;}
 
   :focus-visible{outline:2px solid var(--violet-light); outline-offset:2px;}
 
@@ -339,7 +355,7 @@
   @media (min-width:768px){
     body{font-size:18px;}
     section{padding:140px 0;}
-    .section-head{margin-bottom:64px;}
+    .section-head{margin-bottom:72px;}
     .wrap{padding:0 40px;}
     .nav-inner{padding:20px 40px;}
     .logo-ph{width:150px; height:34px; font-size:10px;}
@@ -359,20 +375,21 @@
     .hero p.lede{font-size:19.5px; max-width:46ch; margin:28px 0 38px;}
     .enso-corner{width:110px; height:110px; top:-24px; left:-24px;}
 
-    .credentials h2{font-size:clamp(30px,3.2vw,36px);}
+    .credentials h2{font-size:clamp(32px,3.2vw,38px);}
     .cred-layout{grid-template-columns:1.1fr 0.9fr; gap:48px;}
     .cred-grid{grid-template-columns:repeat(2,1fr); gap:24px;}
     .cred-item .num{font-size:38px;}
     .cred-item .label{font-size:14.5px; max-width:22ch;}
 
     .problem .wrap{max-width:860px;}
-    .problem h2{font-size:clamp(32px,3.5vw,40px); max-width:20ch;}
+    .problem h2{font-size:clamp(34px,3.5vw,44px); max-width:20ch;}
     .statement{padding:28px 0 28px 26px; grid-template-columns:56px 1fr; gap:20px;}
     .statement p{font-size:17px; max-width:58ch;}
 
     .origin .wrap{max-width:980px;}
-    .origin h2{font-size:clamp(30px,3.2vw,36px);}
-    .origin-grid{grid-template-columns:1fr; gap:48px;}
+    .origin h2{font-size:clamp(32px,3.2vw,38px);}
+    .origin-grid{grid-template-columns:1fr; gap:64px;}
+    .origin-images { gap: 32px; }
 
     .gallery-layout{grid-template-columns:0.75fr 1.25fr; gap:48px;}
     .gallery-section.alt .gallery-layout{grid-template-columns:1.25fr 0.75fr;}
@@ -380,41 +397,41 @@
     .gallery-section.alt .gallery{order:1;}
 
     .method .wrap{max-width:1000px;}
-    .method h2{font-size:clamp(32px,3.5vw,42px); max-width:24ch; margin-left: auto; margin-right: auto;}
-    .method-grid{grid-template-columns:repeat(4,1fr); gap:16px;}
+    .method h2{font-size:clamp(34px,3.5vw,44px); max-width:24ch; margin-left: auto; margin-right: auto;}
+    .method-grid{grid-template-columns:repeat(4,1fr); gap:20px;}
 
-    /* Split-Reihen Desktop */
+    /* Split-Reihen Layout (Texte Links/Rechts und Galerien daneben) */
     .pb-row-block {grid-template-columns: 1.1fr 0.9fr; gap: 64px;}
-    .pb-row-block.alt-row {grid-template-columns: 0.9fr 1.1fr;}
-    .pb-row-block.alt-row .pb-text-side {order: 2;}
-    .pb-row-block.alt-row .pb-gallery-side {order: 1;}
+    .pb-row-block.alt-row {grid-template-columns: 1.1fr 0.9fr; gap: 64px;}
+    .pb-row-block.alt-row .pb-text-side {order: 1;}
+    .pb-row-block.alt-row .pb-gallery-side {order: 2;}
 
     .video-sec h2{font-size:clamp(28px,3vw,34px);}
 
     .retreat .wrap{max-width:680px;}
-    .retreat h2{font-size:clamp(34px,3.8vw,46px);}
-    .retreat p{font-size:17.5px;}
+    .retreat h2{font-size:clamp(36px,3.8vw,48px);}
+    .retreat p{font-size:18px;}
 
     .seminar-wrap{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
-    .therapists h2{font-size:clamp(28px,3vw,34px); max-width:20ch; margin-top:0;}
-    .therapists p{font-size:16.5px; max-width:52ch;}
+    .therapists h2{font-size:clamp(30px,3vw,36px); max-width:20ch; margin-top:0;}
+    .therapists p{font-size:17.5px; max-width:52ch;}
 
-    .inner-circle h2{font-size:clamp(32px,3.5vw,40px);}
+    .inner-circle h2{font-size:clamp(34px,3.5vw,44px);}
     .inner-circle .wrap{margin-left: 40px;}
 
     .closing .wrap{max-width:1020px;}
-    .closing-panel{padding:64px;}
+    .closing-panel{padding:72px;}
     .closing-grid{grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center;}
-    .closing h2{font-size:clamp(34px,3.8vw,46px);}
-    .closing p{font-size:17.5px;}
+    .closing h2{font-size:clamp(36px,3.8vw,48px);}
+    .closing p{font-size:18px;}
     .closing-ctas{flex-direction:row;}
 
-    /* Vertikale Trennlinie im Footer auf Desktop */
+    /* Strukturierte vertikale Trennlinie im Footer auf Desktop */
     .footer-grid-split {
-      grid-template-columns: 1fr 1fr; gap: 0; text-align: center;
+      grid-template-columns: 1fr 1fr; gap: 0;
     }
     .footer-grid-split > div:first-child {
-      border-right: 1px solid rgba(251,249,246,0.15);
+      border-right: 1px solid rgba(251,249,246,0.2);
     }
     .footer-credit-bar{flex-direction:row; justify-content:space-between; padding:20px 40px; text-align:left;}
   }
@@ -554,10 +571,9 @@
         <h2>26 Jahre Ostasien, nicht als Kur-Exotik, sondern als <span class="hl-violet">Grundlage</span>.</h2>
       </div>
       
-      <!-- Erhöhter Abstand zwischen Reihe 1 und Reihe 2 durch Grid-Gap gelöst -->
       <div class="origin-images reveal d1">
         <div class="framed"><img src="images/srilanka-bootsmann-hellblauwasser-hellbraun-himmel.jpg" alt="Fischerboot vor Sri Lanka"></div>
-        <div class="framed"><img src="images/todestempel-indien-gold-blau.jpg" alt="Goldener Tempel in Indien"></div>
+        <div class="framed-inner-white"><img src="images/todestempel-indien-gold-blau.jpg" alt="Goldener Tempel in Indien"></div>
       </div>
       
       <div class="origin-text-b reveal d2">
@@ -614,7 +630,6 @@
       <h2>Vier Bereiche, <span class="hl-blue">ein zusammenhängendes System</span>.</h2>
     </div>
     
-    <!-- Zentrierte Anordnung lt. Skriptbeschreibung -->
     <span class="sub-intro-text reveal">Vier Bereiche..</span>
     
     <div class="method-grid">
@@ -652,10 +667,9 @@
         <h2>Wissen, das Kreise zieht.</h2>
       </div>
       
-      <!-- Reihe 1: Buchreihe & Text links/rechts gesplittet -->
       <div class="pb-row-block reveal">
         <div class="pb-text-side">
-          <h3>26 Bücher: Standardwerke für Fachleute</h3>
+          <h3>26 Bücher: Standardwerke für Fachleute und Therapeuten.</h3>
           <p>Das Fachbuch <em>„Vata Syndrom"</em> erschien auf Deutsch, Japanisch und Englisch und gilt als Standardwerk für Heilpraktiker, Psychologen und Therapeuten.</p>
         </div>
         <div class="pb-gallery-side">
@@ -673,10 +687,9 @@
         </div>
       </div>
       
-      <!-- Reihe 2: Presse & Text links/rechts gesplittet -->
-      <div class="pb-row-block alt-row reveal d1">
+      <div class="pb-row-block reveal d1">
         <div class="pb-text-side">
-          <h3>Internationale Presseerwähnungen</h3>
+          <h3>Presseerwähnungen aus mehreren Ländern</h3>
           <p>Presseerwähnungen und Fachberichte aus mehreren Ländern und unterschiedlichen Kulturen begleiten die Arbeit seit Jahrzehnten.</p>
         </div>
         <div class="pb-gallery-side">
@@ -730,7 +743,7 @@
       <div class="seminar-wrap">
         <div class="reveal">
           <span class="eyebrow">Für Therapeuten und Berater</span>
-          <h2 class="therapists-headline">Fachliche Weiterbildung,<br>keine Wellness Zertifizierung</h2>
+          <h2 class="therapists-headline">Fachliche Weiterbildung,<br>keine Wellness<br>Zertifizierung</h2>
           
           <div class="t-chip-lila">500 ausgebildete Therapeuten</div>
           
@@ -753,7 +766,7 @@
               <img src="images/untere-reihe-krames-seminar-mit-deutschen-2.jpg" alt="Seminar mit deutschen Teilnehmern, zweites Bild">
               <div class="gallery-cap">Seminarrunde, Deutschland</div>
             </div>
-            <div class="footer-dots">
+            <div class="gallery-dots">
               <button class="gallery-dot active" aria-label="Bild 1"></button>
               <button class="gallery-dot" aria-label="Bild 2"></button>
               <button class="gallery-dot" aria-label="Bild 3"></button>
@@ -779,7 +792,6 @@
   </div>
 </section>
 
-<!-- NÄCHSTER SCHRITT: Reiner weißer Papier-Hintergrund, erhöhte Abstände -->
 <section class="closing" id="kontakt">
   <div class="wrap">
     <div class="closing-panel reveal">
@@ -848,7 +860,6 @@
         <ul>
           <li>
             <a href="mailto:Prof.Krames@gmail.com" class="email-link">
-              <!-- Handgemachtes SVG Email-Icon vor der Adresse -->
               <svg class="email-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
               Prof.Krames@gmail.com
             </a>
@@ -859,12 +870,10 @@
       </div>
     </div>
     
-    <!-- Das Copyright-Jahr im lila Footerbereich platziert -->
     <span class="footer-copyright">© 2026 Manfred P. Krames</span>
   </div>
 </footer>
 
-<!-- Unterste Leiste (msTech) in komplett weißer Schrift -->
 <div class="footer-credit-bar">
   <span>Erstellt von <a href="https://linktr.ee/mstech_software_and_digital" target="_blank" rel="noopener">msTech – Software &amp; Digital</a></span>
 </div>
