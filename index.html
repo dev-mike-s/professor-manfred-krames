@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#FBF9F6;
+    --paper:#dfcdbf; /* Neues Wunschweiß statt Papierweiß */
     --paper-tint:#F4EEF7;
     --paper-tint-gold:#F6F0E4;
     --tint-rosewash:#F5E9F1;
@@ -22,7 +22,7 @@
     --violet-footer:#4a2059;
     --accent2:#23557a;
     --accent-light-blue:#B3D4E5;
-    --new-blue:#89ade1; /* Das neue, optimierte Wunschblau */
+    --new-blue:#385e91; /* Einheitliches Wunschblau für die Buttons */
     --gold:#B08D4F;
     --gold-soft:#D8C9A3;
     --deep-blue:#101E33;
@@ -39,15 +39,17 @@
   body{margin:0; font-family:'IBM Plex Sans', sans-serif; color:var(--ink); background:var(--paper); line-height:1.7; -webkit-font-smoothing:antialiased; font-size:17px;}
   h1,h2,h3{font-family:'Shippori Mincho', serif; font-weight:700; line-height:1.3; margin:0; letter-spacing:0.01em;}
   
-  /* Zwischenüberschriften */
+  /* Zwischenüberschriften: Mehr Abstand, Schriftgröße erhöht & vereinheitlicht */
   h2{
-    font-size:42px; 
-    margin-bottom:56px !important; 
+    font-size:46px; 
+    margin-top:40px;
+    margin-bottom:70px !important; 
     text-shadow: 2px 2px 4px rgba(34, 27, 41, 0.15);
   }
   h3{
-    font-size:32px; 
-    margin-bottom:32px !important;
+    font-size:36px; 
+    margin-top:30px;
+    margin-bottom:40px !important;
     text-shadow: 1px 1px 3px rgba(34, 27, 41, 0.12);
   }
   
@@ -60,7 +62,7 @@
   }
   .eyebrow::before{content:""; width:16px; height:1px; background:var(--new-blue);}
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px; position:relative; z-index:2;}
-  section{padding:100px 0; position:relative; overflow:hidden;}
+  section{padding:120px 0; position:relative; overflow:hidden;} /* Erhöhter Abstand für die Sektionen */
   
   .section-head{margin-bottom:64px;}
   
@@ -86,7 +88,7 @@
   .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;} .reveal.d3{transition-delay:.24s;} .reveal.d4{transition-delay:.32s;}
 
   /* NAV */
-  nav{position:sticky; top:0; z-index:50; background:rgba(251,249,246,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  nav{position:sticky; top:0; z-index:50; background:rgba(223,205,191,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
   .nav-inner{max-width:var(--maxw); margin:0 auto; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; gap:12px;}
   .logo-ph{width:112px; height:30px; font-size:9px;}
   .nav-links{
@@ -103,7 +105,7 @@
   }
   .nav-toggle svg{width:18px; height:18px;}
 
-  /* Leistungsstarke CTAs mit dem neuen blauen Farbcode */
+  /* Leistungsstarke CTAs mit einheitlichem blauen Farbcode */
   .cta-lila, .cta-blau, .cta-violet-outline{
     display:inline-flex; align-items:center; justify-content:center; gap:12px;
     font-weight:600; font-size:16px; padding:18px 40px; text-decoration:none; border-radius:40px;
@@ -120,11 +122,11 @@
   .cta-lila:hover::after{transform:translateX(5px);}
 
   .cta-blau{
-    background: linear-gradient(135deg, #9bc0f5 0%, var(--new-blue) 100%); 
-    color:#1a2b44;
+    background: linear-gradient(135deg, #4b7bb8 0%, var(--new-blue) 100%); 
+    color:#fff; /* Bessere Lesbarkeit auf dunklerem Blau */
   }
   .cta-blau::after{content:"→"; transition:transform .2s ease;}
-  .cta-blau:hover{transform:translateY(-4px); box-shadow:0 16px 32px rgba(137,173,225,0.45); filter: brightness(1.05);}
+  .cta-blau:hover{transform:translateY(-4px); box-shadow:0 16px 32px rgba(56,94,145,0.45); filter: brightness(1.05);}
   .cta-blau:hover::after{transform:translateX(5px);}
 
   .cta-violet-outline{background:rgba(255,255,255,0.05); color:#F8ECFB; border:2px solid var(--violet-light); box-shadow: none;}
@@ -133,7 +135,7 @@
   .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:0 2px 10px -6px rgba(34,27,41,0.12); transition:transform .3s ease, box-shadow .3s ease;}
   .card:hover{transform:translateY(-5px); box-shadow:var(--shadow);}
 
-  /* Psychosomatik Anpassungen (Verkleinerte Überschrift & Pinker Rahmen) */
+  /* Psychosomatik Anpassungen (Lilaner Rahmen statt Pink) */
   .hero h1.psychosomatik-title {
     font-size: clamp(32px, 3.8vw, 46px);
     line-height: 1.3;
@@ -148,7 +150,7 @@
     width: 100%; 
     max-width: 420px; 
     margin: 0 auto;
-    box-shadow: 0 0 0 6px #ff69b4, var(--shadow); /* Pinker Rahmen um das Bild */
+    box-shadow: 0 0 0 6px var(--violet), var(--shadow); /* Lilaner statt pinker Rand */
   }
   .hero-img-wrap img{width:100%; height:100%; object-fit:cover;}
   
@@ -165,13 +167,14 @@
   .hero-grid{display:grid; gap:32px;}
   .hero p.lede{font-size:17.5px; color:var(--ink-soft); margin:20px 0 28px;}
 
-  /* FAKTEN */
+  /* FAKTEN (2-spaltiges Layout: Reihe 1 Links Galerie, Rechts Überschriften | Reihe 2 Cards) */
   .credentials{background:var(--paper-tint);}
   .credentials h2{max-width:20ch;}
-  .cred-layout{display:grid; gap:40px; align-items: start;}
+  .cred-layout{display:grid; grid-template-columns: 1fr; gap:40px; align-items: start;}
+  .cred-row-1 { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
   .cred-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
   .cred-item{padding:26px 20px; display: flex; flex-direction: column; justify-content: center;}
-  .cred-item .num{font-family:'IBM Plex Mono', monospace; font-size:32px; font-weight:500; color:var(--violet);}
+  .cred-item .num{font-family:'IBM Plex Sans', sans-serif; font-size:32px; font-weight:600; color:var(--violet); display: flex; align-items: center; gap: 8px;}
   .cred-item .label{font-size:14px; margin-top:6px; color:var(--ink-soft); line-height: 1.5;}
   .cred-gallery-col{display: flex; flex-direction: column;}
   .cred-gallery-col .row-title{font-size:14px; font-weight:600; color:var(--violet-dark); margin-bottom:12px;}
@@ -194,19 +197,19 @@
   .gallery-dot{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.45); border:none; padding:0; cursor:pointer;}
   .gallery-dot.active{background:#fff;}
 
-  /* AUSGANGSPUNKT — Neue lesbare Card-Struktur mit strahlend weißem Text */
+  /* AUSGANGSPUNKT — Lilaner Fokus, leicht abgedunkeltes Milchglas, Hintergrund minimal sichtbarer */
   .problem{background:var(--deep-blue); color:#ffffff; position:relative;}
   .problem-bg{position:absolute; inset:0; z-index:0;}
-  .problem-bg img{width:100%; height:100%; object-fit:cover;}
-  .problem-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(16,30,51,0.65), rgba(16,30,51,0.85));}
+  .problem-bg img{width:100%; height:100%; object-fit:cover; opacity: 0.25;} /* Hintergrund minimal sichtbarer */
+  .problem-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(16,30,51,0.7), rgba(16,30,51,0.9));} /* Leicht abgedunkelt */
   
   .problem-text-card {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(43, 21, 51, 0.35); /* Milchglas leicht abgedunkelt & lila eintoniert */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(147, 107, 165, 0.25);
     border-radius: 8px;
     padding: 48px 40px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   }
   .problem .wrap {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
@@ -215,21 +218,22 @@
     color: #ffffff !important;
     font-weight: 400;
   }
-  .problem .eyebrow{color:var(--new-blue);}
-  .problem h2{color:#ffffff;}
-  .problem em{color:var(--new-blue); font-weight: 600;}
+  .problem .eyebrow{color:var(--violet-light);}
+  .problem h2{color:var(--violet-light) !important;} /* Überschrift in lilaner Farbe */
+  .problem em.hl-duration{color:var(--violet-light) !important; font-style: normal; font-weight: 600;} /* Markierung in dieser Farbe */
   .problem strong{color:#ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.2);}
   
   .statement{
-    padding:24px 0 24px 24px; border-top:1px solid rgba(255,255,255,0.18); border-left:3px solid rgba(255,255,255,0.3);
+    padding:24px 0 24px 24px; border-top:1px solid rgba(255,255,255,0.18); border-left:3px solid var(--violet-light); /* Unterstreichungen/Linien in lila/violett */
     display:grid; grid-template-columns:36px 1fr; gap:14px; align-items:baseline; transition:border-color .3s;
   }
   .statement:hover{border-left-color:var(--new-blue);}
   .statement:last-child{border-bottom:1px solid rgba(255,255,255,0.18);}
-  .statement .mark{font-family:'IBM Plex Mono', monospace; color:var(--new-blue); font-size:14px; font-weight: 600;}
+  .statement .mark{color:var(--violet-light); display: flex; align-items: center;} /* Icons statt Nummern */
+  .statement .mark svg{width: 20px; height: 20px; fill: currentColor;}
 
   /* HERKUNFT — Strukturierte 3-Reihen-Rasteraufteilung */
-  .origin{padding:100px 0;}
+  .origin{padding:120px 0;}
   .origin p{font-size:16px; color:var(--ink-soft); margin:0 0 24px;}
   .origin-grid { display: flex; flex-direction: column; gap: 56px; }
   .origin-row-1, .origin-row-2 { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
@@ -247,11 +251,11 @@
   }
 
   /* BILDARCHIV */
-  .gallery-section{background:var(--tint-rosewash); padding:100px 0;}
+  .gallery-section{background:var(--tint-rosewash); padding:120px 0;}
   .gallery-layout{display:grid; gap:36px; align-items:center;}
   .gallery-layout p{font-size:15.5px; color:var(--ink-soft); margin:0;}
 
-  /* METHODE — Exakte 3-Reihen-Abfolge */
+  /* METHODE (Karten mit mehr Breite) */
   .method{text-align: center;}
   .method .section-head {margin-bottom: 40px; display: flex; flex-direction: column; align-items: center;}
   .method .sub-intro-text {
@@ -269,12 +273,13 @@
   .method-grid{display:grid; grid-template-columns:1fr; gap:24px; text-align: center;}
   .method-card{padding:40px 32px; background:linear-gradient(150deg, var(--violet) 0%, var(--violet-dark) 100%); border:none; display: flex; flex-direction: column; align-items: center;}
   .method-card:hover{box-shadow:0 14px 34px -10px rgba(91,46,104,0.55);}
-  .method-card .idx{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--violet-light); margin-bottom:14px; display:block;}
+  .method-card .idx{color:var(--violet-light); margin-bottom:14px; display:flex; align-items: center;} /* Nummern raus, Platzhalter für Icons */
+  .method-card .idx svg{width: 24px; height: 24px; fill: currentColor;}
   .method-card h3{font-size:22px; margin-bottom:14px; color:#FBF3FF; border:none;}
   .method-card p{font-size:15px; margin:0; color:#E4D3EC; line-height:1.65;}
 
-  /* BÜCHER & PRESSE — Innovatives, horizontales 2-Reihen-Raster */
-  .presse-buch{background:var(--paper-tint-gold); padding:100px 0;}
+  /* BÜCHER & PRESSE — Horizontales 2-Reihen-Raster */
+  .presse-buch{background:var(--paper-tint-gold); padding:120px 0;}
   .pb-section-wrap { display: flex; flex-direction: column; gap: 64px; }
   .pb-row-1, .pb-row-2 { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
   .pb-gallery-side {display: flex; justify-content: center;}
@@ -291,14 +296,15 @@
   .retreat-bg{position:absolute; inset:0; z-index:0;}
   .retreat-bg img{width:100%; height:100%; object-fit:cover;}
   .retreat-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(42,21,51,0.6), rgba(42,21,51,0.78));}
-  .retreat .hl-blue-text {color: var(--new-blue); font-style: normal; font-weight: 700;}
+  .retreat .hl-blue-text {color: #b3d4e5; font-style: normal; font-weight: 700;}
   .retreat p {opacity:0.95; margin:28px 0 36px; font-size:17px; max-width:48ch; color:#F0E9F2;}
   .retreat .cta-blau{max-width:300px;}
 
-  /* FÜR THERAPEUTEN — Gezielte Unterstreichung für "keine" in Blau */
+  /* FÜR THERAPEUTEN (2-Spalten-Layout nach exakter Reihen-Vorgabe) */
   .therapists{background:var(--paper-tint); padding:140px 0;}
   .therapists .eyebrow{color:var(--violet); margin-bottom: 2rem;}
   .therapists p{color:var(--ink-soft); font-size:17px; margin-bottom: 32px; line-height: 1.8;}
+  .therapists .cta-blau { width: auto; max-width: 320px; }
   
   .therapists-headline {
     margin-bottom: 40px !important;
@@ -317,6 +323,8 @@
     letter-spacing: 0.02em;
   }
   .pull-quote{border-left:4px solid var(--violet); padding:12px 0 12px 24px; margin:36px 0 40px; font-style:italic; color:var(--violet-dark); font-size:17.5px;}
+  .therapists-row-1 { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; margin-bottom: 56px; }
+  .therapists-row-2 { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
 
   /* NEWSLETTER */
   .inner-circle{color:#F5E9FA; position:relative; padding:140px 0;}
@@ -337,8 +345,8 @@
   .ic-form .cta-blau{width:auto; flex:0 0 auto;}
 
   /* NÄCHSTER SCHRITT — Drastisch erhöhte Paddings & Spacings */
-  .closing{background: #ffffff; color: var(--ink); padding: 160px 0; position: relative;}
-  .closing-panel{background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 72px 56px; box-shadow: var(--shadow);}
+  .closing{background: transparent; color: var(--ink); padding: 160px 0; position: relative;}
+  .closing-panel{background: rgba(255,255,255,0.15); border: 1px solid var(--line); border-radius: 8px; padding: 72px 56px; box-shadow: var(--shadow);}
   .closing-grid{display:grid; gap:72px;}
   .closing h2{margin:0 0 40px; color: var(--ink);}
   .closing p{margin:0 0 48px; font-size:18px; color: var(--ink-soft); line-height: 1.85;}
@@ -346,7 +354,7 @@
   .closing-row-title{font-size:13px; font-family:'IBM Plex Mono', monospace; letter-spacing:0.08em; text-transform:uppercase; color:var(--violet); margin-bottom:32px; display:block;}
   .closing-gallery-wrap { margin-bottom: 24px; }
 
-  /* FOOTER — Wunschblau für Copyright, unterstrichene Header */
+  /* FOOTER */
   footer{background:var(--violet-footer); color:rgba(251,249,246,0.85); padding:90px 0 40px;}
   .footer-grid-split {
     display: grid; grid-template-columns: 1fr; gap: 48px; position: relative; text-align: center;
@@ -371,7 +379,7 @@
     color: var(--new-blue); text-align: center; display: block; font-weight: 500;
   }
 
-  /* Bodenleiste um ca. 80% abgeschwächt / abgedunkelt */
+  /* Bodenleiste */
   .footer-credit-bar{
     background:var(--deep-blue-footer-bar); color:rgba(255,255,255,0.25) !important; padding:24px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px;
     display:flex; flex-direction:column; gap:12px; align-items:center; text-align:center; border-top:1px solid rgba(255,255,255,0.02);
@@ -404,8 +412,11 @@
     .hero p.lede{font-size:19.5px; max-width:46ch; margin:28px 0 38px;}
 
     .credentials h2{font-size:clamp(32px,3.2vw,38px);}
-    .cred-layout{grid-template-columns:1.1fr 0.9fr; gap:48px;}
-    .cred-grid{grid-template-columns:repeat(2,1fr); gap:24px;}
+    .cred-row-1 { grid-template-columns: 0.9fr 1.1fr; gap: 64px; }
+    .cred-row-1 .cred-gallery-col { order: 1; }
+    .cred-row-1 .section-head { order: 2; }
+    .cred-layout{grid-template-columns: 1fr; gap: 48px;}
+    .cred-grid{grid-template-columns:repeat(4,1fr); gap:24px;}
     .cred-item .num{font-size:38px;}
     .cred-item .label{font-size:14.5px; max-width:22ch;}
 
@@ -427,7 +438,7 @@
 
     .method .wrap{max-width:1000px;}
     .method h2{font-size:clamp(34px,3.5vw,44px); max-width:24ch;}
-    .method-grid{grid-template-columns:repeat(4,1fr); gap:20px;}
+    .method-grid{grid-template-columns:repeat(4,1fr); gap:24px;} /* Karten mehr Breite gegeben */
 
     /* Publikationen & Resonanz Raster-Desktop */
     .pb-row-1 { grid-template-columns: 0.9fr 1.1fr; gap: 64px; }
@@ -443,8 +454,9 @@
     .retreat .wrap{max-width:680px;}
     .retreat h2{font-size:clamp(36px,3.8vw,48px);}
 
-    .seminar-wrap{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
-    .therapists h2{font-size:clamp(30px,3vw,36px); max-width:20ch; margin-top:0;}
+    /* Für Therapeuten Raster-Desktop */
+    .therapists-row-1 { grid-template-columns: 1fr 1fr; gap: 64px; }
+    .therapists-row-2 { grid-template-columns: 1.2fr 0.8fr; gap: 64px; align-items: center; }
 
     .inner-circle h2{font-size:clamp(34px,3.5vw,44px);}
     .inner-circle .wrap{margin-left: 40px;}
@@ -509,54 +521,69 @@
 
 <section class="credentials" id="fakten">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Fakten</span>
-      <h2>26 Jahre Erfahrung, sichtbar in Zahlen.</h2>
-    </div>
     <div class="cred-layout">
-      <div class="cred-grid reveal">
+      <div class="cred-row-1 reveal">
+        <div class="cred-gallery-col">
+          <div class="row-title">Lehrtätigkeit &amp; Konferenzen</div>
+          <div class="gallery gallery-3-2" data-interval="4600">
+            <div class="gallery-slide active">
+              <img src="images/vordere-reihe-krames-mit-jury-lachend.png" alt="Krames als Vortragender in Thailand">
+              <div class="gallery-cap">Vortrag „Perfect Health &amp; Happiness", Thailand</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/vordere-reihe-krames-mit-jury-bei-veranstaltung-ernst.jpg" alt="Krames bei einer Ayurveda-Konferenz in Indien">
+              <div class="gallery-cap">Ayurveda-Konferenz, Indien</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/vordere-reihe-krames-mit-japanischen-ernsten-mönchen.jpg" alt="Krames mit japanischen Mönchen">
+              <div class="gallery-cap">Austausch mit japanischen Mönchen</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/untere-reihe-krames-lehrt-inindien-srilanka.png" alt="Krames unterrichtet in einem Klassenzimmer">
+              <div class="gallery-cap">Unterricht vor Ort, Sri Lanka/Indien</div>
+            </div>
+            <div class="gallery-dots">
+              <button class="gallery-dot active" aria-label="Bild 1"></button>
+              <button class="gallery-dot" aria-label="Bild 2"></button>
+              <button class="gallery-dot" aria-label="Bild 3"></button>
+              <button class="gallery-dot" aria-label="Bild 4"></button>
+            </div>
+          </div>
+        </div>
+        <div class="section-head">
+          <span class="eyebrow">Fakten</span>
+          <h2>26 Jahre Erfahrung, sichtbar in Zahlen.</h2>
+        </div>
+      </div>
+
+      <div class="cred-grid reveal d1">
         <div class="card cred-item">
-          <div class="num">26</div>
+          <div class="num">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--new-blue);"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20M4 19.5V3.5A2.5 2.5 0 0 1 6.5 1V17"/></svg>
+            26
+          </div>
           <div class="label">Fach- und Sachbücher, veröffentlicht in 5 Sprachen</div>
         </div>
         <div class="card cred-item">
-          <div class="num">3</div>
+          <div class="num">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--new-blue);"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></svg>
+            3
+          </div>
           <div class="label">Kontinente Lehrtätigkeit: Sri Lanka, Indien, Japan</div>
         </div>
         <div class="card cred-item">
-          <div class="num">500+</div>
+          <div class="num">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--new-blue);"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            500+
+          </div>
           <div class="label">Ausgebildete Therapeuten und Berater</div>
         </div>
         <div class="card cred-item">
-          <div class="num">32</div>
+          <div class="num">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--new-blue);"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            32
+          </div>
           <div class="label">Klinikleiter auf Sri Lanka, mit 32 Jahren</div>
-        </div>
-      </div>
-      <div class="cred-gallery-col reveal d1">
-        <div class="row-title">Lehrtätigkeit &amp; Konferenzen</div>
-        <div class="gallery gallery-3-2" data-interval="4600">
-          <div class="gallery-slide active">
-            <img src="images/vordere-reihe-krames-mit-jury-lachend.png" alt="Krames als Vortragender in Thailand">
-            <div class="gallery-cap">Vortrag „Perfect Health &amp; Happiness", Thailand</div>
-          </div>
-          <div class="gallery-slide">
-            <img src="images/vordere-reihe-krames-mit-jury-bei-veranstaltung-ernst.jpg" alt="Krames bei einer Ayurveda-Konferenz in Indien">
-            <div class="gallery-cap">Ayurveda-Konferenz, Indien</div>
-          </div>
-          <div class="gallery-slide">
-            <img src="images/vordere-reihe-krames-mit-japanischen-ernsten-mönchen.jpg" alt="Krames mit japanischen Mönchen">
-            <div class="gallery-cap">Austausch mit japanischen Mönchen</div>
-          </div>
-          <div class="gallery-slide">
-            <img src="images/untere-reihe-krames-lehrt-inindien-srilanka.png" alt="Krames unterrichtet in einem Klassenzimmer">
-            <div class="gallery-cap">Unterricht vor Ort, Sri Lanka/Indien</div>
-          </div>
-          <div class="gallery-dots">
-            <button class="gallery-dot active" aria-label="Bild 1"></button>
-            <button class="gallery-dot" aria-label="Bild 2"></button>
-            <button class="gallery-dot" aria-label="Bild 3"></button>
-            <button class="gallery-dot" aria-label="Bild 4"></button>
-          </div>
         </div>
       </div>
     </div>
@@ -569,19 +596,25 @@
     <div class="problem-text-card">
       <div class="section-head">
         <span class="eyebrow">Der Ausgangspunkt</span>
-        <h2>Erschöpfung ist selten nur <span class="hl-blue">körperlich</span>.</h2>
+        <h2>der ausgangspunkt</h2>
       </div>
       <div class="statements">
         <div class="statement">
-          <span class="mark">01</span>
+          <span class="mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+          </span>
           <p>Anhaltender Leistungsdruck verschiebt das vegetative Nervensystem dauerhaft in den Alarmzustand: <strong>Schlaf, Verdauung und Konzentration</strong> leiden zuerst.</p>
         </div>
         <div class="statement">
-          <span class="mark">02</span>
-          <p>Klassische Erholung, etwa Urlaub, Wellness oder ein verlängertes Wochenende, wirkt oft <em>nur für die Dauer der Auszeit</em>, weil die eigentliche Ursache unberührt bleibt.</p>
+          <span class="mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4.5 16.5c-1.5 1.26-2.5 3.19-2.5 5.5h20c0-2.31-1-4.24-2.5-5.5M12 2a5 5 0 1 0 0 10 5 5 0 1 0 0-10z"/></svg>
+          </span>
+          <p>Klassische Erholung, etwa Urlaub, Wellness oder ein verlängertes Wochenende, wirkt oft <em class="hl-duration">nur für die Dauer der Auszeit</em>, weil die eigentliche Ursache unberührt bleibt.</p>
         </div>
         <div class="statement">
-          <span class="mark">03</span>
+          <span class="mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          </span>
           <p>Nachhaltige Regeneration setzt an der Ursache an, nicht am Symptom: durch eine ausführliche, persönliche Ursachenklärung statt schneller Diagnose.</p>
         </div>
       </div>
@@ -669,22 +702,30 @@
     
     <div class="method-grid">
       <div class="card method-card reveal">
-        <span class="idx">01</span>
+        <span class="idx">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 2a10 10 0 0 1 10 10h-10V2z" style="opacity:0.5;"/><path d="M12 12L2.5 6.5"/></svg>
+        </span>
         <h3>Stressregulation</h3>
         <p>Konkrete Techniken zur Beruhigung des Nervensystems im Alltag: Atmung, Rhythmus, Belastungssteuerung.</p>
       </div>
       <div class="card method-card reveal d1">
-        <span class="idx">02</span>
+        <span class="idx">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </span>
         <h3>Burnout-Prävention</h3>
         <p>Frühzeitiges Erkennen von Erschöpfungsmustern, bevor sie zu einem klinischen Zusammenbruch führen.</p>
       </div>
       <div class="card method-card reveal d2">
-        <span class="idx">03</span>
+        <span class="idx">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
         <h3>Resilienz</h3>
         <p>Aufbau innerer Stabilität, die auch unter dauerhafter beruflicher Belastung trägt.</p>
       </div>
       <div class="card method-card reveal d3">
-        <span class="idx">04</span>
+        <span class="idx">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2.5 3.19-2.5 5.5h20c0-2.31-1-4.24-2.5-5.5M12 2a5 5 0 1 0 0 10 5 5 0 1 0 0-10z"/></svg>
+        </span>
         <h3>Nervensystem-Regeneration</h3>
         <p>Langfristige Wiederherstellung von Schlaf, Energie und emotionaler Balance.</p>
       </div>
@@ -770,37 +811,44 @@
 <section class="therapists" id="therapeuten">
   <div class="wrap">
     <div class="wrap-inner-content">
-      <div class="seminar-wrap">
-        <div class="reveal">
-          <span class="eyebrow">Für Therapeuten und Berater</span>
-          <h2 class="therapists-headline">Fachliche Weiterbildung,<br><span class="underline-keine">keine</span> Wellness Zertifizierung</h2>
-          
-          <div class="t-chip-lila">500 ausgebildete Therapeuten</div>
-          
-          <p>Die Weiterbildung vermittelt eine diagnostische Methode aus 26 Jahren klinischer Praxis in Ostasien, kombiniert mit westlicher Psychologie, für Kollegen, die ganzheitlich und fundiert arbeiten wollen.</p>
-          <p class="pull-quote">„Ich sehe Sie als Menschen, nicht als Krankheitsbild, und ich höre nicht auf, bis ich die Ursache erkenne."</p>
-          <a href="#kontakt" class="cta-lila">Ausbildung anfragen</a>
+      <div class="therapists-layout">
+        <div class="therapists-row-1 reveal">
+          <div>
+            <span class="eyebrow">Für Therapeuten und Berater</span>
+            <h2 class="therapists-headline">Fachliche Weiterbildung,<br><span class="underline-keine">keine</span> Wellness Zertifizierung</h2>
+            <div class="t-chip-lila">500 ausgebildete Therapeuten</div>
+          </div>
+          <div>
+            <div class="row-title" style="font-size:14px; font-weight:600; color:var(--violet-dark); margin-bottom:16px;">Seminare in Deutschland</div>
+            <div class="gallery gallery-3-2" data-interval="4500">
+              <div class="gallery-slide active">
+                <img src="images/untere-reihe-krames-als-seminarleiter-deutschekunden-gruppenbild.png" alt="Krames als Seminarleiter mit deutschen Kunden">
+                <div class="gallery-cap">Seminarleitung, Gruppenbild</div>
+              </div>
+              <div class="gallery-slide">
+                <img src="images/untere-reihe-krames-seminar-mit-deutschen.jpg" alt="Seminar mit deutschen Teilnehmern">
+                <div class="gallery-cap">Seminarrunde, Deutschland</div>
+              </div>
+              <div class="gallery-slide">
+                <img src="images/untere-reihe-krames-seminar-mit-deutschen-2.jpg" alt="Seminar mit deutschen Teilnehmern, zweites Bild">
+                <div class="gallery-cap">Seminarrunde, Deutschland</div>
+              </div>
+              <div class="gallery-dots">
+                <button class="gallery-dot active" aria-label="Bild 1"></button>
+                <button class="gallery-dot" aria-label="Bild 2"></button>
+                <button class="gallery-dot" aria-label="Bild 3"></button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="reveal d1">
-          <div class="row-title" style="font-size:14px; font-weight:600; color:var(--violet-dark); margin-bottom:16px;">Seminare in Deutschland</div>
-          <div class="gallery gallery-3-2" data-interval="4500">
-            <div class="gallery-slide active">
-              <img src="images/untere-reihe-krames-als-seminarleiter-deutschekunden-gruppenbild.png" alt="Krames als Seminarleiter mit deutschen Kunden">
-              <div class="gallery-cap">Seminarleitung, Gruppenbild</div>
-            </div>
-            <div class="gallery-slide">
-              <img src="images/untere-reihe-krames-seminar-mit-deutschen.jpg" alt="Seminar mit deutschen Teilnehmern">
-              <div class="gallery-cap">Seminarrunde, Deutschland</div>
-            </div>
-            <div class="gallery-slide">
-              <img src="images/untere-reihe-krames-seminar-mit-deutschen-2.jpg" alt="Seminar mit deutschen Teilnehmern, zweites Bild">
-              <div class="gallery-cap">Seminarrunde, Deutschland</div>
-            </div>
-            <div class="gallery-dots">
-              <button class="gallery-dot active" aria-label="Bild 1"></button>
-              <button class="gallery-dot" aria-label="Bild 2"></button>
-              <button class="gallery-dot" aria-label="Bild 3"></button>
-            </div>
+
+        <div class="therapists-row-2 reveal d1">
+          <div>
+            <p>Die Weiterbildung vermittelt eine diagnostische Methode aus 26 Jahren klinischer Praxis in Ostasien, kombiniert mit westlicher Psychologie, für Kollegen, die ganzheitlich und fundiert arbeiten wollen.</p>
+            <p class="pull-quote">„Ich sehe Sie als Menschen, nicht als Krankheitsbild, und ich höre nicht auf, bis ich die Ursache erkenne."</p>
+          </div>
+          <div style="display: flex; justify-content: center; width: 100%;">
+            <a href="#kontakt" class="cta-blau">Ausbildung anfragen</a>
           </div>
         </div>
       </div>
