@@ -20,8 +20,9 @@
     --violet-deep:#2A1533;
     --violet-light:#C9A2DC;
     --violet-footer:#4a2059;
-    --accent2:#23557a; /* Dunkleres Blau */
-    --accent-light-blue:#B3D4E5; /* Hellblau */
+    --accent2:#23557a;
+    --accent-light-blue:#B3D4E5;
+    --new-blue:#89ade1; /* Das neue, optimierte Wunschblau */
     --gold:#B08D4F;
     --gold-soft:#D8C9A3;
     --deep-blue:#101E33;
@@ -38,7 +39,7 @@
   body{margin:0; font-family:'IBM Plex Sans', sans-serif; color:var(--ink); background:var(--paper); line-height:1.7; -webkit-font-smoothing:antialiased; font-size:17px;}
   h1,h2,h3{font-family:'Shippori Mincho', serif; font-weight:700; line-height:1.3; margin:0; letter-spacing:0.01em;}
   
-  /* Zwischenüberschriften: Eine Stufe größer, deutlich mehr Abstand nach unten & leichter Textschatten */
+  /* Zwischenüberschriften */
   h2{
     font-size:42px; 
     margin-bottom:56px !important; 
@@ -57,7 +58,7 @@
     font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.13em; text-transform:uppercase;
     color:var(--violet); opacity:0.85; display:inline-flex; align-items:center; gap:8px; margin-bottom:1.5rem;
   }
-  .eyebrow::before{content:""; width:16px; height:1px; background:var(--accent-light-blue);}
+  .eyebrow::before{content:""; width:16px; height:1px; background:var(--new-blue);}
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px; position:relative; z-index:2;}
   section{padding:100px 0; position:relative; overflow:hidden;}
   
@@ -71,9 +72,9 @@
   }
   img{max-width:100%; display:block;}
 
-  /* Zwei Arten von Unterstreichungen (Blau und Violett) */
+  /* Unterstreichungen */
   .hl-blue{position:relative; white-space:nowrap;}
-  .hl-blue::after{content:""; position:absolute; left:0; right:0; bottom:-3px; height:6px; background:var(--accent-light-blue); opacity:0.6; z-index:-1; transform:scaleX(0); transform-origin:left; transition:transform 1s ease .1s;}
+  .hl-blue::after{content:""; position:absolute; left:0; right:0; bottom:-3px; height:6px; background:var(--new-blue); opacity:0.6; z-index:-1; transform:scaleX(0); transform-origin:left; transition:transform 1s ease .1s;}
   .reveal.is-visible .hl-blue::after{transform:scaleX(1);}
 
   .hl-violet{position:relative; white-space:nowrap;}
@@ -102,7 +103,7 @@
   }
   .nav-toggle svg{width:18px; height:18px;}
 
-  /* Zwei mächtig wirkende CTA-Buttons (lila und blau) */
+  /* Leistungsstarke CTAs mit dem neuen blauen Farbcode */
   .cta-lila, .cta-blau, .cta-violet-outline{
     display:inline-flex; align-items:center; justify-content:center; gap:12px;
     font-weight:600; font-size:16px; padding:18px 40px; text-decoration:none; border-radius:40px;
@@ -119,11 +120,11 @@
   .cta-lila:hover::after{transform:translateX(5px);}
 
   .cta-blau{
-    background: linear-gradient(135deg, #2b618c 0%, #173b59 100%); 
-    color:#fff;
+    background: linear-gradient(135deg, #9bc0f5 0%, var(--new-blue) 100%); 
+    color:#1a2b44;
   }
   .cta-blau::after{content:"→"; transition:transform .2s ease;}
-  .cta-blau:hover{transform:translateY(-4px); box-shadow:0 16px 32px rgba(35,85,122,0.45); filter: brightness(1.1);}
+  .cta-blau:hover{transform:translateY(-4px); box-shadow:0 16px 32px rgba(137,173,225,0.45); filter: brightness(1.05);}
   .cta-blau:hover::after{transform:translateX(5px);}
 
   .cta-violet-outline{background:rgba(255,255,255,0.05); color:#F8ECFB; border:2px solid var(--violet-light); box-shadow: none;}
@@ -132,31 +133,37 @@
   .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:0 2px 10px -6px rgba(34,27,41,0.12); transition:transform .3s ease, box-shadow .3s ease;}
   .card:hover{transform:translateY(-5px); box-shadow:var(--shadow);}
 
-  .hero-img-wrap {border:none; padding:0; background:none; border-radius: var(--radius); overflow: hidden;}
-  .hero-img-wrap img{width:100%; object-fit:cover; border-radius: var(--radius);}
+  /* Psychosomatik Anpassungen (Verkleinerte Überschrift & Pinker Rahmen) */
+  .hero h1.psychosomatik-title {
+    font-size: clamp(32px, 3.8vw, 46px);
+    line-height: 1.3;
+  }
+  .hero-img-wrap {
+    border: none; 
+    padding: 0; 
+    background: none; 
+    border-radius: 50%; 
+    overflow: hidden; 
+    aspect-ratio: 1/1; 
+    width: 100%; 
+    max-width: 420px; 
+    margin: 0 auto;
+    box-shadow: 0 0 0 6px #ff69b4, var(--shadow); /* Pinker Rahmen um das Bild */
+  }
+  .hero-img-wrap img{width:100%; height:100%; object-fit:cover;}
   
   /* Herkunft: Bilderrahmen-Korrektur */
   .framed{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:0px; overflow:hidden;}
   .framed img{width:100%; object-fit:cover; display:block;}
-  
-  /* Erstes Bild ohne Rand, zweites Bild mit weißem Rahmen im Inneren gefixt */
   .framed-inner-white {
     background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:12px; overflow:hidden;
   }
   .framed-inner-white img {width:100%; object-fit:cover; display:block;}
 
-  .photo-box{background:#14121a; border-radius:var(--radius); overflow:hidden;}
-  .photo-box img{width:100%; height:100%; object-fit:contain;}
-
   /* HERO */
   .hero{padding-top:36px; padding-bottom:48px;}
   .hero-grid{display:grid; gap:32px;}
-  .hero h1{font-size:36px;}
   .hero p.lede{font-size:17.5px; color:var(--ink-soft); margin:20px 0 28px;}
-
-  .enso-corner{position:absolute; top:-16px; left:-16px; width:85px; height:85px; opacity:0.65; z-index:3;}
-  .enso-corner path{fill:none; stroke:var(--accent-light-blue); stroke-width:9; stroke-linecap:round; stroke-dasharray:900; stroke-dashoffset:900; animation:draw 2s ease-out .2s forwards;}
-  @keyframes draw{ to{stroke-dashoffset:0;} }
 
   /* FAKTEN */
   .credentials{background:var(--paper-tint);}
@@ -187,38 +194,55 @@
   .gallery-dot{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.45); border:none; padding:0; cursor:pointer;}
   .gallery-dot.active{background:#fff;}
 
-  /* PROBLEM / AUSGANGSPUNKT — Ganzer Text mit feinem, edlem grau-weißem Schatten hinterlegt */
-  .problem{background:var(--deep-blue); color:var(--deep-blue-text); position:relative;}
+  /* AUSGANGSPUNKT — Neue lesbare Card-Struktur mit strahlend weißem Text */
+  .problem{background:var(--deep-blue); color:#ffffff; position:relative;}
   .problem-bg{position:absolute; inset:0; z-index:0;}
   .problem-bg img{width:100%; height:100%; object-fit:cover;}
-  .problem-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(16,30,51,0.60), rgba(16,30,51,0.78));}
-  .problem .wrap {
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.6);
+  .problem-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(16,30,51,0.65), rgba(16,30,51,0.85));}
+  
+  .problem-text-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 48px 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   }
-  .problem .eyebrow{color:#9FB6D9;}
-  .problem h2{color:#F1F5FA;}
-  .problem em{color:var(--accent-light-blue);}
-  .problem strong{color:#fff;}
+  .problem .wrap {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  }
+  .problem p, .problem .statement p {
+    color: #ffffff !important;
+    font-weight: 400;
+  }
+  .problem .eyebrow{color:var(--new-blue);}
+  .problem h2{color:#ffffff;}
+  .problem em{color:var(--new-blue); font-weight: 600;}
+  .problem strong{color:#ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.2);}
+  
   .statement{
-    padding:24px 0 24px 24px; border-top:1px solid rgba(255,255,255,0.14); border-left:3px solid rgba(255,255,255,0.18);
+    padding:24px 0 24px 24px; border-top:1px solid rgba(255,255,255,0.18); border-left:3px solid rgba(255,255,255,0.3);
     display:grid; grid-template-columns:36px 1fr; gap:14px; align-items:baseline; transition:border-color .3s;
   }
-  .statement:hover{border-left-color:var(--accent-light-blue);}
-  .statement:last-child{border-bottom:1px solid rgba(255,255,255,0.14);}
-  .statement .mark{font-family:'IBM Plex Mono', monospace; color:var(--accent-light-blue); font-size:14px;}
-  .statement p{margin:0; font-size:16px; color:var(--deep-blue-text-soft);}
+  .statement:hover{border-left-color:var(--new-blue);}
+  .statement:last-child{border-bottom:1px solid rgba(255,255,255,0.18);}
+  .statement .mark{font-family:'IBM Plex Mono', monospace; color:var(--new-blue); font-size:14px; font-weight: 600;}
 
-  /* HERKUNFT — Deutlich mehr Platz zwischen Reihe 1 und 2 & runde lila Keywords mit weißer Schrift */
+  /* HERKUNFT — Strukturierte 3-Reihen-Rasteraufteilung */
   .origin{padding:100px 0;}
   .origin p{font-size:16px; color:var(--ink-soft); margin:0 0 24px;}
-  .origin-grid{display:grid; grid-template-columns:1fr; gap:72px;} /* Erhöhtes Gap für deutlich mehr Platz zwischen den Reihen */
+  .origin-grid { display: flex; flex-direction: column; gap: 56px; }
+  .origin-row-1, .origin-row-2 { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
   .origin-images {display: grid; grid-template-columns: 1fr 1fr; gap: 24px;}
   .origin-img-a img, .origin-img-b img{aspect-ratio:4/3; object-fit: cover;}
-  .origin-tags{display:flex; flex-wrap:wrap; gap:10px; margin:28px 0 4px;}
+  
+  /* Reihe 3: Stichwörter */
+  .origin-row-3 { margin-top: 16px; }
+  .origin-tags{display:flex; flex-wrap:wrap; gap:12px; justify-content: flex-start;}
   .origin-tags span{
-    font-family:'IBM Plex Mono', monospace; font-size:12.5px; padding:8px 18px; 
+    font-family:'IBM Plex Mono', monospace; font-size:13px; padding:10px 22px; 
     border:none; border-radius:30px; color:#ffffff !important; background:var(--violet);
-    box-shadow: 0 4px 10px rgba(91,46,104,0.25);
+    box-shadow: 0 4px 12px rgba(91,46,104,0.25);
     font-weight: 500;
   }
 
@@ -227,16 +251,20 @@
   .gallery-layout{display:grid; gap:36px; align-items:center;}
   .gallery-layout p{font-size:15.5px; color:var(--ink-soft); margin:0;}
 
-  /* METHODE — Komplett zentriert, neue strukturelle Reihenfolge */
+  /* METHODE — Exakte 3-Reihen-Abfolge */
   .method{text-align: center;}
-  .method .section-head {margin-bottom: 32px; display: flex; flex-direction: column; align-items: center;}
+  .method .section-head {margin-bottom: 40px; display: flex; flex-direction: column; align-items: center;}
   .method .sub-intro-text {
-    font-family:'Shippori Mincho', serif; font-size: 26px; font-weight: 700;
+    font-family:'Shippori Mincho', serif; font-size: 28px; font-weight: 700;
     color: var(--violet); margin-bottom: 48px; display: block;
   }
   .method .sub-outro-text {
-    font-family:'Shippori Mincho', serif; font-size: 26px; font-weight: 700;
-    color: var(--ink); margin-top: 52px; display: block;
+    font-family:'Shippori Mincho', serif; font-size: 28px; font-weight: 700;
+    color: var(--ink); margin-top: 56px; display: block;
+    text-decoration: underline;
+    text-decoration-color: var(--violet);
+    text-underline-offset: 10px;
+    text-decoration-thickness: 2px;
   }
   .method-grid{display:grid; grid-template-columns:1fr; gap:24px; text-align: center;}
   .method-card{padding:40px 32px; background:linear-gradient(150deg, var(--violet) 0%, var(--violet-dark) 100%); border:none; display: flex; flex-direction: column; align-items: center;}
@@ -245,14 +273,10 @@
   .method-card h3{font-size:22px; margin-bottom:14px; color:#FBF3FF; border:none;}
   .method-card p{font-size:15px; margin:0; color:#E4D3EC; line-height:1.65;}
 
-  /* BÜCHER & PRESSE — Links/Rechts-Text & dynamische Galerien */
+  /* BÜCHER & PRESSE — Innovatives, horizontales 2-Reihen-Raster */
   .presse-buch{background:var(--paper-tint-gold); padding:100px 0;}
-  .pb-row-block {
-    display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 80px; align-items: center;
-  }
-  .pb-row-block:last-child {margin-bottom: 0;}
-  .pb-text-side {display: flex; flex-direction: column;}
-  .pb-text-side p {font-size: 16.5px; color: var(--ink-soft); margin: 16px 0 0 0;}
+  .pb-section-wrap { display: flex; flex-direction: column; gap: 64px; }
+  .pb-row-1, .pb-row-2 { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
   .pb-gallery-side {display: flex; justify-content: center;}
   .pb-gallery-side .gallery {width: 100%; max-width: 340px;}
 
@@ -262,25 +286,29 @@
   .video-frame{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/9; box-shadow:var(--shadow); background:#000;}
   .video-frame iframe{width:100%; height:100%; border:0; display:block;}
 
-  /* RETREAT — "ohne Ablenkung" in strahlendem Blau & CTA Blau */
+  /* RETREAT */
   .retreat{color:#F5Eefa; position:relative;}
   .retreat-bg{position:absolute; inset:0; z-index:0;}
   .retreat-bg img{width:100%; height:100%; object-fit:cover;}
   .retreat-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(42,21,51,0.6), rgba(42,21,51,0.78));}
-  .retreat .hl-blue-text {color: #4A90E2; font-style: normal; font-weight: 700;}
+  .retreat .hl-blue-text {color: var(--new-blue); font-style: normal; font-weight: 700;}
   .retreat p {opacity:0.95; margin:28px 0 36px; font-size:17px; max-width:48ch; color:#F0E9F2;}
   .retreat .cta-blau{max-width:300px;}
 
-  /* FÜR THERAPEUTEN — Drastisch mehr Margin/Padding, markante Unterstreichungen & lila Text-Block */
-  .therapists{background:var(--paper-tint); padding:140px 0;} /* Erhöhtes Gesamt-Padding */
+  /* FÜR THERAPEUTEN — Gezielte Unterstreichung für "keine" in Blau */
+  .therapists{background:var(--paper-tint); padding:140px 0;}
   .therapists .eyebrow{color:var(--violet); margin-bottom: 2rem;}
   .therapists p{color:var(--ink-soft); font-size:17px; margin-bottom: 32px; line-height: 1.8;}
+  
   .therapists-headline {
-    text-decoration: underline;
-    text-decoration-color: var(--accent2);
-    text-underline-offset: 8px;
-    text-decoration-thickness: 3px;
     margin-bottom: 40px !important;
+  }
+  .underline-keine {
+    text-decoration: underline;
+    text-decoration-color: var(--new-blue);
+    text-underline-offset: 6px;
+    text-decoration-thickness: 3px;
+    color: var(--ink);
   }
   .t-chip-lila{
     display:inline-flex; align-items:center; background:var(--violet); border:none; border-radius:6px;
@@ -290,7 +318,7 @@
   }
   .pull-quote{border-left:4px solid var(--violet); padding:12px 0 12px 24px; margin:36px 0 40px; font-style:italic; color:var(--violet-dark); font-size:17.5px;}
 
-  /* NEWSLETTER — Erhöhte Abstände der Texte & Button in Blau */
+  /* NEWSLETTER */
   .inner-circle{color:#F5E9FA; position:relative; padding:140px 0;}
   .ic-bg{position:absolute; inset:0; z-index:0;}
   .ic-bg img{width:100%; height:100%; object-fit:cover;}
@@ -307,25 +335,29 @@
   .ic-form input{flex:1 1 240px; padding:18px 24px; border-radius:40px; border:1.5px solid rgba(255,255,255,0.35); background:rgba(255,255,255,0.12); color:#fff; font-size:15px;}
   .ic-form input::placeholder{color:rgba(255,255,255,0.65);}
   .ic-form .cta-blau{width:auto; flex:0 0 auto;}
-  .ic-note {margin-top: 16px !important;}
 
-  /* NÄCHSTER SCHRITT — Weißer Hintergrund ohne Ablenkung, großzügiges Spacing */
-  .closing{background: #ffffff; color: var(--ink); padding: 140px 0; position: relative;}
-  .closing-panel{background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 56px 40px; box-shadow: var(--shadow);}
-  .closing-grid{display:grid; gap:56px;}
-  .closing h2{margin:0 0 32px; color: var(--ink);}
-  .closing p{margin:0 0 44px; font-size:17.5px; color: var(--ink-soft); line-height: 1.8;}
-  .closing-ctas{display:flex; flex-direction:column; gap:20px;}
-  .closing-row-title{font-size:13px; font-family:'IBM Plex Mono', monospace; letter-spacing:0.08em; text-transform:uppercase; color:var(--violet); margin-bottom:24px; display:block;}
+  /* NÄCHSTER SCHRITT — Drastisch erhöhte Paddings & Spacings */
+  .closing{background: #ffffff; color: var(--ink); padding: 160px 0; position: relative;}
+  .closing-panel{background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 72px 56px; box-shadow: var(--shadow);}
+  .closing-grid{display:grid; gap:72px;}
+  .closing h2{margin:0 0 40px; color: var(--ink);}
+  .closing p{margin:0 0 48px; font-size:18px; color: var(--ink-soft); line-height: 1.85;}
+  .closing-ctas{display:flex; flex-direction:column; gap:24px;}
+  .closing-row-title{font-size:13px; font-family:'IBM Plex Mono', monospace; letter-spacing:0.08em; text-transform:uppercase; color:var(--violet); margin-bottom:32px; display:block;}
+  .closing-gallery-wrap { margin-bottom: 24px; }
 
-  /* FOOTER — Navigation & Kontakt perfekt in Bereichen zentriert, vertikale Trennlinie & Email-Icon */
+  /* FOOTER — Wunschblau für Copyright, unterstrichene Header */
   footer{background:var(--violet-footer); color:rgba(251,249,246,0.85); padding:90px 0 40px;}
   .footer-grid-split {
     display: grid; grid-template-columns: 1fr; gap: 48px; position: relative; text-align: center;
   }
-  footer h4{font-size:14px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(251,249,246,0.65); margin:0 0 28px;}
+  footer h4{
+    font-size:14px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(251,249,246,0.65); margin:0 0 28px;
+    text-decoration: underline;
+    text-decoration-color: rgba(251,249,246,0.3);
+    text-underline-offset: 6px;
+  }
   footer ul{list-style:none; margin:0; padding:0; display:grid; gap:16px; justify-content: center; text-align: center;}
-  footer ul li {text-align: center;}
   footer a{color:inherit; text-decoration:none; font-size:15.5px; transition: color 0.2s;}
   footer a:hover{color:#fff;}
   
@@ -335,30 +367,28 @@
   .email-icon {width: 18px; height: 18px; fill: currentColor; display: inline-block; vertical-align: middle;}
 
   .footer-copyright {
-    margin-top: 56px; font-family:'IBM Plex Mono', monospace; font-size: 13px; 
-    color: rgba(251,249,246,0.5); text-align: center; display: block;
+    margin-top: 56px; font-family:'IBM Plex Mono', monospace; font-size: 13.5px; 
+    color: var(--new-blue); text-align: center; display: block; font-weight: 500;
   }
 
-  /* Unterste Leiste (msTech) in komplett strahlend weißer Schrift */
+  /* Bodenleiste um ca. 80% abgeschwächt / abgedunkelt */
   .footer-credit-bar{
-    background:var(--deep-blue-footer-bar); color:#ffffff !important; padding:24px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px;
-    display:flex; flex-direction:column; gap:12px; align-items:center; text-align:center; border-top:1px solid rgba(255,255,255,0.05);
+    background:var(--deep-blue-footer-bar); color:rgba(255,255,255,0.25) !important; padding:24px 20px; font-family:'IBM Plex Mono', monospace; font-size:13px;
+    display:flex; flex-direction:column; gap:12px; align-items:center; text-align:center; border-top:1px solid rgba(255,255,255,0.02);
   }
   .footer-credit-bar span, .footer-credit-bar a {
-    color:#ffffff !important;
+    color:rgba(255,255,255,0.25) !important;
   }
-  .footer-credit-bar a{text-decoration:underline; font-weight:600;}
+  .footer-credit-bar a{text-decoration:underline; font-weight:500;}
 
   :focus-visible{outline:2px solid var(--violet-light); outline-offset:2px;}
 
-  /* ===== DESKTOP ===== */
+  /* ===== DESKTOP RESPONSIVENESS ===== */
   @media (min-width:768px){
     body{font-size:18px;}
     section{padding:140px 0;}
-    .section-head{margin-bottom:72px;}
     .wrap{padding:0 40px;}
     .nav-inner{padding:20px 40px;}
-    .logo-ph{width:150px; height:34px; font-size:10px;}
     .nav-toggle{display:none;}
     .nav-links{
       display:flex; flex-direction:row; position:static; background:none; border:none; box-shadow:none;
@@ -371,9 +401,7 @@
 
     .hero{padding-top:80px; padding-bottom:120px;}
     .hero-grid{grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:center;}
-    .hero h1{font-size:clamp(40px,4.5vw,58px);}
     .hero p.lede{font-size:19.5px; max-width:46ch; margin:28px 0 38px;}
-    .enso-corner{width:110px; height:110px; top:-24px; left:-24px;}
 
     .credentials h2{font-size:clamp(32px,3.2vw,38px);}
     .cred-layout{grid-template-columns:1.1fr 0.9fr; gap:48px;}
@@ -381,52 +409,52 @@
     .cred-item .num{font-size:38px;}
     .cred-item .label{font-size:14.5px; max-width:22ch;}
 
-    .problem .wrap{max-width:860px;}
+    .problem .wrap{max-width:920px;}
     .problem h2{font-size:clamp(34px,3.5vw,44px); max-width:20ch;}
     .statement{padding:28px 0 28px 26px; grid-template-columns:56px 1fr; gap:20px;}
     .statement p{font-size:17px; max-width:58ch;}
 
-    .origin .wrap{max-width:980px;}
+    /* Herkunft Raster-Desktop */
+    .origin .wrap{max-width:1040px;}
     .origin h2{font-size:clamp(32px,3.2vw,38px);}
-    .origin-grid{grid-template-columns:1fr; gap:64px;}
-    .origin-images { gap: 32px; }
+    .origin-row-1 { grid-template-columns: 1fr 1fr; gap: 64px; }
+    .origin-row-2 { grid-template-columns: 1fr 1fr; gap: 64px; }
+    .origin-row-2 .origin-images { order: 1; }
+    .origin-row-2 .origin-text-b { order: 2; }
 
     .gallery-layout{grid-template-columns:0.75fr 1.25fr; gap:48px;}
     .gallery-section.alt .gallery-layout{grid-template-columns:1.25fr 0.75fr;}
-    .gallery-section.alt .gallery-label{order:2;}
-    .gallery-section.alt .gallery{order:1;}
 
     .method .wrap{max-width:1000px;}
-    .method h2{font-size:clamp(34px,3.5vw,44px); max-width:24ch; margin-left: auto; margin-right: auto;}
+    .method h2{font-size:clamp(34px,3.5vw,44px); max-width:24ch;}
     .method-grid{grid-template-columns:repeat(4,1fr); gap:20px;}
 
-    /* Split-Reihen Layout (Texte Links/Rechts und Galerien daneben) */
-    .pb-row-block {grid-template-columns: 1.1fr 0.9fr; gap: 64px;}
-    .pb-row-block.alt-row {grid-template-columns: 1.1fr 0.9fr; gap: 64px;}
-    .pb-row-block.alt-row .pb-text-side {order: 1;}
-    .pb-row-block.alt-row .pb-gallery-side {order: 2;}
+    /* Publikationen & Resonanz Raster-Desktop */
+    .pb-row-1 { grid-template-columns: 0.9fr 1.1fr; gap: 64px; }
+    .pb-row-1 .pb-gallery-side { order: 1; }
+    .pb-row-1 .pb-text-side { order: 2; }
+    
+    .pb-row-2 { grid-template-columns: 1.1fr 0.9fr; gap: 64px; }
+    .pb-row-2 .pb-text-side { order: 1; }
+    .pb-row-2 .pb-gallery-side { order: 2; }
 
     .video-sec h2{font-size:clamp(28px,3vw,34px);}
 
     .retreat .wrap{max-width:680px;}
     .retreat h2{font-size:clamp(36px,3.8vw,48px);}
-    .retreat p{font-size:18px;}
 
     .seminar-wrap{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
     .therapists h2{font-size:clamp(30px,3vw,36px); max-width:20ch; margin-top:0;}
-    .therapists p{font-size:17.5px; max-width:52ch;}
 
     .inner-circle h2{font-size:clamp(34px,3.5vw,44px);}
     .inner-circle .wrap{margin-left: 40px;}
 
-    .closing .wrap{max-width:1020px;}
-    .closing-panel{padding:72px;}
+    .closing .wrap{max-width:1060px;}
+    .closing-panel{padding:80px 72px;}
     .closing-grid{grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center;}
     .closing h2{font-size:clamp(36px,3.8vw,48px);}
-    .closing p{font-size:18px;}
     .closing-ctas{flex-direction:row;}
 
-    /* Strukturierte vertikale Trennlinie im Footer auf Desktop */
     .footer-grid-split {
       grid-template-columns: 1fr 1fr; gap: 0;
     }
@@ -437,7 +465,6 @@
   }
 
   @media (prefers-reduced-motion: reduce){
-    .enso-corner path{animation:none; stroke-dashoffset:0;}
     .reveal{opacity:1; transform:none; transition:none;}
     .reveal .hl-blue::after, .reveal .hl-violet::after{transform:scaleX(1); transition:none;}
     html{scroll-behavior:auto;}
@@ -468,15 +495,12 @@
   <div class="wrap hero-grid">
     <div class="reveal is-visible">
       <span class="eyebrow">Psychosomatik &amp; Nervensystem-Regeneration</span>
-      <h1>Ist die Seele <em>erschöpft</em>,<br>wird der Körper krank.</h1>
+      <h1 class="psychosomatik-title">Ist die Seele <em>erschöpft</em>,<br>wird der Körper krank.</h1>
       <p class="lede">Prof. h. c. Manfred P. Krames berät seit <strong>26 Jahren</strong> Führungskräfte und Therapeuten bei Erschöpfung, Burnout und chronischer Stressbelastung, fundiert in <span class="hl-blue">fernöstlicher Medizin</span> und westlicher Psychologie.</p>
       <a href="#retreat" class="cta-lila">Retreat entdecken</a>
     </div>
     <div class="reveal is-visible d1">
       <div class="hero-img-wrap">
-        <svg class="enso-corner" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M 150 40 A 110 110 0 1 1 55 100"/>
-        </svg>
         <img src="images/header-kramer-kräftigwirkend-aufdemwasser-vor-mount-fuji.jpg" alt="Prof. Krames vor dem Mount Fuji">
       </div>
     </div>
@@ -541,23 +565,25 @@
 
 <section class="problem">
   <div class="problem-bg"><img src="images/dunkelheit-smog-einer-stadt-blau-schwarz.png" alt="Nächtliche Skyline im Nebel, Hintergrundbild"></div>
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Der Ausgangspunkt</span>
-      <h2>Erschöpfung ist selten nur <span class="hl-blue">körperlich</span>.</h2>
-    </div>
-    <div class="statements">
-      <div class="statement reveal">
-        <span class="mark">01</span>
-        <p>Anhaltender Leistungsdruck verschiebt das vegetative Nervensystem dauerhaft in den Alarmzustand: <strong>Schlaf, Verdauung und Konzentration</strong> leiden zuerst.</p>
+  <div class="wrap reveal">
+    <div class="problem-text-card">
+      <div class="section-head">
+        <span class="eyebrow">Der Ausgangspunkt</span>
+        <h2>Erschöpfung ist selten nur <span class="hl-blue">körperlich</span>.</h2>
       </div>
-      <div class="statement reveal d1">
-        <span class="mark">02</span>
-        <p>Klassische Erholung, etwa Urlaub, Wellness oder ein verlängertes Wochenende, wirkt oft <em>nur für die Dauer der Auszeit</em>, weil die eigentliche Ursache unberührt bleibt.</p>
-      </div>
-      <div class="statement reveal d2">
-        <span class="mark">03</span>
-        <p>Nachhaltige Regeneration setzt an der Ursache an, nicht am Symptom: durch eine ausführliche, persönliche Ursachenklärung statt schneller Diagnose.</p>
+      <div class="statements">
+        <div class="statement">
+          <span class="mark">01</span>
+          <p>Anhaltender Leistungsdruck verschiebt das vegetative Nervensystem dauerhaft in den Alarmzustand: <strong>Schlaf, Verdauung und Konzentration</strong> leiden zuerst.</p>
+        </div>
+        <div class="statement">
+          <span class="mark">02</span>
+          <p>Klassische Erholung, etwa Urlaub, Wellness oder ein verlängertes Wochenende, wirkt oft <em>nur für die Dauer der Auszeit</em>, weil die eigentliche Ursache unberührt bleibt.</p>
+        </div>
+        <div class="statement">
+          <span class="mark">03</span>
+          <p>Nachhaltige Regeneration setzt an der Ursache an, nicht am Symptom: durch eine ausführliche, persönliche Ursachenklärung statt schneller Diagnose.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -566,19 +592,28 @@
 <section class="origin">
   <div class="wrap">
     <div class="origin-grid">
-      <div class="origin-head reveal">
-        <span class="eyebrow">Herkunft der Methode</span>
-        <h2>26 Jahre Ostasien, nicht als Kur-Exotik, sondern als <span class="hl-violet">Grundlage</span>.</h2>
+      
+      <div class="origin-row-1 reveal">
+        <div class="origin-head">
+          <span class="eyebrow">Herkunft der Methode</span>
+          <h2>26 Jahre Ostasien, nicht als Kur-Exotik, sondern als <span class="hl-violet">Grundlage</span>.</h2>
+        </div>
+        <div class="origin-images">
+          <div class="framed"><img src="images/srilanka-bootsmann-hellblauwasser-hellbraun-himmel.jpg" alt="Fischerboot vor Sri Lanka"></div>
+        </div>
       </div>
       
-      <div class="origin-images reveal d1">
-        <div class="framed"><img src="images/srilanka-bootsmann-hellblauwasser-hellbraun-himmel.jpg" alt="Fischerboot vor Sri Lanka"></div>
-        <div class="framed-inner-white"><img src="images/todestempel-indien-gold-blau.jpg" alt="Goldener Tempel in Indien"></div>
+      <div class="origin-row-2 reveal d1">
+        <div class="origin-images">
+          <div class="framed-inner-white"><img src="images/todestempel-indien-gold-blau.jpg" alt="Goldener Tempel in Indien"></div>
+        </div>
+        <div class="origin-text-b">
+          <p>Die Methode entstand nicht am Schreibtisch, sondern in der klinischen Praxis: als junger Klinikleiter auf Sri Lanka, in der langjährigen Mitarbeit an einer Tokioter Psychosomatik-Klinik und im Austausch mit einem Ayurveda-Arzt in siebter Generation.</p>
+          <p>Zentral ist die Beobachtung, dass many körperliche Beschwerden europäischer Kurgäste ihren Ursprung im geistig-seelischen Bereich hatten: eine Beobachtung, die westliche Psychologie und fernöstliche Medizinlehren zusammenführt, statt sie gegeneinander auszuspielen.</p>
+        </div>
       </div>
       
-      <div class="origin-text-b reveal d2">
-        <p>Die Methode entstand nicht am Schreibtisch, sondern in der klinischen Praxis: als junger Klinikleiter auf Sri Lanka, in der langjährigen Mitarbeit an einer Tokioter Psychosomatik-Klinik und im Austausch mit einem Ayurveda-Arzt in siebter Generation.</p>
-        <p>Zentral ist die Beobachtung, dass viele körperliche Beschwerden europäischer Kurgäste ihren Ursprung im geistig-seelischen Bereich hatten: eine Beobachtung, die westliche Psychologie und fernöstliche Medizinlehren zusammenführt, statt sie gegeneinander auszuspielen.</p>
+      <div class="origin-row-3 reveal d2">
         <div class="origin-tags">
           <span>Sri Lanka</span>
           <span>Indien</span>
@@ -588,6 +623,7 @@
           <span>5-Elemente-Tradition</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -625,12 +661,11 @@
 
 <section class="method" id="methode">
   <div class="wrap">
+    
     <div class="section-head reveal">
       <span class="eyebrow">Die Methode</span>
-      <h2>Vier Bereiche, <span class="hl-blue">ein zusammenhängendes System</span>.</h2>
+      <span class="sub-intro-text">Vier Bereiche</span>
     </div>
-    
-    <span class="sub-intro-text reveal">Vier Bereiche..</span>
     
     <div class="method-grid">
       <div class="card method-card reveal">
@@ -655,23 +690,15 @@
       </div>
     </div>
     
-    <span class="sub-outro-text reveal">.. ein zusammenhängendes System.</span>
+    <span class="sub-outro-text reveal">ein zusammenhängendes System</span>
   </div>
 </section>
 
 <section class="presse-buch" id="buchreihe">
   <div class="wrap">
     <div class="pb-section-wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Publikationen &amp; Resonanz</span>
-        <h2>Wissen, das Kreise zieht.</h2>
-      </div>
       
-      <div class="pb-row-block reveal">
-        <div class="pb-text-side">
-          <h3>26 Bücher: Standardwerke für Fachleute und Therapeuten.</h3>
-          <p>Das Fachbuch <em>„Vata Syndrom"</em> erschien auf Deutsch, Japanisch und Englisch und gilt als Standardwerk für Heilpraktiker, Psychologen und Therapeuten.</p>
-        </div>
+      <div class="pb-row-1 reveal">
         <div class="pb-gallery-side">
           <div class="gallery gallery-3-4" data-interval="4000">
             <div class="gallery-slide active">
@@ -685,12 +712,15 @@
             </div>
           </div>
         </div>
+        <div class="pb-text-side">
+          <span class="eyebrow">Publikationen &amp; Resonanz</span>
+          <h3>26 Bücher: Standardwerke für Fachleute und Therapeuten.</h3>
+        </div>
       </div>
       
-      <div class="pb-row-block reveal d1">
+      <div class="pb-row-2 reveal d1">
         <div class="pb-text-side">
-          <h3>Presseerwähnungen aus mehreren Ländern</h3>
-          <p>Presseerwähnungen und Fachberichte aus mehreren Ländern und unterschiedlichen Kulturen begleiten die Arbeit seit Jahrzehnten.</p>
+          <p>Das Fachbuch <em>„Vata Syndrom"</em> erschien auf Deutsch, Japanisch und Englisch und gilt als Standardwerk für Heilpraktiker, Psychologen und Therapeuten. Internationale Erwähnungen und Fachberichte aus mehreren Ländern und unterschiedlichen Kulturen begleiten die Arbeit seit Jahrzehnten gewinnbringend.</p>
         </div>
         <div class="pb-gallery-side">
           <div class="gallery gallery-3-4" data-interval="4500">
@@ -743,7 +773,7 @@
       <div class="seminar-wrap">
         <div class="reveal">
           <span class="eyebrow">Für Therapeuten und Berater</span>
-          <h2 class="therapists-headline">Fachliche Weiterbildung,<br>keine Wellness<br>Zertifizierung</h2>
+          <h2 class="therapists-headline">Fachliche Weiterbildung,<br><span class="underline-keine">keine</span> Wellness Zertifizierung</h2>
           
           <div class="t-chip-lila">500 ausgebildete Therapeuten</div>
           
@@ -796,7 +826,7 @@
   <div class="wrap">
     <div class="closing-panel reveal">
       <div class="closing-grid">
-        <div>
+        <div class="closing-gallery-wrap">
           <span class="closing-row-title">Momente aus 26 Jahren</span>
           <div class="gallery gallery-4-5" data-interval="4000">
             <div class="gallery-slide active">
@@ -833,7 +863,7 @@
           <h2>Zwei Wege, den ersten Schritt zu machen.</h2>
           <p>Beratungen finden persönlich, per Zoom, Telefon oder WhatsApp statt: weltweit, mit besonderer Erfahrung im deutschsprachigen Raum.</p>
           <div class="closing-ctas">
-            <a href="#" class="cta-lila">Retreat buchen</a>
+            <a href="#" class="cta-blau">Retreat buchen</a>
             <a href="#" class="cta-violet-outline" style="color: var(--ink); border-color: var(--violet);">Therapieplatz anfragen</a>
           </div>
         </div>
@@ -870,7 +900,7 @@
       </div>
     </div>
     
-    <span class="footer-copyright">© 2026 Manfred P. Krames</span>
+    <span class="footer-copyright" style="color: var(--new-blue);">© 2026 Prof. h.c. Manfred P. Krames</span>
   </div>
 </footer>
 
