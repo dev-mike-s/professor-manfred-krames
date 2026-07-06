@@ -19,13 +19,13 @@
     --violet-dark:#432150;
     --violet-deep:#2A1533;
     --violet-light:#C9A2DC;
-    --violet-footer:#3E1C50; /* New footer violet */
-    --accent2:#B3D4E5; /* Sourced light blue, replaced pink */
-    --accent2-pink-old:#D98CAE; /* Old accent, for reference */
+    --violet-footer:#4a2059; /* Lila/Violett für den Footer */
+    --accent2:#23557a; /* Gewünschtes Hellblau statt Pink */
+    --accent-light-blue:#B3D4E5; /* Klares Hellblau aus dem Fuji-Bild */
     --gold:#B08D4F;
     --gold-soft:#D8C9A3;
     --deep-blue:#101E33;
-    --deep-blue-footer-bar:#0A2540; /* Dark blue for footer bar */
+    --deep-blue-footer-bar:#0d1b2e; /* Dunkleres Blau für den Footer-Boden */
     --deep-blue-text:#DDE6F2;
     --deep-blue-text-soft:#A9B8CE;
     --line:rgba(34,27,41,0.13);
@@ -37,16 +37,25 @@
   html{scroll-behavior:smooth;}
   body{margin:0; font-family:'IBM Plex Sans', sans-serif; color:var(--ink); background:var(--paper); line-height:1.7; -webkit-font-smoothing:antialiased; font-size:17px;}
   h1,h2,h3{font-family:'Shippori Mincho', serif; font-weight:700; line-height:1.3; margin:0; letter-spacing:0.01em;}
+  
+  /* Zwischenüberschriften um eins größer gemacht */
+  h2{font-size:32px;}
+  h3{font-size:26px;}
+  
   em{font-style:italic; color:var(--violet-dark);}
   strong{font-weight:600;}
+  
   .eyebrow{
     font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.13em; text-transform:uppercase;
-    color:var(--violet); opacity:0.85; display:inline-flex; align-items:center; gap:8px; margin-bottom:1rem;
+    color:var(--violet); opacity:0.85; display:inline-flex; align-items:center; gap:8px; margin-bottom:1.5rem;
   }
-  .eyebrow::before{content:""; width:16px; height:1px; background:var(--violet-light); /* Better visibility on light papers */}
+  .eyebrow::before{content:""; width:16px; height:1px; background:var(--accent-light-blue);}
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px; position:relative; z-index:2;}
-  section{padding:76px 0; position:relative; overflow:hidden;}
-  .section-head{margin-bottom:52px; /* Increased spacing */}
+  section{padding:90px 0; position:relative; overflow:hidden;}
+  
+  /* Mehr Platz zwischen Zwischenüberschrift und Content für ein luftiges Gefühl */
+  .section-head{margin-bottom:56px;}
+  
   .ph{
     background:repeating-linear-gradient(135deg, rgba(0,0,0,0.05) 0 12px, rgba(0,0,0,0.02) 12px 24px);
     border:1px dashed var(--line); display:flex; align-items:center; justify-content:center;
@@ -56,9 +65,8 @@
   img{max-width:100%; display:block;}
 
   .hl{position:relative; white-space:nowrap;}
-  .hl::after{content:""; position:absolute; left:0; right:0; bottom:-3px; height:6px; background:var(--accent2); /* Sourced light blue */ opacity:0.6; /* Slight transparency */ z-index:-1; transform:scaleX(0); transform-origin:left; transition:transform 1s ease .1s;}
+  .hl::after{content:""; position:absolute; left:0; right:0; bottom:-3px; height:6px; background:var(--accent-light-blue); opacity:0.5; z-index:-1; transform:scaleX(0); transform-origin:left; transition:transform 1s ease .1s;}
   .reveal.is-visible .hl::after{transform:scaleX(1);}
-  /* Removed separate color handling for dark sections to keep consistency with the new light blue */
 
   .reveal{opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease;}
   .reveal.is-visible{opacity:1; transform:translateY(0);}
@@ -82,66 +90,70 @@
   }
   .nav-toggle svg{width:18px; height:18px;}
 
-  /* CTA */
+  /* CTAs optimiert für besseres UX/UI */
   .cta, .cta-violet-outline, .cta-secondary, .cta-solid-violet{
-    display:inline-flex; align-items:center; justify-content:center; gap:9px;
-    font-weight:600; font-size:15.5px; padding:15px 30px; text-decoration:none; border-radius:40px;
-    width:100%; transition:transform .18s ease, box-shadow .25s ease, background .2s ease, filter .2s ease;
+    display:inline-flex; align-items:center; justify-content:center; gap:12px;
+    font-weight:600; font-size:16px; padding:16px 36px; text-decoration:none; border-radius:40px;
+    width:100%; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   }
-  .cta{background:linear-gradient(135deg, var(--violet) 0%, var(--violet-dark) 100%); color:#FBF3FF; box-shadow:0 12px 26px -8px rgba(91,46,104,0.6), inset 0 0 0 1px rgba(255,255,255,0.08);}
+  .cta{background:linear-gradient(135deg, var(--violet) 0%, var(--violet-dark) 100%); color:#FBF3FF; box-shadow:0 10px 24px -8px rgba(91,46,104,0.4);}
   .cta::after{content:"→"; transition:transform .2s ease; font-weight:400;}
-  .cta:hover::after{transform:translateX(4px);}
-  .cta:hover, .cta:focus-visible{transform:translateY(-2px); box-shadow:0 16px 32px -8px rgba(91,46,104,0.7); filter: brightness(1.1);}
-  .cta:active{transform:translateY(0) scale(0.98);}
-  .cta-secondary{background:transparent; color:var(--ink); border:1.5px solid var(--ink);}
+  .cta:hover::after{transform:translateX(5px);}
+  .cta:hover, .cta:focus-visible{transform:translateY(-3px); box-shadow:0 16px 32px -8px rgba(91,46,104,0.55); filter: brightness(1.08);}
+  .cta:active{transform:translateY(-1px);}
+  
+  .cta-secondary{background:transparent; color:var(--ink); border:2px solid var(--ink);}
   .cta-secondary::after{content:"→"; transition:transform .2s ease;}
-  .cta-secondary:hover::after{transform:translateX(4px);}
-  .cta-secondary:hover{background:var(--ink); color:var(--paper); transform:translateY(-2px); filter: brightness(1.1);}
-  .cta-violet-outline{background:rgba(255,255,255,0.07); color:#F8ECFB; border:1.5px solid var(--violet-light);}
+  .cta-secondary:hover::after{transform:translateX(5px);}
+  .cta-secondary:hover{background:var(--ink); color:var(--paper); transform:translateY(-3px);}
+  
+  .cta-violet-outline{background:rgba(255,255,255,0.05); color:#F8ECFB; border:2px solid var(--violet-light);}
   .cta-violet-outline::after{content:"→"; transition:transform .2s ease;}
-  .cta-violet-outline:hover::after{transform:translateX(4px);}
-  .cta-violet-outline:hover{background:rgba(255,255,255,0.16); transform:translateY(-2px); filter: brightness(1.1);}
-  .cta-solid-violet{background:var(--violet); color:#fff; border:1.5px solid var(--violet);}
+  .cta-violet-outline:hover::after{transform:translateX(5px);}
+  .cta-violet-outline:hover{background:var(--violet-light); color:var(--violet-deep); transform:translateY(-3px); box-shadow:0 10px 20px rgba(0,0,0,0.2);}
+  
+  .cta-solid-violet{background:var(--violet); color:#fff; border:2px solid var(--violet);}
   .cta-solid-violet::after{content:"→"; transition:transform .2s ease;}
-  .cta-solid-violet:hover{background:var(--violet-dark); transform:translateY(-2px); filter: brightness(1.1);}
-  .cta-solid-violet:hover::after{transform:translateX(4px);}
+  .cta-solid-violet:hover{background:var(--violet-dark); border-color:var(--violet-dark); transform:translateY(-3px); box-shadow:0 10px 20px rgba(91,46,104,0.3);}
+  .cta-solid-violet:hover::after{transform:translateX(5px);}
 
   .card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:0 2px 10px -6px rgba(34,27,41,0.12); transition:transform .3s ease, box-shadow .3s ease;}
   .card:hover{transform:translateY(-5px); box-shadow:var(--shadow);}
 
-  /* framed images: replaced framing logic for Hero */
-  .framed-gallery{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:8px;}
-  .framed-gallery img{width:100%; object-fit:contain; border-radius:2px;}
+  /* Framed-Fix für das Bergbild (Kein weißer Rahmen/Rand mehr) */
+  .hero-img-wrap {border:none; padding:0; background:none; border-radius: var(--radius); overflow: hidden;}
+  .hero-img-wrap img{width:100%; object-fit:cover; border-radius: var(--radius);}
+  
+  .framed{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:8px;}
+  .framed img{width:100%; object-fit:contain; border-radius:2px;}
   .photo-box{background:#14121a; border-radius:var(--radius); overflow:hidden;}
   .photo-box img{width:100%; height:100%; object-fit:contain;}
 
-  /* HERO - Removed frame, optimized image presentation */
-  .hero{padding-top:0; padding-bottom:48px; min-height: 80vh; display: flex; align-items: center;}
-  .hero-grid{display:grid; gap:32px; grid-template-columns: 1fr;}
-  .hero h1{font-size:36px; /* Increased standard mobile size */}
+  /* HERO */
+  .hero{padding-top:36px; padding-bottom:48px;}
+  .hero-grid{display:grid; gap:32px;}
+  .hero h1{font-size:36px;}
   .hero p.lede{font-size:17.5px; color:var(--ink-soft); margin:20px 0 28px;}
-  .hero-img-col {
-    order: -1; /* Image first on mobile */
-    margin: 0 -20px; /* Bleed to edge */
-  }
-  .hero-img-wrap{position:relative; height: 50vh; overflow: hidden;}
-  .hero-img-wrap img{width: 100%; height: 100%; object-fit: cover;} /* Uncropped, covering section */
-  .enso-corner{position:absolute; top:20px; left:20px; width:100px; height:100px; opacity:0.85; z-index:2;} /* Repositioned on image */
-  .enso-corner path{fill:none; stroke:var(--accent2); /* Sourced light blue */ stroke-width:10; /* Wider ring */ stroke-linecap:round; stroke-dasharray:900; stroke-dashoffset:900; animation:draw 2s ease-out .2s forwards;}
+
+  .enso-corner{position:absolute; top:-16px; left:-16px; width:85px; height:85px; opacity:0.65; z-index:3;}
+  .enso-corner path{fill:none; stroke:var(--accent-light-blue); stroke-width:9; stroke-linecap:round; stroke-dasharray:900; stroke-dashoffset:900; animation:draw 2s ease-out .2s forwards;}
   @keyframes draw{ to{stroke-dashoffset:0;} }
 
-  /* FAKTEN - aligned layout, prevented gallery run-off */
+  /* FAKTEN — Auf einer Ebene ausgerichtet & Galerie korrigiert */
   .credentials{background:var(--paper-tint);}
-  .credentials h2{font-size:28px; /* Increased standard mobile size */ max-width:20ch;}
-  .cred-layout{display:grid; gap:30px;}
-  .cred-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items: start; /* Alignment */}
-  .cred-item{padding:20px 16px; height: 100%; /* Alignment */}
-  .cred-item .num{font-family:'IBM Plex Mono', monospace; font-size:30px; /* Increased size */ font-weight:500; color:var(--violet);}
-  .cred-item .label{font-size:13.5px; margin-top:6px; color:var(--ink-soft);}
-  .cred-gallery-col .row-title{font-size:13px; font-weight:600; color:var(--violet-dark); margin-bottom:10px;}
+  .credentials h2{max-width:20ch;}
+  .cred-layout{display:grid; gap:40px; align-items: start;}
+  .cred-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .cred-item{padding:26px 20px; display: flex; flex-direction: column; justify-content: center;}
+  .cred-item .num{font-family:'IBM Plex Mono', monospace; font-size:32px; font-weight:500; color:var(--violet);}
+  .cred-item .label{font-size:14px; margin-top:6px; color:var(--ink-soft); line-height: 1.5;}
+  .cred-gallery-col{display: flex; flex-direction: column;}
+  .cred-gallery-col .row-title{font-size:13px; font-weight:600; color:var(--violet-dark); margin-bottom:12px;}
+  .cred-gallery-col .gallery { max-height: 380px; }
 
   /* GALERIE — unbeschnitten */
-  .gallery{position:relative; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); background:#14121a; align-self: start; /* prevented gallery run-off */}
+  .gallery{position:relative; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); background:#14121a;}
   .gallery-3-2{aspect-ratio:3/2;}
   .gallery-4-5{aspect-ratio:4/5;}
   .gallery-3-4{aspect-ratio:3/4;}
@@ -157,144 +169,142 @@
   .gallery-dot{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.45); border:none; padding:0; cursor:pointer;}
   .gallery-dot.active{background:#fff;}
 
-  /* PROBLEM - Slightly darkened background for contrast */
+  /* PROBLEM — Hintergrundbild leicht abgedunkelt */
   .problem{background:var(--deep-blue); color:var(--deep-blue-text); position:relative;}
   .problem-bg{position:absolute; inset:0; z-index:0;}
   .problem-bg img{width:100%; height:100%; object-fit:cover;}
-  .problem-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(16,30,51,0.5), rgba(16,30,51,0.65)); /* Darkened slightly */}
+  .problem-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(16,30,51,0.55), rgba(16,30,51,0.72));}
   .problem .eyebrow{color:#9FB6D9;}
-  .problem h2{font-size:28px; /* Increased standard mobile size */ color:#F1F5FA; text-shadow:0 2px 16px rgba(0,0,0,0.4);}
-  .problem em{color:var(--accent2); /* Sourced light blue */}
+  .problem h2{color:#F1F5FA; text-shadow:0 2px 16px rgba(0,0,0,0.4);}
+  .problem em{color:var(--accent-light-blue);}
   .problem strong{color:#fff;}
   .statement{
-    padding:20px 0 20px 20px; border-top:1px solid rgba(255,255,255,0.14); border-left:3px solid rgba(255,255,255,0.18);
+    padding:24px 0 24px 24px; border-top:1px solid rgba(255,255,255,0.14); border-left:3px solid rgba(255,255,255,0.18);
     display:grid; grid-template-columns:36px 1fr; gap:14px; align-items:baseline; transition:border-color .3s;
   }
-  .statement:hover{border-left-color:var(--accent2); /* Sourced light blue */}
+  .statement:hover{border-left-color:var(--accent-light-blue);}
   .statement:last-child{border-bottom:1px solid rgba(255,255,255,0.14);}
-  .statement .mark{font-family:'IBM Plex Mono', monospace; color:var(--accent2); /* Sourced light blue */ font-size:13.5px;}
-  .statement p{margin:0; font-size:15.5px; color:var(--deep-blue-text-soft);}
+  .statement .mark{font-family:'IBM Plex Mono', monospace; color:var(--accent-light-blue); font-size:14px;}
+  .statement p{margin:0; font-size:16px; color:var(--deep-blue-text-soft);}
 
-  /* HERKUNFT — increased pacing and breathing room */
-  .origin{padding: 100px 0; /* Increased section padding */}
-  .origin h2{font-size:28px; /* Increased standard mobile size */}
-  .origin p{font-size:16px; /* Increased standard mobile size */ color:var(--ink-soft); margin:0 0 20px; /* Increased margin */}
-  .origin-grid{display:grid; grid-template-columns:1fr; gap:32px; /* Increased gap */}
-  .origin-img-a .framed-gallery img{aspect-ratio:4/3;}
-  .origin-img-b .framed-gallery img{aspect-ratio:4/3;}
-  .origin-tags{display:flex; flex-wrap:wrap; gap:10px; margin:28px 0 8px; /* Increased pacing */}
-  .origin-tags span{font-family:'IBM Plex Mono', monospace; font-size:11.5px; padding:6px 11px; border:1px solid var(--line); border-radius:20px; color:var(--ink-soft); background:#fff;}
+  /* HERKUNFT — Mehr Raum zum Atmen */
+  .origin{padding:100px 0;}
+  .origin p{font-size:16px; color:var(--ink-soft); margin:0 0 20px;}
+  .origin-grid{display:grid; grid-template-columns:1fr; gap:36px;}
+  .origin-img-a img, .origin-img-b img{aspect-ratio:4/3; object-fit: cover;}
+  .origin-tags{display:flex; flex-wrap:wrap; gap:10px; margin:24px 0 4px;}
+  .origin-tags span{font-family:'IBM Plex Mono', monospace; font-size:12px; padding:6px 12px; border:1px solid var(--line); border-radius:20px; color:var(--ink-soft); background:#fff;}
 
-  /* GALLERY SECTIONS - Aligned and increased breathing */
-  .gallery-section{padding: 100px 0; /* Increased section padding */}
-  .gallery-section{background:var(--tint-rosewash);}
-  .gallery-layout{display:grid; gap:30px; /* Increased gap */ align-items:start;}
-  .gallery-layout h3{font-size:24px; /* Increased standard mobile size */ margin:0 0 14px; /* Increased margin */ color:var(--violet-dark);}
-  .gallery-layout p{font-size:15px; color:var(--ink-soft); margin:0; line-height: 1.65;}
-  .gallery-label { padding-right: 20px; /* Prevent too large width */ align-self: center; /* V-aligned */}
+  /* BILDARCHIV — Pacing angepasst */
+  .gallery-section{background:var(--tint-rosewash); padding:100px 0;}
+  .gallery-layout{display:grid; gap:36px; align-items:center;}
+  .gallery-layout p{font-size:15.5px; color:var(--ink-soft); margin:0;}
 
-  /* METHOD — Optimized cards and pacing */
-  .method h2{font-size:28px; /* Increased standard mobile size */ max-width:18ch;}
+  /* METHODE — Optimiertes Padding & Cards-Raumnutzung */
+  .method h2{max-width:18ch;}
   .method-grid{display:grid; grid-template-columns:1fr; gap:20px;}
-  .method-card{padding:32px 28px; /* Increased internal breathing */ background:linear-gradient(150deg, var(--violet) 0%, var(--violet-dark) 100%); border:none;}
+  .method-card{padding:36px 28px; background:linear-gradient(150deg, var(--violet) 0%, var(--violet-dark) 100%); border:none; display: flex; flex-direction: column;}
   .method-card:hover{box-shadow:0 14px 34px -10px rgba(91,46,104,0.55);}
-  .method-card .idx{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--accent2); /* Sourced light blue */ margin-bottom:12px; display:block;}
-  .method-card h3{font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size:19.5px; /* Sans for better readability on dark */ margin-bottom:14px; color:#FBF3FF;}
+  .method-card .idx{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--violet-light); margin-bottom:14px; display:block;}
+  .method-card h3{font-size:21px; margin-bottom:12px; color:#FBF3FF; border:none;} /* Keine deplatzierten Unterstriche */
   .method-card p{font-size:15px; margin:0; color:#E4D3EC; line-height:1.65;}
 
-  /* BÜCHER & PRESSE - 2x2 Grid redesign */
-  .presse-buch{background:var(--paper-tint-gold);}
-  .presse-buch h2{font-size:28px; /* Increased standard mobile size */}
-  .presse-buch .section-head + p{font-size:16px; color:var(--ink-soft); max-width:60ch; margin:0 0 32px; line-height: 1.7;}
-  .pb-grid{display:grid; grid-template-columns:1fr; gap:24px;}
-  .pb-col{display: flex; flex-direction: column;}
-  .pb-col .row-title{font-size:13px; font-weight:600; color:var(--violet-dark); margin-bottom:14px;}
-  .pb-gallery-3-4 { width: 65%; max-width: 240px; margin-bottom: 20px; align-self: flex-start; /* Smaller mobile sizes */}
+  /* BÜCHER & PRESSE — Edles 2x2 Raster Layout */
+  .presse-buch{background:var(--paper-tint-gold); padding:100px 0;}
+  .presse-buch .section-head{margin-bottom:24px;}
+  .presse-buch .section-desc{font-size:16px; color:var(--ink-soft); max-width:72ch; margin:0 0 48px; grid-column: 1 / -1;}
+  .pb-grid-2x2{display:grid; grid-template-columns:1fr; gap:40px;}
+  .pb-col-box {display: flex; flex-direction: column;}
+  .pb-col-box .row-title{font-size:14px; font-weight:600; color:var(--violet-dark); margin-bottom:14px;}
+  .pb-col-box .gallery {width: 100%; max-width: 320px;}
 
   /* VIDEO */
-  .video-sec h2{font-size:27px; /* Increased standard mobile size */ margin-bottom:24px; text-align:center;}
+  .video-sec h2{margin-bottom:32px; text-align:center;}
   .video-wrap{max-width:680px; margin:0 auto;}
   .video-frame{position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/9; box-shadow:var(--shadow); background:#000;}
   .video-frame iframe{width:100%; height:100%; border:0; display:block;}
 
-  /* RETREAT - Darkened background slightly, optimized colors */
-  .retreat{color:#F0E9F2; /* Slightly adjusted text color */ position:relative;}
+  /* RETREAT — Textfarben-Kontrast angepasst, Hintergrund leicht gedunkelt */
+  .retreat{color:#F5Eefa; position:relative;}
   .retreat-bg{position:absolute; inset:0; z-index:0;}
   .retreat-bg img{width:100%; height:100%; object-fit:cover;}
-  .retreat-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(42,21,51,0.45), rgba(42,21,51,0.6)); /* Slightly darkened */}
-  .retreat h2{font-size:29px; /* Increased standard mobile size */ color:#FBF3FF; text-shadow:0 2px 16px rgba(0,0,0,0.35);}
-  .retreat h2 em{color:var(--accent2); /* Sourced light blue */}
-  .retreat p{opacity:0.95; margin:22px 0 30px; font-size:16px; max-width:44ch;}
+  .retreat-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(42,21,51,0.5), rgba(42,21,51,0.68));}
+  .retreat .eyebrow{color:var(--accent-light-blue); opacity:1;}
+  .retreat h2{color:#FBF3FF; text-shadow:0 2px 16px rgba(0,0,0,0.35);}
+  .retreat h2 em{color:var(--violet-light);}
+  .retreat p{opacity:0.95; margin:24px 0 32px; font-size:16.5px; max-width:48ch; color:#F0E9F2;}
   .retreat .cta-violet-outline{max-width:240px;}
 
-  /* THERAPEUTEN - Replaced section to better serve the method */
-  .therapists{background:var(--paper-tint);}
+  /* FÜR THERAPEUTEN */
+  .therapists{background:var(--paper-tint); padding:100px 0;}
   .therapists .eyebrow{color:var(--violet);}
-  .therapists h2{font-size:26px; /* Increased standard mobile size */}
-  .therapists p{color:var(--ink-soft); font-size:15.5px; margin-bottom: 20px;}
+  .therapists h2{max-width:20ch;}
+  .therapists p{color:var(--ink-soft); font-size:15.5px;}
   .t-chip{
     display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); border-radius:20px;
-    padding:7px 14px; font-size:12.5px; color:var(--violet-dark); margin:14px 0 10px; font-family:'IBM Plex Mono', monospace;
+    padding:7px 14px; font-size:12.5px; color:var(--violet-dark); margin:14px 0 16px; font-family:'IBM Plex Mono', monospace;
   }
-  .pull-quote{border-left:3px solid var(--violet-light); padding:6px 0 6px 18px; margin:22px 0 28px; font-style:italic; color:var(--violet-dark); font-size:16.5px; line-height: 1.6;}
+  .pull-quote{border-left:3px solid var(--violet); padding:6px 0 6px 18px; margin:20px 0 24px; font-style:italic; color:var(--violet-dark); font-size:16px;}
 
-  /* INNER CIRCLE - Optimized positioning and darkened background slightly */
-  .inner-circle{color:var(--violet-light); position:relative;}
+  /* NEWSLETTER / INNER CIRCLE — Links platziert & Hintergrund dezent gedunkelt */
+  .inner-circle{color:#F5E9FA; position:relative;}
   .ic-bg{position:absolute; inset:0; z-index:0;}
   .ic-bg img{width:100%; height:100%; object-fit:cover;}
-  .ic-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(160deg, rgba(42,21,51,0.55), rgba(42,21,51,0.5)); /* Slightly darkened */}
-  .inner-circle .wrap{max-width:680px; text-align: left;} /* Left aligned */
+  .ic-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(160deg, rgba(42,21,51,0.58), rgba(42,21,51,0.52));}
+  .inner-circle .wrap{max-width:720px; margin-left: 0; text-align: left;} /* Links platziert */
   .inner-circle .eyebrow{color:#EAC7DE; opacity:1;}
-  .inner-circle .eyebrow::before{background:var(--accent2); /* Sourced light blue */}
-  .inner-circle h2{font-size:28px; /* Increased standard mobile size */ color:#F5E9FA; margin-bottom:18px; text-shadow:0 2px 16px rgba(0,0,0,0.35);}
-  .inner-circle p{opacity:0.92; font-size:15.5px; margin:0 0 30px; text-shadow:0 1px 10px rgba(0,0,0,0.3);}
+  .inner-circle .eyebrow::before{background:var(--violet-light);}
+  .inner-circle h2{color:#F5E9FA; margin-bottom:20px; text-shadow:0 2px 16px rgba(0,0,0,0.35);}
+  .inner-circle p{opacity:0.92; font-size:16px; margin:0 0 32px;}
   .ic-badge{
     display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono', monospace; font-size:11px;
     letter-spacing:0.08em; text-transform:uppercase; border:1px solid var(--violet-light); color:#F5E9FA;
     padding:6px 14px; border-radius:20px; margin-bottom:24px;
   }
-  .ic-form{display:flex; flex-wrap:wrap; gap:12px; max-width:460px; justify-content: flex-start; /* Left aligned */}
-  .ic-form input{flex:1 1 200px; padding:15px 20px; border-radius:40px; border:1.5px solid rgba(255,255,255,0.35); background:rgba(255,255,255,0.1); color:#fff; font-family:'IBM Plex Sans'; font-size:14.5px;}
-  .ic-form input::placeholder{color:rgba(255,255,255,0.6);}
+  .ic-form{display:flex; flex-wrap:wrap; gap:12px; max-width:480px;}
+  .ic-form input{flex:1 1 220px; padding:15px 20px; border-radius:40px; border:1.5px solid rgba(255,255,255,0.35); background:rgba(255,255,255,0.12); color:#fff; font-family:'IBM Plex Sans'; font-size:15px;}
+  .ic-form input::placeholder{color:rgba(255,255,255,0.65);}
   .ic-form .cta-violet-outline{width:auto; flex:0 0 auto;}
-  .ic-note{font-size:12px; opacity:0.7; margin-top:16px;}
+  .ic-note{font-size:12.5px; opacity:0.75; margin-top:16px;}
 
-  /* CLOSING — Decluttered and separated content */
-  .closing{position:relative; color:#F6F2F8;}
+  /* CLOSING — Klar getrennt, dramatische Bildwirkung wiederhergestellt */
+  .closing{position:relative; color:#F6F2F8; padding:100px 0;}
   .closing-bg{position:absolute; inset:0; z-index:0;}
   .closing-bg img{width:100%; height:100%; object-fit:cover;}
-  .closing-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,10,26,0.5), rgba(20,10,26,0.7)); /* Slightly darkened */}
-  /* Replaced closing-panel with direct layout elements */
-  .closing-main-grid { display: grid; gap: 40px; grid-template-columns: 1fr;}
-  .closing-gallery-block { display: flex; flex-direction: column; gap: 20px;}
-  .closing-text-block { background:rgba(20,10,26,0.5); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:28px 20px; backdrop-filter:blur(3px);}
-
-  .closing-grid{display:grid; gap:32px;}
-  .closing h2{font-size:29px; /* Increased standard mobile size */ margin:0 0 18px; text-shadow:0 2px 16px rgba(0,0,0,0.3);}
-  .closing p{opacity:0.92; margin:0 0 32px; font-size:16px;}
+  .closing-bg::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,8,20,0.62), rgba(15,8,20,0.78));} /* Genug Abdunklung für das Licht-Motiv */
+  
+  .closing-panel{
+    background:rgba(20,10,26,0.55); border:1px solid rgba(255,255,255,0.1); border-radius:8px;
+    padding:36px 24px; backdrop-filter:blur(4px);
+  }
+  .closing-grid{display:grid; gap:40px;}
+  .closing h2{margin:0 0 20px; text-shadow:0 2px 16px rgba(0,0,0,0.4); color:#fff;}
+  .closing p{opacity:0.92; margin:0 0 32px; font-size:16px; color:#e2dbe6;}
   .closing-ctas{display:flex; flex-direction:column; gap:16px;}
-  .closing-row-title{font-size:12.5px; font-family:'IBM Plex Mono', monospace; letter-spacing:0.08em; text-transform:uppercase; color:#EAC7DE; margin-bottom:12px;}
+  .closing-row-title{font-size:12.5px; font-family:'IBM Plex Mono', monospace; letter-spacing:0.08em; text-transform:uppercase; color:#EAC7DE; margin-bottom:16px; display:block;}
 
-  /* FOOTER - Violet color and dark bar */
-  footer{background:var(--violet-footer); color:rgba(251,249,246,0.85); padding:64px 0 40px;}
-  .footer-top{display:grid; grid-template-columns:1fr; gap:34px; padding-bottom:34px; margin-bottom:0;}
-  footer h4{font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(251,249,246,0.6); margin:0 0 18px;}
-  footer ul{list-style:none; margin:0; padding:0; display:grid; gap:12px;}
-  footer a{color:inherit; text-decoration:none; font-size:15px;}
+  /* FOOTER — Überarbeitet in Lila/Violett, helleres Blau weggelassen */
+  footer{background:var(--violet-footer); color:rgba(251,249,246,0.8); padding:64px 0 40px;}
+  .footer-top{display:grid; grid-template-columns:1fr; gap:34px; padding-bottom:34px;}
+  footer h4{font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(251,249,246,0.5); margin:0 0 16px;}
+  footer ul{list-style:none; margin:0; padding:0; display:grid; gap:11px;}
+  footer a{color:inherit; text-decoration:none; font-size:14.5px; transition: color 0.2s;}
   footer a:hover{color:#fff;}
+  
+  /* Der Boden der Footerleiste in tiefem Deep Blue, Design1 gelöscht */
   .footer-credit-bar{
-    background:var(--deep-blue-footer-bar); /* Darker blue bar */ color:#B3D4E5; padding:18px 20px; font-family:'IBM Plex Mono', monospace; font-size:12.5px;
-    display:flex; flex-direction:column; gap:10px; align-items:center; text-align:center;
+    background:var(--deep-blue-footer-bar); color:rgba(251,249,246,0.6); padding:20px; font-family:'IBM Plex Mono', monospace; font-size:12.5px;
+    display:flex; flex-direction:column; gap:10px; align-items:center; text-align:center; border-top:1px solid rgba(255,255,255,0.05);
   }
   .footer-credit-bar a{color:#B3D4E5; text-decoration:underline; font-weight:600;}
 
   :focus-visible{outline:2px solid var(--violet-light); outline-offset:2px;}
 
   /* ===== DESKTOP ===== */
-  @media (min-width:700px){
+  @media (min-width:768px){
     body{font-size:18px;}
-    section{padding:132px 0;}
-    .section-head{margin-bottom:64px; /* Increased breathing */}
+    section{padding:140px 0;}
+    .section-head{margin-bottom:64px;}
     .wrap{padding:0 40px;}
     .nav-inner{padding:20px 40px;}
     .logo-ph{width:150px; height:34px; font-size:10px;}
@@ -308,34 +318,20 @@
 
     .cta, .cta-secondary, .cta-violet-outline, .cta-solid-violet{width:auto;}
 
-    /* HERO DESKTOP - Integrated image presentation */
-    .hero{padding-top:0; padding-bottom: 0; min-height: 90vh; background: var(--violet-deep); position: relative;}
-    .hero-grid{grid-template-columns: 55% 45%; gap: 0; align-items: stretch;}
-    .hero-text-col { display: flex; align-items: center; justify-content: flex-end; padding: 100px 80px 100px 40px; color: var(--paper); text-align: right; }
-    .hero-text-col > .reveal {max-width: 580px; }
-    .hero h1{font-size:clamp(42px, 5vw, 64px); color: #fff;}
-    .hero p.lede{font-size:20px; max-width:42ch; margin:32px 0 44px; color: #D7C4E1; margin-left: auto;}
-    .hero strong { color: #fff; }
-    .hero-text-col .eyebrow { color: var(--violet-light); flex-direction: row-reverse; }
-    .hero-text-col .eyebrow::before { background: var(--violet-light); }
+    .hero{padding-top:80px; padding-bottom:120px;}
+    .hero-grid{grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:center;}
+    .hero h1{font-size:clamp(40px,4.5vw,58px);}
+    .hero p.lede{font-size:19.5px; max-width:46ch; margin:28px 0 38px;}
+    .enso-corner{width:110px; height:110px; top:-24px; left:-24px;}
 
-    .hero-img-col {
-      order: unset; margin: 0; /* Unset mobile settings */
-      position: absolute; right: 0; top: 0; bottom: 0; width: 45%; overflow: hidden;
-    }
-    .hero-img-wrap { height: 100%;}
-    .enso-corner{width:120px; height:120px; top:40px; left:40px;}
-
-    /* FAKTEN DESKTOP - prevent gallery run-off */
     .credentials h2{font-size:clamp(30px,3.2vw,36px);}
-    .cred-layout{grid-template-columns:1fr 1fr; align-items:start; gap: 40px;}
+    .cred-layout{grid-template-columns:1.1fr 0.9fr; gap:48px;}
     .cred-grid{grid-template-columns:repeat(2,1fr); gap:24px;}
-    .cred-item .num{font-size:36px;}
-    .cred-item .label{font-size:14px; max-width:22ch;}
-    .cred-gallery-col { align-self: flex-start; /* Prevention of gallery run-off */}
+    .cred-item .num{font-size:38px;}
+    .cred-item .label{font-size:14.5px; max-width:22ch;}
 
     .problem .wrap{max-width:860px;}
-    .problem h2{font-size:clamp(32px,3.4vw,40px); max-width:20ch;}
+    .problem h2{font-size:clamp(32px,3.5vw,40px); max-width:20ch;}
     .statement{padding:28px 0 28px 26px; grid-template-columns:56px 1fr; gap:20px;}
     .statement p{font-size:17px; max-width:58ch;}
 
@@ -345,55 +341,45 @@
     .origin-head{grid-column:1; grid-row:1;}
     .origin-img-a{grid-column:2; grid-row:1;}
     .origin-img-b{grid-column:1; grid-row:2;}
-    .origin-text-b{grid-column:2; grid-row:2; padding-top: 10px;}
+    .origin-text-b{grid-column:2; grid-row:2; padding-top:12px;}
     .origin p{font-size:17px;}
 
-    .gallery-layout{grid-template-columns:0.8fr 1.2fr; gap: 50px;}
-    .gallery-section.alt .gallery-layout{grid-template-columns:1.2fr 0.8fr;}
-    .gallery-section.alt .gallery-label{order:2; padding-right: 0; padding-left: 20px;}
+    .gallery-layout{grid-template-columns:0.75fr 1.25fr; gap:48px;}
+    .gallery-section.alt .gallery-layout{grid-template-columns:1.25fr 0.75fr;}
+    .gallery-section.alt .gallery-label{order:2;}
     .gallery-section.alt .gallery{order:1;}
 
     .method .wrap{max-width:1000px;}
-    .method h2{font-size:clamp(32px,3.4vw,40px); max-width:18ch;}
-    .method-grid{grid-template-columns:repeat(4,1fr); gap: 16px;}
-    .method-card{padding:34px 26px;}
-    .method-card h3{font-size:21px;}
-    .method-card p{font-size:15.5px;}
+    .method h2{font-size:clamp(32px,3.5vw,42px); max-width:18ch;}
+    .method-grid{grid-template-columns:repeat(4,1fr); gap:16px;}
+    .method-card{padding:34px 24px;}
+    .method-card h3{font-size:20px;}
 
-    /* BÜCHER & PRESSE DESKTOP - Redesigned 2x2 Grid */
-    .presse-buch h2{font-size:clamp(30px,3.2vw,36px);}
-    .presse-buch .section-head + p{font-size:17px;}
-    .pb-section-wrap { display: grid; grid-template-columns: 1fr; gap: 60px; max-width: 1000px; margin: 0 auto;}
-    /* Reused pb-grid settings but refined */
-    .pb-grid{grid-template-columns:1fr 1fr; gap:50px; align-items: flex-start;}
-    .pb-gallery-3-4 { width: 100%; max-width: 280px; align-self: flex-start; } /* Prevention of gallery run-off */
+    /* 2x2 Raster Desktop */
+    .pb-grid-2x2{grid-template-columns:1fr 1fr; gap:48px; align-items: start;}
 
     .video-sec h2{font-size:clamp(28px,3vw,34px);}
 
-    .retreat .wrap{max-width:640px;}
-    .retreat h2{font-size:clamp(32px,3.8vw,44px);}
+    .retreat .wrap{max-width:680px;}
+    .retreat h2{font-size:clamp(34px,3.8vw,46px);}
     .retreat p{font-size:17.5px;}
 
     .seminar-wrap{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
-    .therapists h2{font-size:clamp(28px,3vw,32px); max-width:20ch; margin-top:0;}
+    .therapists h2{font-size:clamp(28px,3vw,34px); max-width:20ch; margin-top:0;}
     .therapists p{font-size:16.5px; max-width:52ch;}
 
-    .inner-circle h2{font-size:clamp(32px,3.4vw,38px);}
-    .ic-form{justify-content: flex-start; gap: 14px;}
+    .inner-circle h2{font-size:clamp(32px,3.5vw,40px);}
+    .inner-circle .wrap{margin-left: 40px;}
 
-    /* CLOSING DESKTOP - integrated separated blocks */
     .closing .wrap{max-width:1020px;}
-    .closing-main-grid { grid-template-columns: repeat(2, 1fr); gap: 64px;}
-    .closing-gallery-block { gap: 32px;}
-    .closing-gallery-block .closing-row-title { display: none;} /* Implicit in gallery */
-    .closing-text-block{padding:48px; border-radius: 12px;}
-
+    .closing-panel{padding:56px;}
+    .closing-grid{grid-template-columns:0.8fr 1.2fr; gap:64px; align-items:center;}
     .closing h2{font-size:clamp(34px,3.8vw,46px);}
     .closing p{font-size:17.5px;}
     .closing-ctas{flex-direction:row;}
 
     .footer-top{grid-template-columns:1fr 1fr; gap:60px;}
-    .footer-credit-bar{flex-direction:row; justify-content:space-between; padding:20px 40px;}
+    .footer-credit-bar{flex-direction:row; justify-content:space-between; padding:20px 40px; text-align:left;}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -425,17 +411,15 @@
 </nav>
 
 <section class="hero">
-  <div class="hero-grid">
-    <div class="hero-text-col">
-      <div class="reveal is-visible">
-        <span class="eyebrow">Psychosomatik &amp; Nervensystem-Regeneration</span>
-        <h1>Ist die Seele <em>erschöpft</em>,<br>wird der Körper krank.</h1>
-        <p class="lede">Prof. h. c. Manfred P. Krames berät seit <strong>26 Jahren</strong> Führungskräfte und Therapeuten bei Erschöpfung, Burnout und chronischer Stressbelastung, fundiert in <span class="hl">fernöstlicher Medizin</span> und westlicher Psychologie.</p>
-        <a href="#retreat" class="cta">Retreat entdecken</a>
-      </div>
+  <div class="wrap hero-grid">
+    <div class="reveal is-visible">
+      <span class="eyebrow">Psychosomatik &amp; Nervensystem-Regeneration</span>
+      <h1>Ist die Seele <em>erschöpft</em>,<br>wird der Körper krank.</h1>
+      <p class="lede">Prof. h. c. Manfred P. Krames berät seit <strong>26 Jahren</strong> Führungskräfte und Therapeuten bei Erschöpfung, Burnout und chronischer Stressbelastung, fundiert in <span class="hl">fernöstlicher Medizin</span> und westlicher Psychologie.</p>
+      <a href="#retreat" class="cta">Retreat entdecken</a>
     </div>
-    <div class="hero-img-col">
-      <div class="reveal is-visible hero-img-wrap">
+    <div class="reveal is-visible d1">
+      <div class="hero-img-wrap">
         <svg class="enso-corner" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M 150 40 A 110 110 0 1 1 55 100"/>
         </svg>
@@ -500,7 +484,7 @@
     </div>
   </div>
 </section>
-  
+
 <section class="problem">
   <div class="problem-bg"><img src="images/dunkelheit-smog-einer-stadt-blau-schwarz.png" alt="Nächtliche Skyline im Nebel, Hintergrundbild"></div>
   <div class="wrap">
@@ -532,15 +516,15 @@
         <span class="eyebrow">Herkunft der Methode</span>
         <h2>26 Jahre Ostasien, nicht als Kur-Exotik, sondern als <span class="hl">Grundlage</span>.</h2>
       </div>
-      <div class="origin-img-a framed-gallery reveal d1">
+      <div class="origin-img-a framed reveal d1">
         <img src="images/srilanka-bootsmann-hellblauwasser-hellbraun-himmel.jpg" alt="Fischerboot vor Sri Lanka">
       </div>
-      <div class="origin-img-b framed-gallery reveal d1">
+      <div class="origin-img-b framed reveal d1">
         <img src="images/todestempel-indien-gold-blau.jpg" alt="Goldener Tempel in Indien">
       </div>
       <div class="origin-text-b reveal d2">
         <p>Die Methode entstand nicht am Schreibtisch, sondern in der klinischen Praxis: als junger Klinikleiter auf Sri Lanka, in der langjährigen Mitarbeit an einer Tokioter Psychosomatik-Klinik und im Austausch mit einem Ayurveda-Arzt in siebter Generation.</p>
-        <p>Zentral ist die Beobachtung, dass many körperliche Beschwerden europäischer Kurgäste ihren Ursprung im geistig-seelischen Bereich hatten: eine Beobachtung, die westliche Psychologie und fernöstliche Medizinlehren zusammenführt, statt sie gegeneinander auszuspielen.</p>
+        <p>Zentral ist die Beobachtung, dass viele körperliche Beschwerden europäischer Kurgäste ihren Ursprung im geistig-seelischen Bereich hatten: eine Beobachtung, die westliche Psychologie und fernöstliche Medizinlehren zusammenführt, statt sie gegeneinander auszuspielen.</p>
         <div class="origin-tags">
           <span>Sri Lanka</span>
           <span>Indien</span>
@@ -551,7 +535,7 @@
         </div>
       </div>
     </div>
-    <div style="height: 1rem;"></div>   </div>
+  </div>
 </section>
 
 <section class="gallery-section alt" id="ausbildung-praxis">
@@ -584,7 +568,6 @@
     </div>
   </div>
 </section>
-  
 
 <section class="method" id="methode">
   <div class="wrap">
@@ -620,13 +603,15 @@
 <section class="presse-buch" id="buchreihe">
   <div class="wrap">
     <div class="pb-section-wrap">
-      <div class="pb-head-block reveal">
-        <span class="eyebrow">Bücher &amp; Presse</span>
-        <h2>Standardwerke für ganzheitliche <span class="hl">Fachleute</span>.</h2>
-        <p class="section-lede">Das Fachbuch <em>„Vata Syndrom"</em> erschien auf Deutsch, Japanisch und Englisch und gilt als Standardwerk für Heilpraktiker, Psychologen and Therapeuten. Presseerwähnungen aus mehreren Ländern begleiten die Arbeit seit Jahrzehnten.</p>
+      <div class="section-head reveal">
+        <span class="eyebrow">Buchreihe &amp; Presse</span>
+        <h2>26 Bücher: <span class="hl">Standardwerke</span> für Fachleute.</h2>
       </div>
-      <div class="pb-grid">
-        <div class="pb-col reveal pb-gallery-3-4">
+      <p class="section-desc reveal">Das Fachbuch <em>„Vata Syndrom"</em> erschien auf Deutsch, Japanisch und Englisch und gilt als Standardwerk für Heilpraktiker, Psychologen und Therapeuten. Presseerwähnungen aus mehreren Ländern begleiten die Arbeit seit Jahrzehnten.</p>
+      
+      <!-- Sauberes 2x2 Raster Layout -->
+      <div class="pb-grid-2x2">
+        <div class="pb-col-box reveal">
           <div class="row-title">Buchreihe</div>
           <div class="gallery gallery-3-4" data-interval="4000">
             <div class="gallery-slide active">
@@ -642,7 +627,7 @@
             </div>
           </div>
         </div>
-        <div class="pb-col reveal pb-gallery-3-4 d1">
+        <div class="pb-col-box reveal d1">
           <div class="row-title">Presse</div>
           <div class="gallery gallery-3-4" data-interval="4500">
             <div class="gallery-slide active">
@@ -681,7 +666,7 @@
   <div class="retreat-bg"><img src="images/seelandschaft-mystisch-blau-weiß-violett.jpg" alt="Mystische Seelandschaft, Hintergrundbild"></div>
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow" style="color:var(--accent2); /* Sourced light blue */ opacity:1;">Der Raum</span>
+      <span class="eyebrow">Der Raum</span>
       <h2>Ein Ort für die Ursachenklärung, <em>ohne Ablenkung</em>.</h2>
     </div>
     <p class="reveal">Das Retreat findet in kleiner, persönlicher Runde statt. Kein Wellness-Programm nebenbei, sondern ausschließlich Zeit für Ihre Situation: begleitet, ausführlich, ohne Zeitdruck.</p>
@@ -691,34 +676,36 @@
 
 <section class="therapists" id="therapeuten">
   <div class="wrap">
-    <div class="seminar-wrap">
-      <div class="reveal">
-        <span class="eyebrow">Ganzheitliche Weiterbildung</span>
-        <h2>Ausbildung aus 26 Jahren klinischer <span class="hl">Praxis</span>.</h2>
-        <div class="t-chip">500+ ausgebildete Therapeuten und Berater</div>
-        <p>Die fachliche Weiterbildung vermittelt eine diagnostische Methode, kombiniert westliche Psychologie und ostasiatische Medizin, für Therapeuten und Berater, die fundiert ganzheitlich arbeiten wollen.</p>
-        <p class="pull-quote">„Ich sehe Sie als Menschen, nicht als Krankheitsbild, und ich höre nicht auf, bis ich die Ursache erkenne."</p>
-        <a href="#kontakt" class="cta-solid-violet">Ausbildung anfragen</a>
-      </div>
-      <div class="reveal d1" style="align-self: flex-start; /* prevent gallery run-off */">
-        <div class="row-title" style="font-size:13.5px; font-weight:600; color:var(--violet-dark); margin-bottom:14px;">Seminare in Deutschland</div>
-        <div class="gallery gallery-3-2" data-interval="4500">
-          <div class="gallery-slide active">
-            <img src="images/untere-reihe-krames-als-seminarleiter-deutschekunden-gruppenbild.png" alt="Krames als Seminarleiter mit deutschen Kunden">
-            <div class="gallery-cap">Seminarleitung, Gruppenbild</div>
-          </div>
-          <div class="gallery-slide">
-            <img src="images/untere-reihe-krames-seminar-mit-deutschen.jpg" alt="Seminar mit deutschen Teilnehmern">
-            <div class="gallery-cap">Seminarrunde, Deutschland</div>
-          </div>
-          <div class="gallery-slide">
-            <img src="images/untere-reihe-krames-seminar-mit-deutschen-2.jpg" alt="Seminar mit deutschen Teilnehmern, zweites Bild">
-            <div class="gallery-cap">Seminarrunde, Deutschland</div>
-          </div>
-          <div class="gallery-dots">
-            <button class="gallery-dot active" aria-label="Bild 1"></button>
-            <button class="gallery-dot" aria-label="Bild 2"></button>
-            <button class="gallery-dot" aria-label="Bild 3"></button>
+    <div class="wrap-inner-content">
+      <div class="seminar-wrap">
+        <div class="reveal">
+          <span class="eyebrow">Für Therapeuten und Berater</span>
+          <h2>Fachliche Weiterbildung, <span class="hl">keine Wellness-Zertifizierung</span>.</h2>
+          <div class="t-chip">500+ ausgebildete Therapeuten und Berater</div>
+          <p>Die Weiterbildung vermittelt eine diagnostische Methode aus 26 Jahren klinischer Praxis in Ostasien, kombiniert mit westlicher Psychologie, für Kollegen, die ganzheitlich und fundiert arbeiten wollen.</p>
+          <p class="pull-quote">„Ich sehe Sie als Menschen, nicht als Krankheitsbild, und ich höre nicht auf, bis ich die Ursache erkenne."</p>
+          <a href="#kontakt" class="cta-solid-violet">Ausbildung anfragen</a>
+        </div>
+        <div class="reveal d1">
+          <div class="row-title" style="font-size:13.5px; font-weight:600; color:var(--violet-dark); margin-bottom:12px;">Seminare in Deutschland</div>
+          <div class="gallery gallery-3-2" data-interval="4500">
+            <div class="gallery-slide active">
+              <img src="images/untere-reihe-krames-als-seminarleiter-deutschekunden-gruppenbild.png" alt="Krames als Seminarleiter mit deutschen Kunden">
+              <div class="gallery-cap">Seminarleitung, Gruppenbild</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/untere-reihe-krames-seminar-mit-deutschen.jpg" alt="Seminar mit deutschen Teilnehmern">
+              <div class="gallery-cap">Seminarrunde, Deutschland</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/untere-reihe-krames-seminar-mit-deutschen-2.jpg" alt="Seminar mit deutschen Teilnehmern, zweites Bild">
+              <div class="gallery-cap">Seminarrunde, Deutschland</div>
+            </div>
+            <div class="gallery-dots">
+              <button class="gallery-dot active" aria-label="Bild 1"></button>
+              <button class="gallery-dot" aria-label="Bild 2"></button>
+              <button class="gallery-dot" aria-label="Bild 3"></button>
+            </div>
           </div>
         </div>
       </div>
@@ -731,7 +718,7 @@
   <div class="wrap reveal">
     <span class="ic-badge">🔒 Zutritt per Newsletter</span>
     <h2>Innerer Kreis: tiefergehendes Wissen aus 26 Jahren Praxis.</h2>
-    <p>Ein begrenzter Kreis aus Klienten and Therapeuten erhält per Newsletter Zugang zu weiterführenden Inhalten, etwa der vollständigen Vata-Diagnostik, der 5-Elemente-Analyse und Hintergründen, die Prof. Krames sonst nur im direkten Gespräch teilt.</p>
+    <p>Ein begrenzter Kreis aus Klienten und Therapeuten erhält per Newsletter Zugang zu weiterführenden Inhalten, etwa der vollständigen Vata-Diagnostik, der 5-Elemente-Analyse und Hintergründen, die Prof. Krames sonst nur im direkten Gespräch teilt.</p>
     <form class="ic-form" onsubmit="return false;">
       <input type="email" placeholder="Ihre E-Mail-Adresse" aria-label="E-Mail-Adresse">
       <button type="submit" class="cta-violet-outline">Zutritt anfragen</button>
@@ -743,45 +730,48 @@
 <section class="closing" id="kontakt">
   <div class="closing-bg"><img src="images/schwarzer-raum-hand-ein-lichtloch-hoffnung.jpg" alt="Hand, die nach Licht greift, Hintergrundbild"></div>
   <div class="wrap">
-    <div class="closing-main-grid reveal">
-      <div class="closing-gallery-block">
-        <div class="closing-row-title">Momente aus 26 Jahren</div>
-                <div class="gallery gallery-4-5" data-interval="4000">
-          <div class="gallery-slide active">
-            <img src="images/letzte-reihe-krames-als-autor-altermann.png" alt="Prof. Krames als Autor im TV-Interview">
-            <div class="gallery-cap">Als Autor, TV-Interview</div>
-          </div>
-          <div class="gallery-slide">
-            <img src="images/letzte-reihe-krames-als-tvgast-junger.png" alt="Prof. Krames als TV-Gast, jüngere Jahre">
-            <div class="gallery-cap">TV-Gast, frühe Jahre</div>
-          </div>
-          <div class="gallery-dots">
-            <button class="gallery-dot active" aria-label="Bild 1"></button>
-            <button class="gallery-dot" aria-label="Bild 2"></button>
+    <div class="closing-panel reveal">
+      <div class="closing-grid">
+        <div>
+          <span class="closing-row-title">Momente aus 26 Jahren</span>
+          <div class="gallery gallery-4-5" data-interval="4000">
+            <div class="gallery-slide active">
+              <img src="images/letzte-reihe-krames-als-autor-altermann.png" alt="Prof. Krames als Autor im TV-Interview">
+              <div class="gallery-cap">Als Autor, TV-Interview</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/letzte-reihe-krames-als-tvgast-junger.png" alt="Prof. Krames als TV-Gast, jüngere Jahre">
+              <div class="gallery-cap">TV-Gast, frühe Jahre</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/letzte-reihe-krames-lachend-neben-mountfuji.jpg" alt="Prof. Krames am Mount Fuji">
+              <div class="gallery-cap">Am Fuße des Mount Fuji</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/letzte-reihe-alter-krames-mit-alten-mönch.jpg" alt="Prof. Krames im Gespräch mit einem Mönch">
+              <div class="gallery-cap">Im Gespräch mit einem Mönch, Thailand</div>
+            </div>
+            <div class="gallery-slide">
+              <img src="images/letzte-reihe-alter-krames-mit-indischsrilankisch-mönch.jpg" alt="Prof. Krames im Gespräch mit einem Mönch, Sri Lanka/Indien">
+              <div class="gallery-cap">Im Gespräch mit einem Mönch, Sri Lanka/Indien</div>
+            </div>
+            <div class="gallery-dots">
+              <button class="gallery-dot active" aria-label="Bild 1"></button>
+              <button class="gallery-dot" aria-label="Bild 2"></button>
+              <button class="gallery-dot" aria-label="Bild 3"></button>
+              <button class="gallery-dot" aria-label="Bild 4"></button>
+              <button class="gallery-dot" aria-label="Bild 5"></button>
+            </div>
           </div>
         </div>
-                <div class="gallery gallery-3-2 d1" data-interval="4500" style="width: 75%; max-width: 320px; align-self: flex-start; margin-top: -10px; /* Overlap effect mobile */">
-          <div class="gallery-slide active">
-            <img src="images/letzte-reihe-alter-krames-mit-alten-mönch.jpg" alt="Prof. Krames im Gespräch mit einem Mönch">
-            <div class="gallery-cap">Thailand</div>
+        <div>
+          <span class="eyebrow" style="color:var(--accent-light-blue); opacity:1;">Nächster Schritt</span>
+          <h2>Zwei Wege, den ersten Schritt zu machen.</h2>
+          <p>Beratungen finden persönlich, per Zoom, Telefon oder WhatsApp statt: weltweit, mit besonderer Erfahrung im deutschsprachigen Raum.</p>
+          <div class="closing-ctas">
+            <a href="#" class="cta">Retreat buchen</a>
+            <a href="#" class="cta-violet-outline">Therapieplatz anfragen</a>
           </div>
-          <div class="gallery-slide">
-            <img src="images/letzte-reihe-alter-krames-mit-indischsrilankisch-mönch.jpg" alt="Prof. Krames im Gespräch mit einem Mönch, Sri Lanka/Indien">
-            <div class="gallery-cap">Sri Lanka/Indien</div>
-          </div>
-          <div class="gallery-dots">
-            <button class="gallery-dot active" aria-label="Bild 1"></button>
-            <button class="gallery-dot" aria-label="Bild 2"></button>
-          </div>
-        </div>
-      </div>
-      <div class="closing-text-block d2">
-        <span class="eyebrow" style="color:var(--accent2); /* Sourced light blue */ opacity:1;">Nächster Schritt</span>
-        <h2>Zwei Wege, den ersten Schritt zu machen.</h2>
-        <p>Beratungen finden persönlich, per Zoom, Telefon oder WhatsApp statt: weltweit, mit besonderer Erfahrung im deutschsprachigen Raum.</p>
-        <div class="closing-ctas">
-          <a href="#" class="cta">Retreat buchen</a>
-          <a href="#" class="cta-violet-outline">Therapieplatz anfragen</a>
         </div>
       </div>
     </div>
@@ -797,7 +787,7 @@
           <li><a href="#fakten">Fakten</a></li>
           <li><a href="#methode">Methode</a></li>
           <li><a href="#retreat">Retreat</a></li>
-          <li><a href="#therapeuten">Weiterbildung</a></li>
+          <li><a href="#therapeuten">Für Therapeuten</a></li>
           <li><a href="#innerer-kreis">Innerer Kreis</a></li>
         </ul>
       </div>
@@ -812,8 +802,10 @@
     </div>
   </div>
 </footer>
+
 <div class="footer-credit-bar">
-  <span>© 2026 Manfred P. Krames</span>   <span>Erstellt von <a href="https://linktr.ee/mstech_software_and_digital" target="_blank" rel="noopener">msTech – Software &amp; Digital</a></span>
+  <span>© 2026 Manfred P. Krames</span>
+  <span>Erstellt von <a href="https://linktr.ee/mstech_software_and_digital" target="_blank" rel="noopener">msTech – Software &amp; Digital</a></span>
 </div>
 
 <script>
