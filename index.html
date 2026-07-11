@@ -1,353 +1,366 @@
-Perfekt, das gibt der Seite genau die visuelle Tiefe und Authentizität, die sie braucht! Da sich die Bilder in einem Unterordner namens `images/` befinden, habe ich die Pfade im Code als `images/dateiname.erweiterung` hinterlegt.
-
-Hier ist die Struktur, wie ich deine Bilder logisch in die Sektionen integriert habe:
-
-1. **Hero-Bereich:** `images/prof-manfred-krames-portrait.jpg` als imposanter, edler Einstieg.
-2. **Werdegang-Bereich:** Eine elegante 2-Spalten-Galerie (Grid) für die beiden Gremien-Bilder: `images/profmanfredkrames-gremium-ayurveda-mentalegesundheit.jpg` und `images/profmanfredkrames-gremium-fernoestliche-medizin.png`.
-3. **Vorträge/Bücher-Bereich:** Ein wunderschöner, asymmetrischer Abschnitt für das Autoren-Bild: `images/profmanfredkrames-autor-fuer-fernostgesundheitsstudien.png`.
-4. **Kontakt-Bereich:** Das zielführende Bild `images/profmanfredkrames-psychosomatik-selbsthilfe.jpg` direkt neben dem Formular.
-
-Hier ist der fertige, aktualisierte Code für deine `index.html`:
-
-```html
 <!DOCTYPE html>
 <html lang="de" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prof. h. c. Manfred Krames — Premium Landingpage</title>
+    <title>Prof. h. c. Manfred Krames</title>
     
-    <!-- Google Fonts: Edle Serif- & Minimalistische Sans-Serif-Schriften -->
+    <!-- Premium-Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Spectral:ital,wght@0,200;0,300;0,400;1,200;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
     <style>
+        :root {
+            --color-bg-light: #faf6f0;
+            --color-bg-dark: #2d2218;
+            --color-violet: #b06fc4;
+            --color-violet-bg: #5c3070;
+        }
+
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #05021a; /* Dein dunkles Nachtschwarz/Blau */
+            font-family: 'Lato', sans-serif;
+            background-color: var(--color-bg-light);
+            color: var(--color-bg-dark);
+            font-size: 16px; /* text-base */
+            line-height: 1.75;
+            font-weight: 400;
+            padding-top: 68px;
         }
-        .font-serif-edler {
-            font-family: 'Spectral', serif;
+
+        .font-serif-elegant {
+            font-family: 'Playfair Display', serif;
         }
-        /* Elegantes Einblenden beim Scrollen */
-        .fade-in-element {
+
+        /* Accordion-Transition */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .fade-in-element.visible {
+        .accordion-content.open {
+            max-height: 400px;
             opacity: 1;
-            transform: translateY(0);
+        }
+
+        /* Galerie-Fading */
+        .gallery-slide {
+            display: none;
+        }
+        .gallery-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
-<body class="text-[#e2e8f0] overflow-x-hidden antialiased selection:bg-[#f68682]/30 selection:text-white">
-
-    <!-- BACKGROUND ORNAMENT (Nutzt dein sanftes Apricot für einen edlen Glow) -->
-    <div class="absolute top-0 left-0 w-full h-screen pointer-events-none opacity-10 z-0 bg-[radial-gradient(circle_at_top_right,#ffbe99_0%,transparent_50%)]"></div>
+<body id="top" class="antialiased">
 
     <!-- NAVIGATION -->
-    <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-16 py-6 backdrop-blur-md bg-[#05021a]/60 border-b border-white/5">
-        <span class="text-xs font-semibold tracking-[0.3em] uppercase text-[#ffbe99]">
-            Prof. h. c. Manfred Krames
-        </span>
-        <a href="#kontakt" class="text-xs tracking-[0.2em] uppercase px-6 py-3 rounded-full border border-[#ffbe99]/30 text-[#e2e8f0] bg-white/5 hover:bg-[#ffbe99] hover:text-[#05021a] hover:border-[#ffbe99] transition-all duration-300 font-medium">
-            Kontakt
+    <nav class="fixed top-0 left-0 w-full z-100 bg-[#faf6f0]/92 backdrop-blur-[8px] border-b border-[#2d2218]/5 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center">
+        <span class="font-serif-elegant text-base tracking-wider text-[#2d2218] font-semibold">Prof. Manfred Krames</span>
+        <a href="#kontakt" class="bg-[#b06fc4] hover:bg-[#9a5aad] text-white rounded-[100px] px-8 py-3 text-base font-medium tracking-[0.03em] transition-colors duration-200">
+            Kontakt aufnehmen
         </a>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="relative min-h-screen flex flex-col md:flex-row items-center justify-between pt-24 md:pt-0">
-        <!-- Foto Links (Portrait) -->
-        <div class="relative w-full md:w-1/2 h-[85vw] md:h-screen shrink-0 overflow-hidden">
-            <img src="images/prof-manfred-krames-portrait.jpg" alt="Prof. h. c. Manfred Krames Portrait" class="w-full h-full object-cover object-center scale-105" style="filter: contrast(1.02) brightness(0.95);">
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#05021a]/40 to-[#05021a]"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-[#05021a] via-transparent to-transparent md:hidden"></div>
+    <!-- 1. HERO-SECTION -->
+    <section class="min-h-[calc(100vh-68px)] flex flex-col md:flex-row items-center justify-between bg-[#faf6f0]">
+        <div class="w-full md:w-1/2 h-[85vw] md:h-[calc(100vh-68px)] overflow-hidden relative">
+            <img src="images/prof-manfred-krames-portrait.jpg" alt="Portrait" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-r from-transparent to-[#faf6f0] hidden md:block"></div>
         </div>
 
-        <!-- Text Rechts -->
-        <div class="relative flex flex-col justify-center px-6 md:px-12 lg:px-24 py-12 md:py-0 md:-ml-16 lg:-ml-24 z-10 max-w-3xl">
-            <p class="text-xs font-medium uppercase mb-4 text-[#f68682] tracking-[0.3em]">
-                Gesundheitsberatung · Vorträge · Ayurveda
-            </p>
-            
-            <h1 class="text-[11vw] md:text-[5.5vw] font-light leading-[1.05] tracking-tight text-white mb-8 font-serif-edler">
-                Manfred<br>
-                <span class="italic font-extralight text-[#ffbe99]">Krames</span>
-            </h1>
-
-            <div class="h-[2px] mb-8 bg-gradient-to-r from-[#ffbe99] to-transparent w-40"></div>
-
-            <div class="space-y-4">
-                <p class="text-2xl md:text-3xl text-slate-100 font-light leading-relaxed italic border-l-2 border-[#793c5d] pl-4 font-serif-edler">
-                    „Ist die Seele unglücklich,<br>wird der Körper krank.“
-                </p>
-                <p class="text-sm text-[#70586b] tracking-wide font-medium uppercase pt-2">
-                    — Heilt die Seele — dann heilt der Rest auch.
-                </p>
+        <div class="w-full md:w-1/2 px-8 md:px-16 lg:px-24 py-20 md:py-0 flex items-center">
+            <div class="max-w-xl w-full">
+                <h1 class="text-5xl tracking-tight text-[#2d2218] font-serif-elegant leading-[1.05] mb-12">
+                    <span class="font-[300] block">Prof. h. c.</span>
+                    <span class="font-[700] block">Manfred Krames</span>
+                </h1>
+                
+                <div class="my-8 space-y-8">
+                    <div>
+                        <p class="text-[24px] font-serif-elegant italic text-[#b06fc4] border-l-2 border-l-[#b06fc4] pl-5 leading-snug">
+                            „Ist die Seele unglücklich, wird der Körper krank.“
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-[24px] font-serif-elegant italic text-[#b06fc4] border-l-2 border-l-[#b06fc4] pl-5 leading-snug">
+                            „Heilt die Seele, dann heilt der Rest auch.“
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CREDENTIALS & GREMIUM GALLERY SECTION -->
-    <section id="werdegang" class="py-32 px-6 md:px-16 lg:px-24 bg-[#0a0626] border-y border-white/5 relative">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,#793c5d08,transparent_40%)] pointer-events-none"></div>
-        
+    <!-- 2. SEKTION "ZUR PERSON & WERDEGANG" (Ausgerichtetes 2-Spalten-Raster) -->
+    <section class="bg-white py-36 px-8 md:px-16 lg:px-24 border-t border-black/8">
         <div class="max-w-6xl mx-auto">
-            <div class="fade-in-element mb-16">
-                <p class="text-xs tracking-[0.3em] uppercase mb-3 text-[#f68682] font-semibold">Werdegang & Gremienarbeit</p>
-                <h2 class="text-4xl md:text-5xl text-white font-light max-w-2xl leading-tight font-serif-edler">
-                    Ein Leben zwischen<br><span class="italic text-[#ffbe99] font-extralight">Ost und West</span>
-                </h2>
-            </div>
-
-            <!-- Dynamische/Edle Galerie für die Gremium-Bilder -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-                <div class="fade-in-element group overflow-hidden rounded-2xl border border-white/5 bg-[#05021a] transition-all duration-500 hover:border-[#793c5d]/40 shadow-2xl">
-                    <div class="w-full h-64 md:h-80 overflow-hidden">
-                        <img src="images/profmanfredkrames-gremium-ayurveda-mentalegesundheit.jpg" alt="Prof. Manfred Krames - Gremium für Ayurveda und mentale Gesundheit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    </div>
-                    <div class="p-6">
-                        <span class="text-[10px] font-mono tracking-widest text-[#f68682] uppercase">// Fokus Mentale Gesundheit</span>
-                        <h4 class="text-lg text-white font-serif-edler mt-2">Ayurvedische Psychosomatik in der Praxis</h4>
-                    </div>
-                </div>
-
-                <div class="fade-in-element group overflow-hidden rounded-2xl border border-white/5 bg-[#05021a] transition-all duration-500 hover:border-[#793c5d]/40 shadow-2xl">
-                    <div class="w-full h-64 md:h-80 overflow-hidden">
-                        <img src="images/profmanfredkrames-gremium-fernoestliche-medizin.png" alt="Prof. Manfred Krames - Gremium für Fernöstliche Medizin" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    </div>
-                    <div class="p-6">
-                        <span class="text-[10px] font-mono tracking-widest text-[#f68682] uppercase">// Internationale Gremien</span>
-                        <h4 class="text-lg text-white font-serif-edler mt-2">Wissenschaftlicher Austausch zur Fernöstlichen Medizin</h4>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Core Info Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
-                <div class="fade-in-element group relative p-8 rounded-2xl border border-white/5 hover:border-[#793c5d]/50 transition-all duration-500 bg-[#05021a]/80 backdrop-blur-sm shadow-xl">
-                    <p class="text-xs mb-6 font-mono font-medium tracking-widest text-[#f68682]/50 group-hover:text-[#f68682] transition-colors">// 01</p>
-                    <h3 class="text-xl md:text-2xl text-white font-light mb-4 font-serif-edler group-hover:text-[#ffbe99] transition-colors">Buchautor</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed font-light group-hover:text-slate-300 transition-colors">26 Sach- u. Fachbücher in 5 Sprachen</p>
-                </div>
-                <div class="fade-in-element group relative p-8 rounded-2xl border border-white/5 hover:border-[#793c5d]/50 transition-all duration-500 bg-[#05021a]/80 backdrop-blur-sm shadow-xl">
-                    <p class="text-xs mb-6 font-mono font-medium tracking-widest text-[#f68682]/50 group-hover:text-[#f68682] transition-colors">// 02</p>
-                    <h3 class="text-xl md:text-2xl text-white font-light mb-4 font-serif-edler group-hover:text-[#ffbe99] transition-colors">Universitätsdozent</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed font-light group-hover:text-slate-300 transition-colors">Indien & Sri Lanka</p>
-                </div>
-                <div class="fade-in-element group relative p-8 rounded-2xl border border-white/5 hover:border-[#793c5d]/50 transition-all duration-500 bg-[#05021a]/80 backdrop-blur-sm shadow-xl">
-                    <p class="text-xs mb-6 font-mono font-medium tracking-widest text-[#f68682]/50 group-hover:text-[#f68682] transition-colors">// 03</p>
-                    <h3 class="text-xl md:text-2xl text-white font-light mb-4 font-serif-edler group-hover:text-[#ffbe99] transition-colors">Ausbilder</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed font-light group-hover:text-slate-300 transition-colors">Über 500 Therapeuten & Berater weltweit</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LECTURES, ACCOUTREMENT & AUTHOR IMAGE -->
-    <section class="py-32 px-6 md:px-16 lg:px-24 bg-[#05021a]">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
-            <!-- Linker Teil: Text & Accordion -->
-            <div class="lg:col-span-7">
-                <div class="fade-in-element">
-                    <p class="text-xs tracking-[0.3em] uppercase mb-4 text-[#f68682] font-semibold">Vorträge & Seminare</p>
-                    <h2 class="text-3xl md:text-5xl text-white font-light mb-12 leading-tight font-serif-edler">
-                        Anfragen für Vorträge in Hotels, Unternehmen und Kliniken sind willkommen.
-                    </h2>
-                </div>
-
-                <!-- Navigation Tabs -->
-                <div class="flex gap-4 mb-8 border-b border-white/10 pb-px">
-                    <button id="tab-fach" onclick="switchTab('fach')" class="text-xs font-semibold tracking-[0.2em] uppercase px-4 py-4 border-b-2 border-[#ffbe99] text-[#ffbe99] transition-all cursor-pointer">
-                        Für Fachpublikum
-                    </button>
-                    <button id="tab-laien" onclick="switchTab('laien')" class="text-xs font-semibold tracking-[0.2em] uppercase px-4 py-4 border-b-2 border-transparent text-slate-400 hover:text-white transition-all cursor-pointer">
-                        Für Laien
-                    </button>
-                </div>
-
-                <!-- Accordion Container -->
-                <div id="accordion-container" class="space-y-4">
-                    <!-- Wird per JS befüllt -->
-                </div>
-            </div>
-
-            <!-- Rechter Teil: Autor-Bild mit edlem Überhang -->
-            <div class="lg:col-span-5 fade-in-element group relative">
-                <div class="absolute inset-0 bg-[#793c5d] rounded-2xl translate-x-3 translate-y-3 opacity-20 transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1"></div>
-                <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#0a0626]">
-                    <img src="images/profmanfredkrames-autor-fuer-fernostgesundheitsstudien.png" alt="Prof. Manfred Krames - Autor für Fernostgesundheitsstudien" class="w-full h-auto object-cover scale-[1.01] transition-transform duration-700 group-hover:scale-103">
-                    <div class="p-6 bg-[#0a0626]/90 border-t border-white/5">
-                        <p class="text-xs text-[#ffbe99] tracking-widest font-mono uppercase">Publikationen</p>
-                        <h4 class="text-lg text-white font-serif-edler mt-1">Jahrzehntelange Fernostgesundheitsstudien im Fokus</h4>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- KONTAKT & PSYCHOSOMATIK IMAGE SECTION -->
-    <section id="kontakt" class="py-32 px-6 md:px-16 lg:px-24 bg-[#0a0626] border-t border-white/5 relative">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
-            
-            <!-- Linke Spalte: Text & Psychosomatik-Bild -->
-            <div class="lg:col-span-5 flex flex-col justify-between fade-in-element">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                
+                <!-- Linke Spalte: Text & Liste -->
                 <div>
-                    <p class="text-xs tracking-[0.3em] uppercase mb-4 text-[#f68682] font-semibold">Kontakt & Beratung</p>
-                    <h2 class="text-4xl md:text-5xl text-white font-light mb-6 leading-tight font-serif-edler">
-                        Ich freue mich<br><span class="italic text-[#ffbe99] font-extralight">auf Ihre Anfrage.</span>
+                    <h2 class="text-2xl font-normal font-serif-elegant text-[#2d2218] mb-12">
+                        Zur Person & Werdegang
                     </h2>
-                    <p class="text-sm text-slate-400 font-light leading-relaxed mb-8">
-                        Honorar-Anfragen bitte direkt und unkompliziert per E-Mail oder über das Formular.
+                    
+                    <div class="flex flex-col mb-4">
+                        <div class="flex items-start gap-4 py-3.5 border-b border-black/7 text-base leading-[1.6]">
+                            <span class="text-[#b06fc4] text-base font-bold shrink-0 select-none">—</span>
+                            <span>Autor von 26 Sach- u. Fachbüchern in 5 Sprachen</span>
+                        </div>
+                        <div class="flex items-start gap-4 py-3.5 border-b border-black/7 text-base leading-[1.6]">
+                            <span class="text-[#b06fc4] text-base font-bold shrink-0 select-none">—</span>
+                            <span>Ausbilder von weltweit über 500 Therapeuten & Beratern</span>
+                        </div>
+                        <div class="flex items-start gap-4 py-3.5 border-b border-black/7 text-base leading-[1.6]">
+                            <span class="text-[#b06fc4] text-base font-bold shrink-0 select-none">—</span>
+                            <span>Langjährige Mitarbeit an Tokioter Psychosomatik-Klinik</span>
+                        </div>
+                    </div>
+
+                    <div id="accordion-target" class="accordion-content">
+                        <div class="flex flex-col">
+                            <div class="flex items-start gap-4 py-3.5 border-b border-black/7 text-base leading-[1.6]">
+                                <span class="text-[#b06fc4] text-base font-bold shrink-0 select-none">—</span>
+                                <span>Dozent an indischen und sri lankischen Universitäten</span>
+                            </div>
+                            <div class="flex items-start gap-4 py-3.5 border-b border-black/7 text-base leading-[1.6]">
+                                <span class="text-[#b06fc4] text-base font-bold shrink-0 select-none">—</span>
+                                <span>Gründer: International Academy for Mental Health</span>
+                            </div>
+                            <div class="flex items-start gap-4 py-3.5 border-b border-black/7 text-base leading-[1.6]">
+                                <span class="text-[#b06fc4] text-base font-bold shrink-0 select-none">—</span>
+                                <span>Ehemaliger Leiter einer großen Kuranlage auf Sri Lanka</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="accordion-btn" class="inline-flex items-center gap-2 text-base opacity-[0.45] font-bold hover:text-[#b06fc4] transition-colors cursor-pointer mt-8">
+                        <span id="btn-text">Vollständigen Werdegang anzeigen</span>
+                        <span id="btn-arrow" class="inline-block transition-transform duration-300">↓</span>
+                    </button>
+                </div>
+
+                <!-- Rechte Spalte: Bildgalerie bündig auf gleicher Höhe -->
+                <div class="relative w-full aspect-[4/3] rounded-[16px] overflow-hidden border border-black/5 shadow-md cursor-pointer" id="person-gallery">
+                    <img src="images/profmanfredkrames-gremium-ayurveda-mentalegesundheit.jpg" alt="Gremium Ayurveda" class="person-slide active w-full h-full object-cover object-center">
+                    <img src="images/profmanfredkrames-gremium-fernoestliche-medizin.png" alt="Gremium Fernöstliche Medizin" class="person-slide w-full h-full object-cover object-center">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. FACHPUBLIKUM (Weiße Cards auf dunklem Grund) -->
+    <section class="bg-[#2d2218] text-[#faf6f0] py-[100px] px-8 md:px-16 lg:px-24">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="max-w-4xl mb-12">
+                <h2 class="text-2xl text-[#c8a882] font-normal font-serif-elegant tracking-wide mb-6">
+                    Für Fachpublikum
+                </h2>
+                <div class="w-[60px] h-[2px] bg-[#b06fc4] my-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white text-[#2d2218] border border-white/10 rounded-[12px] p-8 flex flex-col justify-start shadow-md">
+                    <span class="font-serif-elegant text-[24px] text-[#b06fc4] mb-4 block leading-none">A</span>
+                    <p class="text-base leading-[1.7] font-light">
+                        Information/Aufklärung für Mediziner & Psychologen über Pathogenese, Diagnose und Therapie psychosomatischer Morbidität gemäß der traditionellen Medizin des Ostens.
                     </p>
                 </div>
                 
-                <!-- Das Psychosomatik Selbsthilfe Bild als visueller Abschluss -->
-                <div class="rounded-xl overflow-hidden border border-white/5 relative group mt-auto hidden lg:block shadow-xl">
-                    <img src="images/profmanfredkrames-psychosomatik-selbsthilfe.jpg" alt="Prof. Manfred Krames - Psychosomatik und Selbsthilfe" class="w-full h-48 object-cover object-center filter grayscale contrast-125 brightness-90 transition-all duration-500 group-hover:grayscale-0">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0626] via-transparent to-transparent"></div>
-                    <span class="absolute bottom-4 left-4 text-xs font-mono tracking-wider text-slate-300 bg-[#05021a]/80 px-3 py-1.5 rounded-md border border-white/5">
-                        Psychosomatik & Selbsthilfe
-                    </span>
+                <div class="bg-white text-[#2d2218] border border-white/10 rounded-[12px] p-8 flex flex-col justify-start shadow-md">
+                    <span class="font-serif-elegant text-[24px] text-[#b06fc4] mb-4 block leading-none">B</span>
+                    <p class="text-base leading-[1.7] font-light">
+                        Seminare zum Erlernen diverser Techniken zum Einsparen von Zeit bei Anamnese & Diagnose bei psychischen und psychosomatischen Erkrankungen.
+                    </p>
+                </div>
+
+                <div class="bg-white text-[#2d2218] border border-white/10 rounded-[12px] p-8 flex flex-col justify-start shadow-md">
+                    <span class="font-serif-elegant text-[24px] text-[#b06fc4] mb-4 block leading-none">C</span>
+                    <p class="text-base leading-[1.7] font-light">
+                        Warum Ayurveda die geistig-seelische Gesundheit besser, tiefgründiger und effizienter anspricht als rein westlich geprägte Psychologie.
+                    </p>
                 </div>
             </div>
 
-            <!-- Rechte Spalte: Kontaktformular -->
-            <div class="lg:col-span-7 bg-[#05021a]/80 backdrop-blur-sm p-8 md:p-10 rounded-2xl border border-white/5 shadow-2xl flex flex-col justify-center fade-in-element">
-                <form class="space-y-6" onsubmit="event.preventDefault(); alert('Nachricht wurde simuliert gesendet!');">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-[10px] tracking-[0.25em] uppercase text-slate-400 font-medium mb-2">Name</label>
-                            <input type="text" placeholder="Ihr Name" class="w-full bg-white/[0.02] border border-white/5 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-[#793c5d] transition-all">
-                        </div>
-                        <div>
-                            <label class="block text-[10px] tracking-[0.25em] uppercase text-slate-400 font-medium mb-2">E-Mail</label>
-                            <input type="email" placeholder="ihre@email.de" class="w-full bg-white/[0.02] border border-white/5 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-[#793c5d] transition-all">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] tracking-[0.25em] uppercase text-slate-400 font-medium mb-2">Anliegen</label>
-                        <textarea rows="4" placeholder="Ihre Nachricht..." class="w-full bg-white/[0.02] border border-white/5 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-[#793c5d] transition-all resize-none"></textarea>
-                    </div>
-                    <button type="submit" class="w-full py-4 rounded-lg text-xs font-semibold tracking-[0.3em] uppercase text-[#05021a] bg-[#ffbe99] hover:bg-[#f68682] hover:text-white transition-all shadow-lg font-medium cursor-pointer">
-                        Nachricht senden
-                    </button>
-                </form>
+        </div>
+    </section>
+
+    <!-- 4. VORTRÄGE LAIEN -->
+    <section class="relative bg-[#5c3070] text-white py-[100px] px-8 md:px-16 lg:px-24 overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center mix-blend-multiply opacity-25 pointer-events-none" style="background-image: url('images/hintergrund-japan.jpg');"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-1">
+            <h2 class="text-2xl font-normal font-serif-elegant text-white mb-8">
+                Vorträge für Laien, Interessierte und Betroffene
+            </h2>
+            
+            <div class="flex flex-col">
+                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
+                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">A</span>
+                    <span class="text-base leading-[1.6] text-white/85">Hilfe zur Selbsthilfe bei Stress, Schlafstörungen, ADHS, Depressionen, Burnout u. dgl.</span>
+                </div>
+                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
+                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">B</span>
+                    <span class="text-base leading-[1.6] text-white/85">Aufklärung & Information bei schlechter geistig-seelischer Gesundheit und Krisen</span>
+                </div>
+                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
+                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">C</span>
+                    <span class="text-base leading-[1.6] text-white/85">Hilhestellung für Eltern betroffener Kinder im Falle von ADHS, Ängsten, Stress u. dgl.</span>
+                </div>
+                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
+                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">D</span>
+                    <span class="text-base leading-[1.6] text-white/85">Warum Handys und Social Media krank machen. Eine Warnung an alle Über-Benutzer</span>
+                </div>
+                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
+                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">E</span>
+                    <span class="text-base leading-[1.6] text-white/85">Warum Einsamkeit krank macht. Massagen als Therapie bei vorzeitiger Alterung.</span>
+                </div>
+                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
+                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">F</span>
+                    <span class="text-base leading-[1.6] text-white/85">Wie man eine 4.000 Euro teure Ayurveda-Kur zu Hause selbst macht, für nur 50,- EUR</span>
+                </div>
+                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
+                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">G</span>
+                    <span class="text-base leading-[1.6] text-white/85">Alles über Musik-, Farb-, Aroma-Therapie und Meditation. Hilfe zur Selbsthilfe.</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-white/5 bg-[#030112] py-12 px-6 md:px-16 lg:px-24">
-        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div>
-                <p class="text-xl text-white font-light italic font-serif-edler">Prof. h. c. Manfred Krames</p>
-                <p class="text-[10px] text-[#70586b] tracking-[0.25em] uppercase mt-1 font-medium">International Academy for Mental Health</p>
+    <!-- 5. KONTAKT (Bündig ausgerichtet, unbeschnittene Bilder) -->
+    <section id="kontakt" class="py-36 bg-[#2d2218] text-[#faf6f0]">
+        <div class="max-w-6xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            
+            <!-- Linke Spalte bündig oben ausgerichtet -->
+            <div class="lg:col-span-5 space-y-12 flex flex-col items-start text-left">
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-normal font-serif-elegant text-[#c8845a] tracking-[-0.02em]">
+                        Kontakt & Buchung
+                    </h2>
+                    <p class="text-[#e8ddd0] text-base leading-[1.75] italic max-w-sm">
+                        Ich freue mich auf Ihre Nachricht — und melde mich vollkommen persönlich bei Ihnen.
+                    </p>
+                </div>
+
+                <!-- Galerie: object-contain verhindert jeglichen Bildbeschnitt -->
+                <div class="relative w-full max-w-[320px] aspect-[1/1] rounded-[16px] overflow-hidden shadow-2xl border border-[#c8845a]/20 bg-[#1a120d]" id="contact-gallery">
+                    <img src="images/profmanfredkrames-psychosomatik-selbsthilfe.jpg" alt="Seminar" class="contact-slide active w-full h-full object-contain object-center">
+                    <img src="images/profmanfredkrames-autor-fuer-fernostgesundheitsstudien.png" alt="Autor für Fernostgesundheitsstudien" class="contact-slide w-full h-full object-contain object-center">
+                </div>
             </div>
-            <p class="text-[10px] text-slate-600 tracking-[0.2em] uppercase font-light">Autor · Dozent · Berater</p>
+
+            <!-- Formular bündig rechts oben -->
+            <div class="lg:col-span-7 bg-[#faf6f0] text-[#2d2218] p-8 md:p-12 rounded-[28px] shadow-2xl">
+                <form class="space-y-6" onsubmit="event.preventDefault();">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm text-[#2d2218]/70 font-medium mb-2">Ihr Name</label>
+                            <input type="text" placeholder="Ihr vollständiger Name" class="w-full bg-[#fdf8f2] border border-[#c8a882] rounded-[12px] px-4 py-3.5 text-base transition-all focus:outline-none focus:border-[#c8845a]">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-[#2d2218]/70 font-medium mb-2">Ihre E-Mail-Adresse</label>
+                            <input type="email" placeholder="Ihre E-Mail-Adresse" class="w-full bg-[#fdf8f2] border border-[#c8a882] rounded-[12px] px-4 py-3.5 text-base transition-all focus:outline-none focus:border-[#c8845a]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-[#2d2218]/70 font-medium mb-2">Ihr Anliegen</label>
+                        <textarea rows="4" class="w-full bg-[#fdf8f2] border border-[#c8a882] rounded-[12px] px-4 py-3.5 text-base transition-all focus:outline-none focus:border-[#c8845a] resize-none"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full py-4 rounded-[100px] text-base font-medium text-white bg-[#b06fc4] hover:bg-[#9a5aad] transition-colors shadow-none cursor-pointer tracking-[0.03em]">
+                        Anfrage senden
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. DYNAMISCH-STRUKTURIERTER 3-SPALTEN FOOTER -->
+    <footer class="bg-[#1a120d] text-[#faf6f0]/70 py-12 px-8 border-b border-white/5">
+        <div class="max-w-6xl mx-auto grid grid-cols-3 items-center text-base">
+            <div class="text-left">
+                <a href="#top" class="hover:text-[#b06fc4] transition-colors font-medium">Start</a>
+            </div>
+            <div class="text-center">
+                <a href="#" class="hover:text-[#b06fc4] transition-colors font-medium">Impressum</a>
+            </div>
+            <div class="text-right">
+                <a href="#" class="hover:text-[#b06fc4] transition-colors font-medium">Datenschutz</a>
+            </div>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FOR ACCORDION, TABS & INTERSECTION OBSERVER -->
+    <!-- 7. SCHLANKE BRANDING & COPYRIGHT LEISTE -->
+    <div class="bg-[#5c3070] py-3 px-8 text-white text-base font-light">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <span>made by KML Interfaces</span>
+            <span class="opacity-80">© 2026</span>
+            <span class="w-24 hidden md:block"></span> <!-- Optischer Ausgleichhalter -->
+        </div>
+    </div>
+
+    <!-- INTERAKTIVE SCRIPTE -->
     <script>
-        const lecturesFach = [
-            "Information & Aufklärung für Mediziner & Psychologen über Pathogenese, Diagnose und Therapie psychosomatischer Morbidität.",
-            "Seminare zum Erlernen diverser Techniken zum Einsparen von Zeit bei Anamnese & Diagnose bei psychischen Erkrankungen.",
-            "Das Erfolgsgeheimnis des Ostens: Warum Ayurveda die seelische Gesundheit effizienter anspricht als westliche Psychologie."
-        ];
+        // Werdegang-Accordion
+        const btn = document.getElementById('accordion-btn');
+        const content = document.getElementById('accordion-target');
+        const btnText = document.getElementById('btn-text');
+        const btnArrow = document.getElementById('btn-arrow');
+        let isAccordionOpen = false;
 
-        const lecturesLaien = [
-            "Hilfe zur Selbsthilfe bei Stress, Schlafstörungen, ADHS, Depressionen und Burnout.",
-            "Aufklärung & Information bei schlechter geistig-seelischer Gesundheit und Krisen.",
-            "Warum Handys und Social Media krank machen. Eine Warnung an alle Über-Benutzer.",
-            "Wie man eine Ayurveda-Kur zu Hause selbst macht — für nur 50,– EUR statt 4.000,– EUR."
-        ];
-
-        function renderAccordion(items) {
-            const container = document.getElementById('accordion-container');
-            container.innerHTML = '';
-
-            items.forEach((text, index) => {
-                const itemIdx = index + 1;
-                const shortText = text.length > 75 ? text.slice(0, 75) + "..." : text;
-                
-                const block = document.createElement('div');
-                block.className = "rounded-xl border border-white/5 bg-[#0a0626]/40 overflow-hidden transition-all duration-300";
-                block.innerHTML = `
-                    <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between gap-6 p-6 text-left group cursor-pointer">
-                        <div class="flex items-center gap-6">
-                            <span class="text-xs font-mono font-bold tracking-widest text-[#70586b] group-hover:text-[#f68682] transition-colors">// 0${itemIdx}</span>
-                            <span class="text-base md:text-lg text-slate-200 group-hover:text-white transition-colors font-serif-edler preview-text">${shortText}</span>
-                        </div>
-                        <div class="w-8 h-8 rounded-full border border-white/10 text-slate-400 group-hover:border-[#ffbe99] group-hover:text-[#ffbe99] flex items-center justify-center shrink-0 transition-all icon-plus">
-                            <span class="text-lg font-light">+</span>
-                        </div>
-                    </button>
-                    <div class="max-h-0 opacity-0 overflow-hidden transition-all duration-300 bg-[#030112]/50 content-body">
-                        <p class="p-6 pl-14 text-sm text-slate-400 leading-relaxed font-light">${text}</p>
-                    </div>
-                `;
-                container.appendChild(block);
-            });
-        }
-
-        function switchTab(type) {
-            const btnFach = document.getElementById('tab-fach');
-            const btnLaien = document.getElementById('tab-laien');
-            
-            if(type === 'fach') {
-                btnFach.className = "text-xs font-semibold tracking-[0.2em] uppercase px-4 py-4 border-b-2 border-[#ffbe99] text-[#ffbe99] transition-all cursor-pointer";
-                btnLaien.className = "text-xs font-semibold tracking-[0.2em] uppercase px-4 py-4 border-b-2 border-transparent text-slate-400 hover:text-white transition-all cursor-pointer";
-                renderAccordion(lecturesFach);
+        btn.addEventListener('click', () => {
+            isAccordionOpen = !isAccordionOpen;
+            if (isAccordionOpen) {
+                content.classList.add('open');
+                btnText.textContent = 'Weniger Details anzeigen';
+                btnArrow.style.transform = 'rotate(180deg)';
             } else {
-                btnLaien.className = "text-xs font-semibold tracking-[0.2em] uppercase px-4 py-4 border-b-2 border-[#ffbe99] text-[#ffbe99] transition-all cursor-pointer";
-                btnFach.className = "text-xs font-semibold tracking-[0.2em] uppercase px-4 py-4 border-b-2 border-transparent text-slate-400 hover:text-white transition-all cursor-pointer";
-                renderAccordion(lecturesLaien);
+                content.classList.remove('open');
+                btnText.textContent = 'Vollständigen Werdegang anzeigen';
+                btnArrow.style.transform = 'rotate(0deg)';
             }
+        });
+
+        // Galerie 1: Zur Person (Gremien-Bilder)
+        const personGallery = document.getElementById('person-gallery');
+        const personSlides = personGallery.getElementsByClassName('person-slide');
+        let currentPersonIndex = 0;
+
+        function nextPersonSlide() {
+            personSlides[currentPersonIndex].classList.remove('active');
+            currentPersonIndex = (currentPersonIndex + 1) % personSlides.length;
+            personSlides[currentPersonIndex].classList.add('active');
         }
+        personGallery.addEventListener('click', nextPersonSlide);
+        setInterval(nextPersonSlide, 5000);
 
-        function toggleAccordion(button) {
-            const wrapper = button.parentElement;
-            const content = wrapper.querySelector('.content-body');
-            const icon = wrapper.querySelector('.icon-plus');
-            
-            if(content.style.maxHeight && content.style.maxHeight !== '0px') {
-                content.style.maxHeight = '0px';
-                content.style.opacity = '0';
-                icon.style.transform = 'rotate(0deg)';
-                wrapper.classList.remove('border-[#793c5d]/40', 'bg-[#0a0626]');
-            } else {
-                document.querySelectorAll('.content-body').forEach(el => el.style.maxHeight = '0px');
-                document.querySelectorAll('.content-body').forEach(el => el.style.opacity = '0');
-                document.querySelectorAll('.icon-plus').forEach(el => el.style.transform = 'rotate(0deg)');
-                document.querySelectorAll('#accordion-container > div').forEach(el => el.classList.remove('border-[#793c5d]/40', 'bg-[#0a0626]'));
+        // Galerie 2: Kontakt (Seminar & Autor)
+        const contactGallery = document.getElementById('contact-gallery');
+        const contactSlides = contactGallery.getElementsByClassName('contact-slide');
+        let currentContactIndex = 0;
 
-                content.style.maxHeight = content.scrollHeight + "px";
-                content.style.opacity = '1';
-                icon.style.transform = 'rotate(45deg)';
-                wrapper.classList.add('border-[#793c5d]/40', 'bg-[#0a0626]');
-            }
+        function nextContactSlide() {
+            contactSlides[currentContactIndex].classList.remove('active');
+            currentContactIndex = (currentContactIndex + 1) % contactSlides.length;
+            contactSlides[currentContactIndex].classList.add('active');
         }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
-        renderAccordion(lecturesFach);
+        contactGallery.addEventListener('click', nextContactSlide);
+        setInterval(nextContactSlide, 6000);
     </script>
 </body>
 </html>
-
-```
