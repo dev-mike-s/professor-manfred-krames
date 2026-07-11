@@ -25,7 +25,7 @@
             font-family: 'Lato', sans-serif;
             background-color: var(--color-bg-light);
             color: var(--color-bg-dark);
-            font-size: 16px; /* text-base */
+            font-size: 16px;
             line-height: 1.75;
             font-weight: 400;
             padding-top: 68px;
@@ -47,15 +47,19 @@
             opacity: 1;
         }
 
-        /* Galerie-Fading */
-        .gallery-slide {
+        /* Galerie Fading-System */
+        .person-slide, .contact-slide {
             display: none;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
         }
-        .gallery-slide.active {
+        .person-slide.active, .contact-slide.active {
             display: block;
-            animation: fadeIn 0.5s ease-in-out;
+            animation: galleryFade 0.8s ease-in-out forwards;
         }
-        @keyframes fadeIn {
+        @keyframes galleryFade {
             from { opacity: 0; }
             to { opacity: 1; }
         }
@@ -101,7 +105,7 @@
         </div>
     </section>
 
-    <!-- 2. SEKTION "ZUR PERSON & WERDEGANG" (Ausgerichtetes 2-Spalten-Raster) -->
+    <!-- 2. SEKTION "ZUR PERSON & WERDEGANG" -->
     <section class="bg-white py-36 px-8 md:px-16 lg:px-24 border-t border-black/8">
         <div class="max-w-6xl mx-auto">
             
@@ -151,10 +155,10 @@
                     </button>
                 </div>
 
-                <!-- Rechte Spalte: Bildgalerie bündig auf gleicher Höhe -->
+                <!-- Rechte Spalte: Rotierende Gremien-Galerie -->
                 <div class="relative w-full aspect-[4/3] rounded-[16px] overflow-hidden border border-black/5 shadow-md cursor-pointer" id="person-gallery">
-                    <img src="images/profmanfredkrames-gremium-ayurveda-mentalegesundheit.jpg" alt="Gremium Ayurveda" class="person-slide active w-full h-full object-cover object-center">
-                    <img src="images/profmanfredkrames-gremium-fernoestliche-medizin.png" alt="Gremium Fernöstliche Medizin" class="person-slide w-full h-full object-cover object-center">
+                    <img src="images/profmanfredkrames-gremium-ayurveda-mentalegesundheit.jpg" alt="Gremium Ayurveda" class="person-slide active object-cover object-center">
+                    <img src="images/profmanfredkrames-gremium-fernoestliche-medizin.png" alt="Gremium Fernöstliche Medizin" class="person-slide object-cover object-center">
                 </div>
 
             </div>
@@ -162,7 +166,7 @@
         </div>
     </section>
 
-    <!-- 3. FACHPUBLIKUM (Weiße Cards auf dunklem Grund) -->
+    <!-- 3. FACHPUBLIKUM -->
     <section class="bg-[#2d2218] text-[#faf6f0] py-[100px] px-8 md:px-16 lg:px-24">
         <div class="max-w-6xl mx-auto">
             
@@ -241,29 +245,29 @@
         </div>
     </section>
 
-    <!-- 5. KONTAKT (Bündig ausgerichtet, unbeschnittene Bilder) -->
+    <!-- 5. KONTAKT -->
     <section id="kontakt" class="py-36 bg-[#2d2218] text-[#faf6f0]">
         <div class="max-w-6xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             
-            <!-- Linke Spalte bündig oben ausgerichtet -->
+            <!-- Linke Spalte -->
             <div class="lg:col-span-5 space-y-12 flex flex-col items-start text-left">
                 <div class="space-y-4">
                     <h2 class="text-2xl font-normal font-serif-elegant text-[#c8845a] tracking-[-0.02em]">
                         Kontakt & Buchung
                     </h2>
                     <p class="text-[#e8ddd0] text-base leading-[1.75] italic max-w-sm">
-                        Ich freue mich auf Ihre Nachricht — und melde mich vollkommen persönlich bei Ihnen.
+                        Ich freue mich auf Ihre Nachricht und melde mich vollkommen persönlich bei Ihnen.
                     </p>
                 </div>
 
-                <!-- Galerie: object-contain verhindert jeglichen Bildbeschnitt -->
+                <!-- Galerie: Rotierende Bilder unbeschnitten -->
                 <div class="relative w-full max-w-[320px] aspect-[1/1] rounded-[16px] overflow-hidden shadow-2xl border border-[#c8845a]/20 bg-[#1a120d]" id="contact-gallery">
-                    <img src="images/profmanfredkrames-psychosomatik-selbsthilfe.jpg" alt="Seminar" class="contact-slide active w-full h-full object-contain object-center">
-                    <img src="images/profmanfredkrames-autor-fuer-fernostgesundheitsstudien.png" alt="Autor für Fernostgesundheitsstudien" class="contact-slide w-full h-full object-contain object-center">
+                    <img src="images/profmanfredkrames-psychosomatik-selbsthilfe.jpg" alt="Seminar" class="contact-slide active object-contain object-center">
+                    <img src="images/profmanfredkrames-autor-fuer-fernostgesundheitsstudien.png" alt="Autor für Fernostgesundheitsstudien" class="contact-slide object-contain object-center">
                 </div>
             </div>
 
-            <!-- Formular bündig rechts oben -->
+            <!-- Formular -->
             <div class="lg:col-span-7 bg-[#faf6f0] text-[#2d2218] p-8 md:p-12 rounded-[28px] shadow-2xl">
                 <form class="space-y-6" onsubmit="event.preventDefault();">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -290,27 +294,27 @@
         </div>
     </section>
 
-    <!-- 6. DYNAMISCH-STRUKTURIERTER 3-SPALTEN FOOTER -->
-    <footer class="bg-[#1a120d] text-[#faf6f0]/70 py-12 px-8 border-b border-white/5">
-        <div class="max-w-6xl mx-auto grid grid-cols-3 items-center text-base">
-            <div class="text-left">
+    <!-- 6. HOHER 3-SPALTEN FOOTER MIT TRENNWÄNDEN -->
+    <footer class="bg-[#1a120d] text-[#faf6f0]/70 py-24 px-8 border-b border-white/5">
+        <div class="max-w-6xl mx-auto grid grid-cols-3 items-center text-base text-center">
+            <div class="border-r border-white/10 py-2">
                 <a href="#top" class="hover:text-[#b06fc4] transition-colors font-medium">Start</a>
             </div>
-            <div class="text-center">
+            <div class="border-r border-white/10 py-2">
                 <a href="#" class="hover:text-[#b06fc4] transition-colors font-medium">Impressum</a>
             </div>
-            <div class="text-right">
+            <div class="py-2">
                 <a href="#" class="hover:text-[#b06fc4] transition-colors font-medium">Datenschutz</a>
             </div>
         </div>
     </footer>
 
-    <!-- 7. SCHLANKE BRANDING & COPYRIGHT LEISTE -->
-    <div class="bg-[#5c3070] py-3 px-8 text-white text-base font-light">
+    <!-- 7. MINIMALISTISCHE BRANDING & COPYRIGHT LEISTE -->
+    <div class="bg-[#5c3070] py-2 px-8 text-white text-[13px] font-light">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <span>made by KML Interfaces</span>
             <span class="opacity-80">© 2026</span>
-            <span class="w-24 hidden md:block"></span> <!-- Optischer Ausgleichhalter -->
+            <span class="w-24 hidden md:block"></span>
         </div>
     </div>
 
