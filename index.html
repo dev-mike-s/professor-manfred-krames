@@ -70,7 +70,8 @@
     <!-- NAVIGATION -->
     <nav class="fixed top-0 left-0 w-full z-100 bg-[#faf6f0]/92 backdrop-blur-[8px] border-b border-[#2d2218]/5 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center">
         <span class="font-serif-elegant text-base tracking-wider text-[#2d2218] font-semibold">Prof. Manfred Krames</span>
-        <a href="#kontakt" class="bg-[#d1e5f1] hover:opacity-90 text-[#1d1e19] rounded-[100px] px-8 py-3 text-base font-medium tracking-[0.03em] transition-all duration-200">
+        <!-- Button zurück zu lila/pink -->
+        <a href="#kontakt" class="bg-[#b06fc4] hover:bg-[#b06fc4]/90 text-white rounded-[100px] px-8 py-3 text-base font-medium tracking-[0.03em] transition-all duration-200">
             Kontakt aufnehmen
         </a>
     </nav>
@@ -246,66 +247,73 @@
     </section>
 
     <!-- 5. KONTAKT & BUCHUNG -->
-    <section id="kontakt" class="relative py-36 bg-[#1d1e19] text-[#faf6f0] overflow-hidden">
-        
-        <!-- Bild-Integration als rechter Teil des Hintergrunds -->
-        <div class="absolute inset-y-0 right-0 w-full lg:w-1/2 h-full opacity-15 lg:opacity-20 pointer-events-none">
-            <img src="images/prof-manfredkrames-kontaktanfrage-seminare.jpg" alt="Japanischer Schrein Briefkasten" class="w-full h-full object-cover object-center mix-blend-luminosity">
-            <div class="absolute inset-0 bg-gradient-to-r from-[#1d1e19] via-[#1d1e19]/80 to-transparent hidden lg:block"></div>
-        </div>
-
-        <div class="max-w-6xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start relative z-1">
+    <section id="kontakt" class="py-36 bg-[#1d1e19] text-[#faf6f0]">
+        <div class="max-w-6xl mx-auto px-8">
             
-            <!-- Linke Seite: Nahtloses, verwurzeltes Formular -->
-            <div class="lg:col-span-7">
-                <h2 class="text-2xl font-normal font-serif-elegant text-[#815c2a] tracking-wide mb-12">
+            <!-- Überschrift: Losgelöst, zentriert und übergeordnet -->
+            <div class="w-full text-center mb-16">
+                <h2 class="text-3xl font-normal font-serif-elegant text-[#815c2a] tracking-wide inline-block">
                     Kontakt / Buchung
                 </h2>
-                
-                <form class="space-y-8 flex flex-col items-start" onsubmit="event.preventDefault();">
-                    
-                    <div class="w-full flex flex-col">
-                        <label class="text-base text-white font-medium mb-2">Vor- Nachname:</label>
-                        <input type="text" class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4]">
-                    </div>
-
-                    <div class="w-full flex flex-col">
-                        <label class="text-base text-white font-medium mb-2">E-Mail-Adresse:</label>
-                        <input type="email" class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4]">
-                    </div>
-
-                    <div class="w-full flex flex-col">
-                        <label class="text-base text-white font-medium mb-2">Land/Ort</label>
-                        <input type="text" class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4]">
-                    </div>
-
-                    <div class="w-full flex flex-col">
-                        <label class="text-base text-white font-medium mb-2">Ihr Anliegen</label>
-                        <textarea rows="4" class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4] resize-none"></textarea>
-                    </div>
-                    
-                    <!-- Checkboxen / Abschnitte für Vereinbarungen -->
-                    <div class="w-full space-y-4 pt-4">
-                        <label class="flex items-start gap-3 cursor-pointer text-sm text-white/80 select-none">
-                            <input type="checkbox" class="mt-1 accent-[#b06fc4]">
-                            <span>Datenschutzvereinbarung zustimmen</span>
-                        </label>
-                        
-                        <label class="flex items-start gap-3 cursor-pointer text-sm text-white/80 select-none">
-                            <input type="checkbox" class="mt-1 accent-[#b06fc4]">
-                            <span>Newsletter abonnieren (optional)</span>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" class="w-full sm:w-auto px-12 py-4 rounded-[100px] text-base font-medium text-[#1d1e19] bg-[#d1e5f1] hover:opacity-90 transition-all shadow-none cursor-pointer tracking-[0.03em] mt-4">
-                        Anfrage senden
-                    </button>
-                </form>
             </div>
+            
+            <!-- 2-Feld-Layout Grid Container -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Linkes Feld: Formular mittig -->
+                <div class="w-full flex justify-center">
+                    <form class="space-y-8 w-full max-w-md" onsubmit="event.preventDefault();">
+                        
+                        <div class="w-full flex flex-col">
+                            <label class="text-base text-white font-medium mb-2">Vor- Nachname:</label>
+                            <input type="text" required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4]">
+                        </div>
 
-            <!-- Rechte Spalte: Frei haltend für die Desktop-Hintergrund-Wirkung -->
-            <div class="lg:col-span-5 hidden lg:block"></div>
+                        <div class="w-full flex flex-col">
+                            <label class="text-base text-white font-medium mb-2">E-Mail-Adresse:</label>
+                            <input type="email" required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4]">
+                        </div>
 
+                        <div class="w-full flex flex-col">
+                            <label class="text-base text-white font-medium mb-2">Land/Ort</label>
+                            <input type="text" required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4]">
+                        </div>
+
+                        <div class="w-full flex flex-col">
+                            <label class="text-base text-white font-medium mb-2">Ihr Anliegen</label>
+                            <textarea rows="4" required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4] resize-none"></textarea>
+                        </div>
+                        
+                        <!-- Checkboxen / Abschnitte für Vereinbarungen -->
+                        <div class="w-full space-y-4 pt-4">
+                            <label class="flex items-start gap-3 cursor-pointer text-sm text-white/80 select-none">
+                                <input type="checkbox" required class="mt-1 accent-[#b06fc4]">
+                                <span>Datenschutzvereinbarung zustimmen</span>
+                            </label>
+                            
+                            <label class="flex items-start gap-3 cursor-pointer text-sm text-white/80 select-none">
+                                <input type="checkbox" class="mt-1 accent-[#b06fc4]">
+                                <span>Newsletter abonnieren (optional)</span>
+                            </label>
+                        </div>
+                        
+                        <!-- Button -->
+                        <div class="w-full pt-4">
+                            <button type="submit" class="w-full sm:w-auto px-12 py-4 rounded-[100px] text-base font-medium text-white bg-[#b06fc4] hover:bg-[#b06fc4]/90 transition-all shadow-none cursor-pointer tracking-[0.03em]">
+                                Anfrage senden
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Rechtes Feld: Bild mittig & aufgehellt -->
+                <div class="w-full h-full min-h-[400px] lg:min-h-[500px] relative rounded-[16px] overflow-hidden hidden lg:block">
+                    <img src="images/prof-manfredkrames-kontaktanfrage-seminare.jpg" alt="Japanischer Schrein Briefkasten" class="absolute inset-0 w-full h-full object-cover object-center mix-blend-luminosity opacity-45">
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#1d1e19] via-transparent to-transparent"></div>
+                </div>
+                
+            </div>
+            
         </div>
     </section>
 
