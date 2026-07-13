@@ -85,7 +85,6 @@
 
             <div class="w-full md:w-1/2 px-8 md:px-16 lg:px-24 py-20 md:py-0 flex items-center">
                 <div class="max-w-xl w-full">
-                    <!-- Name entfernt, Zitate stehen jetzt frei und ohne lila Randstriche -->
                     <div class="space-y-8">
                         <div>
                             <p class="text-[26px] md:text-[30px] font-serif-elegant italic text-[#b06fc4] leading-snug">
@@ -108,14 +107,13 @@
         </div>
     </div>
 
-    <!-- 2. SEKTION "ZUR PERSON & WERDEGANG" (Jetzt mit großem Namen oben drüber) -->
+    <!-- 2. SEKTION "ZUR PERSON & WERDEGANG" -->
     <section class="bg-white py-36 px-8 md:px-16 lg:px-24">
         <div class="max-w-6xl mx-auto">
             
-            <!-- Große Bereichs-Überschrift analog zu Kontakt -->
             <div class="w-full text-center mb-24">
-                <h2 class="text-4xl font-normal font-serif-elegant text-[#2d2218] tracking-wide leading-tight">
-                    <span class="font-[300] block text-2xl text-[#b06fc4] mb-2">Prof. h. c.</span>
+                <h2 class="text-4xl font-normal font-serif-elegant  tracking-wide leading-tight">
+                    <span class="font-[300] block text-2xl  mb-2">Prof. h. c.</span>
                     <span class="font-[700] block text-4xl md:text-5xl">Manfred Krames</span>
                 </h2>
             </div>
@@ -124,8 +122,6 @@
                 
                 <!-- Linke Spalte: Text & Liste -->
                 <div>
-
-                    
                     <div class="flex flex-col mb-4">
                         <div class="flex items-start gap-4 py-3.5 border-b border-black/7 text-base leading-[1.6]">
                             <span class="text-[#b06fc4] text-base font-bold shrink-0 select-none">—</span>
@@ -188,21 +184,21 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-white text-[#2d2218] border border-white/10 rounded-[12px] p-8 flex flex-col justify-start shadow-md">
-                    <span class="font-serif-elegant text-[24px] text-[#b06fc4] mb-4 block leading-none">A</span>
+                    <span class="font-serif-elegant text-[24px] text-[#b06fc4] mb-4 block leading-none">Information/<br>Aufklärung</span>
                     <p class="text-base leading-[1.7] font-light">
-                        Information/Aufklärung für Mediziner & Psychologen über Pathogenese, Diagnose und Therapie psychosomatischer Morbidität gemäß der traditionellen Medizin des Ostens.
+                        für Mediziner & Psychologen über Pathogenese, Diagnose und Therapie psychosomatischer Morbidität gemäß der traditionellen Medizin des Ostens.
                     </p>
                 </div>
                 
                 <div class="bg-white text-[#2d2218] border border-white/10 rounded-[12px] p-8 flex flex-col justify-start shadow-md">
-                    <span class="font-serif-elegant text-[24px] text-[#b06fc4] mb-4 block leading-none">B</span>
+                    <span class="font-serif-elegant text-[24px] text-[#b06fc4] mb-4 block leading-none">Seminare</span>
                     <p class="text-base leading-[1.7] font-light">
-                        Seminare zum Erlernen diverser Techniken zum Einsparen von Zeit bei Anamnese & Diagnose bei psychischen und psychosomatischen Erkrankungen.
+                        zum Erlernen diverser Techniken zum Einsparen von Zeit bei Anamnese & Diagnose bei psychischen und psychosomatischen Erkrankungen.
                     </p>
                 </div>
 
                 <div class="bg-white text-[#2d2218] border border-white/10 rounded-[12px] p-8 flex flex-col justify-start shadow-md">
-                    <span class="font-serif-elegant text-[24px] text-[#b06fc4] mb-4 block leading-none">C</span>
+                    <span class="font-serif-elegant text-[24px] text-[#b06fc4] mb-4 block leading-none">Ayurveda</span>
                     <p class="text-base leading-[1.7] font-light">
                         Warum Ayurveda die geistig-seelische Gesundheit besser, tiefgründiger und effizienter anspricht als rein westlich geprägte Psychologie.
                     </p>
@@ -319,28 +315,61 @@
         </div>
     </section>
 
-    <!-- 6. HOHER 3-SPALTEN FOOTER MIT TRENNWÄNDEN -->
-    <footer class="bg-[#011e13] text-[#faf6f0]/70 py-24 px-8 border-b border-white/5">
-        <div class="max-w-6xl mx-auto grid grid-cols-3 items-center text-base text-center">
-            <div class="border-r border-white/10 py-2">
-                <a href="#top" class="hover:text-[#faf7f1] transition-colors font-medium">Start</a>
+<!-- 6. KORRIGIERTER 2-SPALTEN FOOTER MIT TRENNLINIE (#faf6f0) -->
+    <footer class="bg-[#faf6f0] text-[#011e13] py-20 px-8 md:px-16 lg:px-24 border-t border-black/5">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 md:gap-8 items-start">
+            
+            <!-- Linke Spalte: Navigation (Start bleibt links) -->
+            <div class="flex flex-col items-start space-y-4">
+                <a href="#top" class="inline-flex items-center gap-2 hover:text-[#b06fc4] transition-colors font-semibold text-base">
+                    Start
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18"></path>
+                    </svg>
+                </a>
+                <div class="flex flex-col space-y-2 pt-2 text-[#011e13]/85 text-base">
+                    <a href="#" class="hover:text-[#b06fc4] transition-colors font-medium">Datenschutz</a>
+                    <a href="#" class="hover:text-[#b06fc4] transition-colors font-medium">Impressum</a>
+                </div>
             </div>
-            <div class="border-r border-white/10 py-2">
-                <a href="#" class="hover:text-[#faf7f1] transition-colors font-medium">Impressum</a>
+            
+            <!-- Mittlere Spalte: Vertikale Trennlinie (wird auf Mobile horizontal) -->
+            <div class="w-full md:w-px h-px md:h-32 bg-[#011e13]/10 self-center"></div>
+            
+            <!-- Rechte Spalte: Kontakt & Newsletter -->
+            <div class="space-y-8 md:pl-12 justify-self-start md:justify-self-end w-full max-w-xs">
+                <!-- E-Mail mit Icon -->
+                <div class="flex items-center gap-3">
+                    <svg class="w-5 h-5 text-[#b06fc4] shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.92V6.75"></path>
+                    </svg>
+                    <a href="mailto:manfredkrames@gmail.com" class="text-base font-medium hover:text-[#b06fc4] transition-colors">manfredkrames@gmail.com</a>
+                </div>
+
+                <!-- Newsletter Feld -->
+                <div class="w-full">
+                    <span class="block text-sm font-semibold tracking-wider text-[#011e13]/60 mb-2 uppercase">Newsletter</span>
+                    <form class="flex items-center border-b border-[#011e13]/30 focus-within:border-[#b06fc4] transition-colors py-1" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="Ihre E-Mail-Adresse" required class="w-full bg-transparent text-base text-[#011e13] placeholder-[#011e13]/40 focus:outline-none pr-3">
+                        <button type="submit" aria-label="Newsletter abonnieren" class="text-[#b06fc4] hover:text-[#b06fc4]/80 transition-colors cursor-pointer p-1">
+                            <svg class="w-5 h-5 transform rotate-45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L6 12zm0 0h7.5"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
             </div>
-            <div class="py-2">
-                <a href="#" class="hover:text-[#faf7f1] transition-colors font-medium">Datenschutz</a>
-            </div>
+
         </div>
     </footer>
 
-    <!-- 7. MINIMALISTISCHE BRANDING & COPYRIGHT LEISTE -->
-    <div class="bg-[#faf6f0] py-6 px-8 text-[#1d1e19] text-[13px] font-medium border-t border-black/5">
+    <!-- 7. SCHMALE & DUNKLERE BRANDING LEISTE (#011e13) -->
+    <div class="bg-[#011e13] py-4 px-8 text-[#faf6f0]/60 text-[11px] font-normal border-t border-white/5">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <span>
-                made by <a href="https://linktr.ee/kamalayan_digital" target="_blank" rel="noopener" class="underline hover:text-[#b06fc4] transition-colors font-semibold">KML Interfaces</a>
+                made by <a href="https://linktr.ee/kamalayan_digital" target="_blank" rel="noopener" class="underline text-[#faf6f0] hover:text-[#b06fc4] transition-colors font-medium">KML Interfaces</a>
             </span>
-            <span class="opacity-80">© 2026</span>
+            <span class="opacity-60">© 2026</span>
             <span class="w-24 hidden md:block"></span>
         </div>
     </div>
