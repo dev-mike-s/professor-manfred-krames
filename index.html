@@ -70,53 +70,61 @@
     <!-- NAVIGATION -->
     <nav class="fixed top-0 left-0 w-full z-100 bg-[#faf6f0]/92 backdrop-blur-[8px] border-b border-[#2d2218]/5 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center">
         <span class="font-serif-elegant text-base tracking-wider text-[#2d2218] font-semibold">Prof. Manfred Krames</span>
-        <!-- Button zurück zu lila/pink -->
         <a href="#kontakt" class="bg-[#b06fc4] hover:bg-[#b06fc4]/90 text-white rounded-[100px] px-8 py-3 text-base font-medium tracking-[0.03em] transition-all duration-200">
             Kontakt aufnehmen
         </a>
     </nav>
 
-    <!-- 1. HERO-SECTION -->
-    <section class="min-h-[calc(100vh-68px)] flex flex-col md:flex-row items-center justify-between bg-[#faf6f0]">
-        <div class="w-full md:w-1/2 h-[85vw] md:h-[calc(100vh-68px)] overflow-hidden relative">
-            <img src="images/prof-manfred-krames-portrait.jpg" alt="Portrait" class="w-full h-full object-cover object-center">
-            <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-r from-transparent to-[#faf6f0] hidden md:block"></div>
-        </div>
+    <!-- 1. HERO-SECTION CONTAINER -->
+    <div class="bg-[#faf6f0] w-full">
+        <section class="min-h-[calc(100vh-68px)] flex flex-col md:flex-row items-center justify-between">
+            <div class="w-full md:w-1/2 h-[85vw] md:h-[calc(100vh-68px)] overflow-hidden relative">
+                <img src="images/prof-manfred-krames-portrait.jpg" alt="Portrait" class="w-full h-full object-cover object-center">
+                <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-r from-transparent to-[#faf6f0] hidden md:block"></div>
+            </div>
 
-        <div class="w-full md:w-1/2 px-8 md:px-16 lg:px-24 py-20 md:py-0 flex items-center">
-            <div class="max-w-xl w-full">
-                <h1 class="text-5xl tracking-tight text-[#2d2218] font-serif-elegant leading-[1.05] mb-12">
-                    <span class="font-[300] block">Prof. h. c.</span>
-                    <span class="font-[700] block">Manfred Krames</span>
-                </h1>
-                
-                <div class="my-8 space-y-8">
-                    <div>
-                        <p class="text-[24px] font-serif-elegant italic text-[#b06fc4] border-l-2 border-l-[#b06fc4] pl-5 leading-snug">
-                            „Ist die Seele unglücklich, wird der Körper krank.“
-                        </p>
-                    </div>
-                    <div>
-                        <p class="text-[24px] font-serif-elegant italic text-[#b06fc4] border-l-2 border-l-[#b06fc4] pl-5 leading-snug">
-                            „Heilt die Seele, dann heilt der Rest auch.“
-                        </p>
+            <div class="w-full md:w-1/2 px-8 md:px-16 lg:px-24 py-20 md:py-0 flex items-center">
+                <div class="max-w-xl w-full">
+                    <!-- Name entfernt, Zitate stehen jetzt frei und ohne lila Randstriche -->
+                    <div class="space-y-8">
+                        <div>
+                            <p class="text-[26px] md:text-[30px] font-serif-elegant italic text-[#b06fc4] leading-snug">
+                                „Ist die Seele unglücklich, <br> wird der Körper krank.“
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-[26px] md:text-[30px] font-serif-elegant italic text-[#b06fc4] leading-snug">
+                                „Heilt die Seele, <br> dann heilt der Rest auch.“
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 2. SEKTION "ZUR PERSON & WERDEGANG" -->
-    <section class="bg-white py-36 px-8 md:px-16 lg:px-24 border-t border-black/8">
+        <!-- Das Musterband -->
+        <div class="w-full overflow-hidden block select-none bg-[#faf6f0]">
+            <img src="images/footer-pattern.png" alt="Zierelement" class="w-full h-auto min-h-[40px] max-h-[90px] object-cover object-center">
+        </div>
+    </div>
+
+    <!-- 2. SEKTION "ZUR PERSON & WERDEGANG" (Jetzt mit großem Namen oben drüber) -->
+    <section class="bg-white py-36 px-8 md:px-16 lg:px-24">
         <div class="max-w-6xl mx-auto">
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <!-- Große Bereichs-Überschrift analog zu Kontakt -->
+            <div class="w-full text-center mb-24">
+                <h2 class="text-4xl font-normal font-serif-elegant text-[#2d2218] tracking-wide leading-tight">
+                    <span class="font-[300] block text-2xl text-[#b06fc4] mb-2">Prof. h. c.</span>
+                    <span class="font-[700] block text-4xl md:text-5xl">Manfred Krames</span>
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
                 
                 <!-- Linke Spalte: Text & Liste -->
                 <div>
-                    <h2 class="text-2xl font-normal font-serif-elegant text-[#2d2218] mb-12">
-                        Zur Person & Werdegang
-                    </h2>
+
                     
                     <div class="flex flex-col mb-4">
                         <div class="flex items-start gap-4 py-3.5 border-b border-black/7 text-base leading-[1.6]">
@@ -172,7 +180,7 @@
         <div class="max-w-6xl mx-auto">
             
             <div class="max-w-4xl mb-12">
-                <h2 class="text-2xl text-[#92ffbc] font-normal font-serif-elegant tracking-wide mb-6">
+                <h2 class="text-2xl text-[#faf7f1] font-normal font-serif-elegant tracking-wide mb-6">
                     Für Fachpublikum
                 </h2>
                 <div class="w-[60px] h-[2px] bg-[#b06fc4] my-6"></div>
@@ -245,21 +253,19 @@
             </div>
         </div>
     </section>
-<!-- 5. KONTAKT & BUCHUNG -->
+
+    <!-- 5. KONTAKT & BUCHUNG -->
     <section id="kontakt" class="py-36 bg-[#1d1e19] text-[#faf6f0]">
         <div class="max-w-6xl mx-auto px-8">
             
-            <!-- Überschrift: Losgelöst, zentriert und übergeordnet -->
             <div class="w-full text-center mb-16">
-                <h2 class="text-4xl mb-14 font-normal font-serif-elegant text-[#815c2a] tracking-wide inline-block">
+                <h2 class="text-4xl mb-14 font-normal font-serif-elegant text-[#b87315] tracking-wide inline-block">
                     Kontakt / Buchung
                 </h2>
             </div>
             
-            <!-- 2-Feld-Layout Grid Container -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 
-                <!-- Linkes Feld: Formular mittig -->
                 <div class="w-full flex justify-center">
                     <form class="space-y-8 w-full max-w-md" onsubmit="event.preventDefault();">
                         
@@ -283,7 +289,6 @@
                             <textarea rows="4" required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4] resize-none"></textarea>
                         </div>
                         
-                        <!-- Checkboxen / Abschnitte für Vereinbarungen -->
                         <div class="w-full space-y-4 pt-4">
                             <label class="flex items-start gap-3 cursor-pointer text-sm text-white/80 select-none">
                                 <input type="checkbox" required class="mt-1 accent-[#b06fc4]">
@@ -296,7 +301,6 @@
                             </label>
                         </div>
                         
-                        <!-- Button -->
                         <div class="w-full pt-4">
                             <button type="submit" class="w-full sm:w-auto px-12 py-4 rounded-[100px] text-base font-medium text-white bg-[#b06fc4] hover:bg-[#b06fc4]/90 transition-all shadow-none cursor-pointer tracking-[0.03em]">
                                 Anfrage senden
@@ -305,12 +309,8 @@
                     </form>
                 </div>
                 
-                <!-- Rechtes Feld: Bild mittig, farbig & elegant aufgehellt -->
                 <div class="w-full h-full min-h-[400px] lg:min-h-[500px] relative rounded-[16px] overflow-hidden hidden lg:block">
-                    <!-- Bild in voller Pracht (Farbe bleibt erhalten, Deckkraft leicht erhöht für bessere Sichtbarkeit) -->
-                    <img src="images/prof-manfredkrames-kontaktanfrage-seminare.jpg" alt="Japanischer Schrein Briefkasten" class="absolute inset-0 w-full h-full object-cover object-center opacity-65">
-                    
-                    <!-- Aufhellender Layer, der sanft von der dunklen Hintergrundfarbe ins Transparente verläuft -->
+                    <img src="images/prof-manfredkrames-kontaktanfrage-seminare.png" alt="Japanischer Schrein Briefkasten" class="absolute inset-0 w-full h-full object-cover object-center opacity-65">
                     <div class="absolute inset-0 bg-gradient-to-r from-[#1d1e19] via-[#1d1e19]/20 to-transparent"></div>
                 </div>
                 
@@ -320,24 +320,26 @@
     </section>
 
     <!-- 6. HOHER 3-SPALTEN FOOTER MIT TRENNWÄNDEN -->
-    <footer class="bg-[#1a120d] text-[#faf6f0]/70 py-24 px-8 border-b border-white/5">
+    <footer class="bg-[#011e13] text-[#faf6f0]/70 py-24 px-8 border-b border-white/5">
         <div class="max-w-6xl mx-auto grid grid-cols-3 items-center text-base text-center">
             <div class="border-r border-white/10 py-2">
-                <a href="#top" class="hover:text-[#b06fc4] transition-colors font-medium">Start</a>
+                <a href="#top" class="hover:text-[#faf7f1] transition-colors font-medium">Start</a>
             </div>
             <div class="border-r border-white/10 py-2">
-                <a href="#" class="hover:text-[#b06fc4] transition-colors font-medium">Impressum</a>
+                <a href="#" class="hover:text-[#faf7f1] transition-colors font-medium">Impressum</a>
             </div>
             <div class="py-2">
-                <a href="#" class="hover:text-[#b06fc4] transition-colors font-medium">Datenschutz</a>
+                <a href="#" class="hover:text-[#faf7f1] transition-colors font-medium">Datenschutz</a>
             </div>
         </div>
     </footer>
 
     <!-- 7. MINIMALISTISCHE BRANDING & COPYRIGHT LEISTE -->
-    <div class="bg-[#5c3070] py-2 px-8 text-white text-[13px] font-light">
+    <div class="bg-[#faf6f0] py-6 px-8 text-[#1d1e19] text-[13px] font-medium border-t border-black/5">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <span>made by KML Interfaces</span>
+            <span>
+                made by <a href="https://linktr.ee/kamalayan_digital" target="_blank" rel="noopener" class="underline hover:text-[#b06fc4] transition-colors font-semibold">KML Interfaces</a>
+            </span>
             <span class="opacity-80">© 2026</span>
             <span class="w-24 hidden md:block"></span>
         </div>
