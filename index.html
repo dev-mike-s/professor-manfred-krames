@@ -16,7 +16,7 @@
     <style>
         :root {
             --color-bg-light: #faf6f0;
-            --color-bg-dark: #2d2218;
+            --color-bg-dark: #011e13;
             --color-violet: #b06fc4;
             --color-violet-bg: #5c3070;
         }
@@ -48,14 +48,14 @@
         }
 
         /* Galerie Fading-System */
-        .person-slide, .contact-slide {
+        .person-slide {
             display: none;
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
         }
-        .person-slide.active, .contact-slide.active {
+        .person-slide.active {
             display: block;
             animation: galleryFade 0.8s ease-in-out forwards;
         }
@@ -70,7 +70,7 @@
     <!-- NAVIGATION -->
     <nav class="fixed top-0 left-0 w-full z-100 bg-[#faf6f0]/92 backdrop-blur-[8px] border-b border-[#2d2218]/5 py-4 px-8 md:px-16 lg:px-24 flex justify-between items-center">
         <span class="font-serif-elegant text-base tracking-wider text-[#2d2218] font-semibold">Prof. Manfred Krames</span>
-        <a href="#kontakt" class="bg-[#b06fc4] hover:bg-[#9a5aad] text-white rounded-[100px] px-8 py-3 text-base font-medium tracking-[0.03em] transition-colors duration-200">
+        <a href="#kontakt" class="bg-[#d1e5f1] hover:opacity-90 text-[#1d1e19] rounded-[100px] px-8 py-3 text-base font-medium tracking-[0.03em] transition-all duration-200">
             Kontakt aufnehmen
         </a>
     </nav>
@@ -167,11 +167,11 @@
     </section>
 
     <!-- 3. FACHPUBLIKUM -->
-    <section class="bg-[#2d2218] text-[#faf6f0] py-[100px] px-8 md:px-16 lg:px-24">
+    <section class="bg-[#011e13] text-[#faf6f0] py-[100px] px-8 md:px-16 lg:px-24">
         <div class="max-w-6xl mx-auto">
             
             <div class="max-w-4xl mb-12">
-                <h2 class="text-2xl text-[#c8a882] font-normal font-serif-elegant tracking-wide mb-6">
+                <h2 class="text-2xl text-[#92ffbc] font-normal font-serif-elegant tracking-wide mb-6">
                     Für Fachpublikum
                 </h2>
                 <div class="w-[60px] h-[2px] bg-[#b06fc4] my-6"></div>
@@ -245,51 +245,66 @@
         </div>
     </section>
 
-    <!-- 5. KONTAKT -->
-    <section id="kontakt" class="py-36 bg-[#2d2218] text-[#faf6f0]">
-        <div class="max-w-6xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+    <!-- 5. KONTAKT & BUCHUNG -->
+    <section id="kontakt" class="relative py-36 bg-[#1d1e19] text-[#faf6f0] overflow-hidden">
+        
+        <!-- Bild-Integration als rechter Teil des Hintergrunds -->
+        <div class="absolute inset-y-0 right-0 w-full lg:w-1/2 h-full opacity-15 lg:opacity-20 pointer-events-none">
+            <img src="images/prof-manfredkrames-kontaktanfrage-seminare.jpg" alt="Japanischer Schrein Briefkasten" class="w-full h-full object-cover object-center mix-blend-luminosity">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#1d1e19] via-[#1d1e19]/80 to-transparent hidden lg:block"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start relative z-1">
             
-            <!-- Linke Spalte -->
-            <div class="lg:col-span-5 space-y-12 flex flex-col items-start text-left">
-                <div class="space-y-4">
-                    <h2 class="text-2xl font-normal font-serif-elegant text-[#c8845a] tracking-[-0.02em]">
-                        Kontakt & Buchung
-                    </h2>
-                    <p class="text-[#e8ddd0] text-base leading-[1.75] italic max-w-sm">
-                        Ich freue mich auf Ihre Nachricht und melde mich vollkommen persönlich bei Ihnen.
-                    </p>
-                </div>
-
-                <!-- Galerie: Rotierende Bilder unbeschnitten -->
-                <div class="relative w-full max-w-[320px] aspect-[1/1] rounded-[16px] overflow-hidden shadow-2xl border border-[#c8845a]/20 bg-[#1a120d]" id="contact-gallery">
-                    <img src="images/profmanfredkrames-psychosomatik-selbsthilfe.jpg" alt="Seminar" class="contact-slide active object-contain object-center">
-                    <img src="images/profmanfredkrames-autor-fuer-fernostgesundheitsstudien.png" alt="Autor für Fernostgesundheitsstudien" class="contact-slide object-contain object-center">
-                </div>
-            </div>
-
-            <!-- Formular -->
-            <div class="lg:col-span-7 bg-[#faf6f0] text-[#2d2218] p-8 md:p-12 rounded-[28px] shadow-2xl">
-                <form class="space-y-6" onsubmit="event.preventDefault();">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm text-[#2d2218]/70 font-medium mb-2">Ihr Name</label>
-                            <input type="text" placeholder="Ihr vollständiger Name" class="w-full bg-[#fdf8f2] border border-[#c8a882] rounded-[12px] px-4 py-3.5 text-base transition-all focus:outline-none focus:border-[#c8845a]">
-                        </div>
-                        <div>
-                            <label class="block text-sm text-[#2d2218]/70 font-medium mb-2">Ihre E-Mail-Adresse</label>
-                            <input type="email" placeholder="Ihre E-Mail-Adresse" class="w-full bg-[#fdf8f2] border border-[#c8a882] rounded-[12px] px-4 py-3.5 text-base transition-all focus:outline-none focus:border-[#c8845a]">
-                        </div>
+            <!-- Linke Seite: Nahtloses, verwurzeltes Formular -->
+            <div class="lg:col-span-7">
+                <h2 class="text-2xl font-normal font-serif-elegant text-[#815c2a] tracking-wide mb-12">
+                    Kontakt / Buchung
+                </h2>
+                
+                <form class="space-y-8 flex flex-col items-start" onsubmit="event.preventDefault();">
+                    
+                    <div class="w-full flex flex-col">
+                        <label class="text-base text-white font-medium mb-2">Vor- Nachname:</label>
+                        <input type="text" class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4]">
                     </div>
-                    <div>
-                        <label class="block text-sm text-[#2d2218]/70 font-medium mb-2">Ihr Anliegen</label>
-                        <textarea rows="4" class="w-full bg-[#fdf8f2] border border-[#c8a882] rounded-[12px] px-4 py-3.5 text-base transition-all focus:outline-none focus:border-[#c8845a] resize-none"></textarea>
+
+                    <div class="w-full flex flex-col">
+                        <label class="text-base text-white font-medium mb-2">E-Mail-Adresse:</label>
+                        <input type="email" class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4]">
+                    </div>
+
+                    <div class="w-full flex flex-col">
+                        <label class="text-base text-white font-medium mb-2">Land/Ort</label>
+                        <input type="text" class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4]">
+                    </div>
+
+                    <div class="w-full flex flex-col">
+                        <label class="text-base text-white font-medium mb-2">Ihr Anliegen</label>
+                        <textarea rows="4" class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4] resize-none"></textarea>
                     </div>
                     
-                    <button type="submit" class="w-full py-4 rounded-[100px] text-base font-medium text-white bg-[#b06fc4] hover:bg-[#9a5aad] transition-colors shadow-none cursor-pointer tracking-[0.03em]">
+                    <!-- Checkboxen / Abschnitte für Vereinbarungen -->
+                    <div class="w-full space-y-4 pt-4">
+                        <label class="flex items-start gap-3 cursor-pointer text-sm text-white/80 select-none">
+                            <input type="checkbox" class="mt-1 accent-[#b06fc4]">
+                            <span>Datenschutzvereinbarung zustimmen</span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3 cursor-pointer text-sm text-white/80 select-none">
+                            <input type="checkbox" class="mt-1 accent-[#b06fc4]">
+                            <span>Newsletter abonnieren (optional)</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="w-full sm:w-auto px-12 py-4 rounded-[100px] text-base font-medium text-[#1d1e19] bg-[#d1e5f1] hover:opacity-90 transition-all shadow-none cursor-pointer tracking-[0.03em] mt-4">
                         Anfrage senden
                     </button>
                 </form>
             </div>
+
+            <!-- Rechte Spalte: Frei haltend für die Desktop-Hintergrund-Wirkung -->
+            <div class="lg:col-span-5 hidden lg:block"></div>
 
         </div>
     </section>
@@ -352,19 +367,6 @@
         }
         personGallery.addEventListener('click', nextPersonSlide);
         setInterval(nextPersonSlide, 5000);
-
-        // Galerie 2: Kontakt (Seminar & Autor)
-        const contactGallery = document.getElementById('contact-gallery');
-        const contactSlides = contactGallery.getElementsByClassName('contact-slide');
-        let currentContactIndex = 0;
-
-        function nextContactSlide() {
-            contactSlides[currentContactIndex].classList.remove('active');
-            currentContactIndex = (currentContactIndex + 1) % contactSlides.length;
-            contactSlides[currentContactIndex].classList.add('active');
-        }
-        contactGallery.addEventListener('click', nextContactSlide);
-        setInterval(nextContactSlide, 6000);
     </script>
 </body>
 </html>
