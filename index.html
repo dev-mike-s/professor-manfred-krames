@@ -1,477 +1,281 @@
 <!DOCTYPE html>
-<html lang="de" class="scroll-smooth">
+<html lang=de class=scroll-smooth>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prof. h. c. Manfred Krames</title>
-    
-    <!-- Premium-Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
-    <style>
-        :root {
-            --color-bg-light: #faf6f0;
-            --color-bg-dark: #011e13;
-            --color-violet: #b06fc4;
-            --color-violet-bg: #5c3070;
-        }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: var(--color-bg-light);
-            color: var(--color-bg-dark);
-            font-size: 16px;
-            line-height: 1.75;
-            font-weight: 400;
-            padding-top: 58px;
-        }
-
-        .font-serif-elegant {
-            font-family: 'Playfair Display', serif;
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
-            opacity: 0;
-        }
-        .accordion-content.open {
-            max-height: 400px;
-            opacity: 1;
-        }
-
-        .person-slide {
-            display: none;
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .person-slide.active {
-            display: block;
-            animation: galleryFade 0.8s ease-in-out forwards;
-        }
-        @keyframes galleryFade {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+<title>Prof. h. c. Manfred Krames</title>
+<link rel=preconnect href=https://fonts.googleapis.com>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel=stylesheet>
+<script src=https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4></script>
+<style>:root{--color-bg-light:#ededed;--color-bg-dark:#102d46;--color-violet:#c7b1d6;--color-purple:#8d45be;--color-gold:#de9c40}body{font-family:'Lato',sans-serif;background-color:var(--color-bg-light);color:var(--color-bg-dark);font-size:16px;line-height:1.75;font-weight:400;padding-top:58px}.font-serif-elegant{font-family:'Playfair Display',serif}.accordion-content{max-height:0;overflow:hidden;transition:max-height .4s ease-out,opacity .3s ease-out;opacity:0}.accordion-content.open{max-height:400px;opacity:1}.person-slide{display:none;position:absolute;inset:0;width:100%;height:100%}.person-slide.active{display:block;animation:galleryFade .8s ease-in-out forwards}@keyframes galleryFade{from{opacity:0}to{opacity:1}}</style>
 </head>
-<body id="top" class="antialiased">
-
-    <!-- NAVIGATION -->
-    <nav id="main-nav" class="fixed top-0 left-0 w-full z-100 bg-[#011e13] py-2.5 px-8 md:px-16 lg:px-24 flex justify-between items-center transition-colors duration-300">
-        <span id="nav-title" class="font-serif-elegant text-lg tracking-wider text-white font-semibold transition-colors duration-300">
-            Manfred P. Krames
-        </span>
-
-    <!-- Hier wurde 'text-base' zu 'text-sm' geändert -->
-    <a id="nav-btn" href="#kontakt" class="text-white rounded-[100px] px-8 py-2 text-sm font-medium tracking-[0.03em] transition-all duration-200 flex items-center gap-2 border border-white/20 hover:bg-white hover:text-[#011e13]">
-        Kontakt
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.92V6.75"></path>
-        </svg>
-    </a>
-    </nav>
-
-    <!-- 1. HERO-SECTION CONTAINER -->
-    <div class="bg-[#faf6f0] w-full">
-        <section class="min-h-[calc(100vh-58px)] flex flex-col md:flex-row items-stretch justify-between">
-            <div class="w-full md:w-1/2 h-[85vw] md:h-[calc(100vh-58px)] overflow-hidden relative">
-                <img src="images/prof-manfred-krames-portrait.jpg" alt="Portrait" class="w-full h-full object-cover object-center">
-                <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-r from-transparent to-[#faf6f0] hidden md:block"></div>
-            </div>
-            <div class="w-full md:w-1/2 px-8 md:px-16 lg:px-24 py-16 md:py-0 flex flex-col justify-center items-center">
-                <div class="max-w-xl w-full text-center flex flex-col items-center">
-                    <div class="space-y-10 w-full mb-12">
-                        <div>
-                            <p class="text-[26px] md:text-[30px] font-serif-elegant italic text-[#b06fc4] leading-snug tracking-wide mx-auto max-w-md">
-                                „Ist die Seele unglücklich, <br> wird der Körper krank.“
-                            </p>
-                        </div>
-                        <div>
-                            <p class="text-[26px] md:text-[30px] font-serif-elegant italic text-[#b06fc4] leading-snug tracking-wide mx-auto max-w-md">
-                                „Heilt die Seele, <br> dann heilt der Rest auch.“
-                            </p>
-                        </div>
-                    </div>
-                    <div class="relative w-40 h-50 border border-black/5 shadow-sm rounded-[4px] overflow-hidden bg-white/50 mt-12" id="book-gallery">
-                        <img src="images/books/Buch-ayurveda-1.png" alt="Buch Ayurveda 1" class="book-slide active absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-100">
-                        <img src="images/books/Buch-ayurveda-2.png" alt="Buch Ayurveda 2" class="book-slide absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-0 hidden">
-                        <img src="images/books/Buch-beethoven-1.png" alt="Buch Beethoven 1" class="book-slide absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-0 hidden">
-                        <img src="images/books/buch-beethoven-japan.png" alt="Buch Beethoven Japan" class="book-slide absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-0 hidden">
-                        <img src="images/books/buch-geistwesen.jpg" alt="Buch Geistwesen" class="book-slide absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-0 hidden">
-                        <img src="images/books/buch-thai-1.gif" alt="Buch Thai 1" class="book-slide absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-0 hidden">
-                        <img src="images/books/buch-vaata.png" alt="Buch Vaata" class="book-slide absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-0 hidden">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="w-full overflow-hidden block select-none bg-[#faf6f0]">
-            <img src="images/footer-pattern.png" alt="Zierelement" class="w-full h-auto min-h-[40px] max-h-[90px] object-cover object-center">
-        </div>
-    </div>
-
-    <!-- 2. SEKTION "ZUR PERSON & WERDEGANG" (MIT HINTERGRUNDBILD) -->
-    <section class="relative py-36 px-8 md:px-16 lg:px-24">
-        <!-- Hintergrundbild -->
-        <div class="absolute inset-0 z-0">
-            <img src="images/prof-manfredkrames-india-ayurveda.jpg" alt="Manfred Krames Indien" class="w-full h-full object-cover object-center">
-            <div class="absolute inset-0 bg-[#011e13]/70"></div> <!-- Overlay für Lesbarkeit -->
-        </div>
-
-        <div class="max-w-6xl mx-auto relative z-10 text-white">
-            <div class="w-full text-center mb-24">
-                <h2 class="text-4xl font-normal font-serif-elegant tracking-wide leading-tight">
-                    <span class="font-[700] block text-4xl md:text-5xl">Prof. h. c.</span>
-                    <span class="font-[700] block text-4xl md:text-5xl">Manfred Krames</span>
-                </h2>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-                <div>
-                    <div class="flex flex-col mb-4">
-                        <div class="flex items-start gap-4 py-3.5 border-b border-white/20 text-base leading-[1.6]">
-                            <span class="text-[#b87315] text-base font-bold shrink-0 select-none">—</span>
-                            <span>Autor von 26 Sach- u. Fachbüchern in 5 Sprachen</span>
-                        </div>
-                        <div class="flex items-start gap-4 py-3.5 border-b border-white/20 text-base leading-[1.6]">
-                            <span class="text-[#b87315] text-base font-bold shrink-0 select-none">—</span>
-                            <span>Ausbilder von weltweit über 500 Therapeuten & Beratern</span>
-                        </div>
-                        <div class="flex items-start gap-4 py-3.5 border-b border-white/20 text-base leading-[1.6]">
-                            <span class="text-[#b87315] text-base font-bold shrink-0 select-none">—</span>
-                            <span>Langjährige Mitarbeit an Tokioter Psychosomatik-Klinik</span>
-                        </div>
-                    </div>
-
-                    <div id="accordion-target" class="accordion-content">
-                        <div class="flex flex-col">
-                            <div class="flex items-start gap-4 py-3.5 border-b border-white/20 text-base leading-[1.6]">
-                                <span class="text-[#b87315] text-base font-bold shrink-0 select-none">—</span>
-                                <span>Dozent an indischen und sri lankischen Universitäten</span>
-                            </div>
-                            <div class="flex items-start gap-4 py-3.5 border-b border-white/20 text-base leading-[1.6]">
-                                <span class="text-[#b87315] text-base font-bold shrink-0 select-none">—</span>
-                                <span>Gründer: International Academy for Mental Health</span>
-                            </div>
-                            <div class="flex items-start gap-4 py-3.5 border-b border-white/20 text-base leading-[1.6]">
-                                <span class="text-[#b87315] text-base font-bold shrink-0 select-none">—</span>
-                                <span>Ehemaliger Leiter einer großen Kuranlage auf Sri Lanka</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button id="accordion-btn" class="inline-flex items-center gap-2 text-base font-bold hover:text-[#b06fc4] transition-colors cursor-pointer mt-8">
-                        <span id="btn-text">Vollständigen Werdegang anzeigen</span>
-                        <span id="btn-arrow" class="inline-block transition-transform duration-300">↓</span>
-                    </button>
-                </div>
-
-                <!-- Rechte Spalte: Rotierende Gremien-Galerie -->
-                <div class="relative w-full aspect-[4/3] rounded-[16px] overflow-hidden border border-white/10 shadow-md cursor-pointer" id="person-gallery">
-                    <img src="images/profmanfredkrames-gremium-ayurveda-mentalegesundheit.jpg" alt="Gremium Ayurveda" class="person-slide active object-cover object-center">
-                    <img src="images/profmanfredkrames-gremium-fernoestliche-medizin.png" alt="Gremium Fernöstliche Medizin" class="person-slide object-cover object-center">
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. FACHPUBLIKUM (ID hinzugefügt für das Scroll-Event) -->
-    <section id="fachpublikum" class="bg-[#011e13] text-[#faf6f0] py-[100px] px-8 md:px-16 lg:px-24">
-        <div class="max-w-6xl mx-auto">
-            
-            <div class="max-w-4xl mb-12">
-                <h2 class="text-2xl text-[#faf7f1] font-normal font-serif-elegant tracking-wide mb-6">
-                    <b>Für Fachpublikum</b>
-                </h2>
-                <div class="w-[60px] h-[2px] bg-[#b06fc4] my-6"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-[#faf6f0] text-[#2d2218] border border-white/10 rounded-[12px] p-8 flex flex-col justify-start shadow-md">
-                    <span class="font-serif-elegant text-[24px] text-[#b87315] mb-4 block leading-none"><b>Information/<br>Aufklärung</b></span>
-                    <p class="text-base leading-[1.7] font-light">
-                        für Mediziner & Psychologen über Pathogenese, Diagnose und Therapie psychosomatischer Morbidität gemäß der traditionellen Medizin des Ostens.
-                    </p>
-                </div>
-                
-                <div class="bg-[#faf6f0] text-[#2d2218] border border-white/10 rounded-[12px] p-8 flex flex-col justify-start shadow-md">
-                    <span class="font-serif-elegant text-[24px] text-[#b87315] mb-4 block leading-none"><b>Seminare</b></span>
-                    <p class="text-base leading-[1.7] font-light">
-                        zum Erlernen diverser Techniken zum Einsparen von Zeit bei Anamnese & Diagnose bei psychischen und psychosomatischen Erkrankungen.
-                    </p>
-                </div>
-
-                <div class="bg-[#faf6f0] text-[#2d2218] border border-white/10 rounded-[12px] p-8 flex flex-col justify-start shadow-md">
-                    <span class="font-serif-elegant text-[24px] text-[#b87315] mb-4 block leading-none"><b>Ayurveda</b></span>
-                    <p class="text-base leading-[1.7] font-light">
-                        Warum Ayurveda die geistig-seelische Gesundheit besser, tiefgründiger und effizienter anspricht als rein westlich geprägte Psychologie.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- 4. VORTRÄGE LAIEN -->
-    <section class="relative bg-[#5c3070] text-white py-[100px] px-8 md:px-16 lg:px-24 overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center mix-blend-multiply opacity-25 pointer-events-none" style="background-image: url('images/hintergrund-japan.jpg');"></div>
-        
-        <div class="max-w-4xl mx-auto relative z-1">
-            <h2 class="text-2xl font-normal font-serif-elegant text-white mb-8">
-                <b>Vorträge für Laien, Interessierte und Betroffene</b>
-            </h2>
-            
-            <div class="flex flex-col">
-                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
-                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">A</span>
-                    <span class="text-base leading-[1.6] text-white/85">Hilfe zur Selbsthilfe bei Stress, Schlafstörungen, ADHS, Depressionen, Burnout u. dgl.</span>
-                </div>
-                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
-                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">B</span>
-                    <span class="text-base leading-[1.6] text-white/85">Aufklärung & Information bei schlechter geistig-seelischer Gesundheit und Krisen</span>
-                </div>
-                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
-                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">C</span>
-                    <span class="text-base leading-[1.6] text-white/85">Hilhestellung für Eltern betroffener Kinder im Falle von ADHS, Ängsten, Stress u. dgl.</span>
-                </div>
-                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
-                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">D</span>
-                    <span class="text-base leading-[1.6] text-white/85">Warum Handys und Social Media krank machen. Eine Warnung an alle Über-Benutzer</span>
-                </div>
-                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
-                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">E</span>
-                    <span class="text-base leading-[1.6] text-white/85">Warum Einsamkeit krank macht. Massagen als Therapie bei vorzeitiger Alterung.</span>
-                </div>
-                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
-                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">F</span>
-                    <span class="text-base leading-[1.6] text-white/85">Wie man eine 4.000 Euro teure Ayurveda-Kur zu Hause selbst macht, für nur 50,- EUR</span>
-                </div>
-                <div class="flex gap-5 py-4 border-b border-white/10 items-start">
-                    <span class="text-base font-semibold text-white/40 min-w-[20px] pt-0.5">G</span>
-                    <span class="text-base leading-[1.6] text-white/85">Alles über Musik-, Farb-, Aroma-Therapie und Meditation. Hilfe zur Selbsthilfe.</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   <!-- 5. KONTAKT & BUCHUNG -->
-    <section id="kontakt" class="py-36 bg-[#1d1e19] text-[#faf6f0]">
-        <div class="max-w-6xl mx-auto px-8">
-            
-            <div class="w-full text-center mb-16">
-                <h2 class="text-4xl mb-14 font-normal font-serif-elegant text-[#b87315] tracking-wide inline-block">
-                    Kontakt & Buchung
-                </h2>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                
-                <div class="w-full flex justify-center">
-                    <form class="space-y-8 w-full max-w-md" onsubmit="event.preventDefault();">
-                        
-                        <div class="w-full flex flex-col">
-                            <label class="text-base text-white font-medium mb-2">Vor- Nachname:</label>
-                            <input type="text" required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4]">
-                        </div>
-
-                        <div class="w-full flex flex-col">
-                            <label class="text-base text-white font-medium mb-2">E-Mail-Adresse:</label>
-                            <input type="email" required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4]">
-                        </div>
-
-                        <div class="w-full flex flex-col">
-                            <label class="text-base text-white font-medium mb-2">Land/Ort</label>
-                            <input type="text" required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4]">
-                        </div>
-
-                        <div class="w-full flex flex-col">
-                            <label class="text-base text-white font-medium mb-2">Ihr Anliegen</label>
-                            <textarea rows="4" required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[#b06fc4] transition-all focus:outline-none focus:border-[#b06fc4] resize-none"></textarea>
-                        </div>
-                        
-                        <div class="w-full space-y-4 pt-4">
-                            <label class="flex items-start gap-3 cursor-pointer text-sm text-white/80 select-none">
-                                <input type="checkbox" required class="mt-1 accent-[#b06fc4]">
-                                <span>Datenschutzvereinbarung zustimmen</span>
-                            </label>
-                        </div>
-                        
-                        <div class="w-full pt-4">
-                            <button type="submit" class="w-full sm:w-auto px-12 py-4 rounded-[100px] text-base font-medium text-white bg-[#b06fc4] hover:bg-[#b06fc4]/90 transition-all shadow-none cursor-pointer tracking-[0.03em]">
-                                Anfrage senden
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                
-                <div class="w-full h-[300px] sm:h-[400px] lg:h-[500px] relative rounded-[16px] overflow-hidden block">
-                    <img src="images/prof-manfredkrames-kontaktanfrage-seminare.png" alt="Japanischer Schrein Briefkasten" class="absolute inset-0 w-full h-full object-cover object-center opacity-65">
-                    <div class="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-[#1d1e19] via-[#1d1e19]/20 to-transparent"></div>
-                </div>
-                
-            </div>
-            
-        </div>
-    </section>
-
-    <!-- 6. 2-SPALTEN FOOTER MIT TRENNLINIE -->
-    <footer class="bg-[#faf6f0] text-[#011e13] py-20 px-8 md:px-16 lg:px-24 border-t border-black/5">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 md:gap-8 items-start">
-            
-            <!-- Linke Spalte: Navigation -->
-            <div class="flex flex-col items-start space-y-4">
-                <a href="#top" class="inline-flex items-center gap-2 hover:text-[#b06fc4] transition-colors font-semibold text-base">
-                    Start
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18"></path>
-                    </svg>
-                </a>
-                <div class="flex flex-col space-y-2 pt-2 text-[#011e13]/85 text-base">
-                    <a href="#" class="hover:text-[#b06fc4] transition-colors font-medium">Datenschutz</a>
-                    <a href="#" class="hover:text-[#b06fc4] transition-colors font-medium">Impressum</a>
-                </div>
-            </div>
-            
-            <!-- Mittlere Spalte: Vertikale Trennlinie -->
-            <div class="w-full md:w-px h-px md:h-32 bg-[#011e13]/10 self-center"></div>
-            
-            <!-- Rechte Spalte: Contact & Newsletter -->
-            <div class="space-y-8 md:pl-12 justify-self-start md:justify-self-end w-full max-w-xs">
-                <!-- E-Mail mit Icon -->
-                <div class="flex items-center gap-3">
-                    <svg class="w-5 h-5 text-[#b06fc4] shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.92V6.75"></path>
-                    </svg>
-                    <a href="mailto:manfredkrames@gmail.com" class="text-base font-medium hover:text-[#b06fc4] transition-colors">manfredkrames@gmail.com</a>
-                </div>
-
-                <!-- Newsletter Feld -->
-                <div class="w-full">
-                    <span class="block text-sm font-semibold tracking-wider text-[#011e13]/60 mb-2 uppercase">Newsletter</span>
-                    <form class="flex items-center border-b border-[#011e13]/30 focus-within:border-[#b06fc4] transition-colors py-1" onsubmit="event.preventDefault();">
-                        <input type="email" placeholder="Ihre E-Mail-Adresse" required class="w-full bg-transparent text-base text-[#011e13] placeholder-[#011e13]/40 focus:outline-none pr-3">
-                        <button type="submit" aria-label="Newsletter abonnieren" class="text-[#b06fc4] hover:text-[#b06fc4]/80 transition-colors cursor-pointer p-1">
-                            <svg class="w-5 h-5 transform rotate-45" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L6 12zm0 0h7.5"></path>
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </footer>
-
-    <!-- 7. BRANDING LEISTE -->
-    <div class="bg-[#011e13] py-4 px-8 text-[#faf6f0]/60 text-[11px] font-normal border-t border-white/5">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <span>
-                made by <a href="https://linktr.ee/kamalayan_digital" target="_blank" rel="noopener" class="underline text-[#faf6f0] hover:text-[#b06fc4] transition-colors font-medium">KML Interfaces</a>
-            </span>
-            <span class="opacity-60">© 2026</span>
-            <span class="w-24 hidden md:block"></span>
-        </div>
-    </div>
-
-    <!-- INTERAKTIVE SCRIPTE -->
-    <script>
-        // Game Changer für die Nav: Farblicher Wechsel ab Sektion "Für Fachpublikum"
-        const mainNav = document.getElementById('main-nav');
-        const navTitle = document.getElementById('nav-title');
-        const navBtn = document.getElementById('nav-btn');
-        const fachpublikumSection = document.getElementById('fachpublikum');
-
-        window.addEventListener('scroll', () => {
-            if (fachpublikumSection) {
-                const rect = fachpublikumSection.getBoundingClientRect();
-                // Wenn die Sektion "für fachpublikum" die Navigationsleiste erreicht (bzw. oberhalb von 58px Abstand zum Top ist)
-                if (rect.top <= 58) {
-                    // Knallweißes Design
-                    mainNav.classList.remove('bg-[#011e13]');
-                    mainNav.classList.add('bg-white');
-                    
-                    navTitle.classList.remove('text-white');
-                    navTitle.classList.add('text-[#2d2218]');
-                    
-                    navBtn.classList.remove('text-white');
-                    navBtn.classList.add('text-[#2d2218]');
-                } else {
-                    // Ursprüngliches dunkelgrünes Design
-                    mainNav.classList.remove('bg-white');
-                    mainNav.classList.add('bg-[#011e13]');
-                    
-                    navTitle.classList.remove('text-[#2d2218]');
-                    navTitle.classList.add('text-white');
-                    
-                    navBtn.classList.remove('text-[#2d2218]');
-                    navBtn.classList.add('text-white');
-                }
-            }
-        });
-
-        // Werdegang-Accordion
-        const btn = document.getElementById('accordion-btn');
-        const content = document.getElementById('accordion-target');
-        const btnText = document.getElementById('btn-text');
-        const btnArrow = document.getElementById('btn-arrow');
-        let isAccordionOpen = false;
-
-        btn.addEventListener('click', () => {
-            isAccordionOpen = !isAccordionOpen;
-            if (isAccordionOpen) {
-                content.classList.add('open');
-                btnText.textContent = 'Weniger Details anzeigen';
-                btnArrow.style.transform = 'rotate(180deg)';
-            } else {
-                content.classList.remove('open');
-                btnText.textContent = 'Vollständigen Werdegang anzeigen';
-                btnArrow.style.transform = 'rotate(0deg)';
-            }
-        });
-
-        // Galerie 1: Zur Person (Gremien-Bilder) - Timer auf 5000ms gesetzt
-        const personGallery = document.getElementById('person-gallery');
-        const personSlides = personGallery.getElementsByClassName('person-slide');
-        let currentPersonIndex = 0;
-
-        function nextPersonSlide() {
-            personSlides[currentPersonIndex].classList.remove('active');
-            currentPersonIndex = (currentPersonIndex + 1) % personSlides.length;
-            personSlides[currentPersonIndex].classList.add('active');
-        }
-        personGallery.addEventListener('click', nextPersonSlide);
-        setInterval(nextPersonSlide, 5000);
-
-        // Galerie 2: Buchcover Rotation (Hero-Section) - Timer auf 5000ms gesetzt
-        const bookSlides = document.querySelectorAll('.book-slide');
-        let currentBookIndex = 0;
-
-        function nextBookSlide() {
-            const current = bookSlides[currentBookIndex];
-            current.classList.remove('opacity-100');
-            current.classList.add('opacity-0');
-            
-            setTimeout(() => {
-                current.classList.add('hidden');
-                currentBookIndex = (currentBookIndex + 1) % bookSlides.length;
-                
-                const next = bookSlides[currentBookIndex];
-                next.classList.remove('hidden');
-                next.offsetHeight; // Reflow-Trigger für saubere CSS-Transition
-                next.classList.remove('opacity-0');
-                next.classList.add('opacity-100');
-            }, 700);
-        }
-        setInterval(nextBookSlide, 5000);
-    </script>
+<body id=top class=antialiased>
+<nav id=main-nav class="fixed top-0 left-0 w-full z-100 bg-[var(--color-bg-dark)] py-2.5 px-8 md:px-16 lg:px-24 flex justify-between items-center transition-colors duration-300">
+<span id=nav-title class="font-serif-elegant text-lg tracking-wider text-white font-semibold transition-colors duration-300">
+Manfred P. Krames
+</span>
+<a id=nav-btn href=#kontakt class="text-white rounded-[100px] px-8 py-2 text-sm font-medium tracking-[0.03em] transition-all duration-200 flex items-center gap-2 border border-white/20 hover:bg-white hover:text-[var(--color-bg-dark)]">
+Kontakt
+<svg class="w-4 h-4" fill=none stroke=currentColor stroke-width=2 viewBox="0 0 24 24" xmlns=http://www.w3.org/2000/svg>
+<path stroke-linecap=round stroke-linejoin=round d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.92V6.75"></path>
+</svg>
+</a>
+</nav>
+<div class="bg-[var(--color-bg-light)] w-full">
+<section class="min-h-[calc(100vh-58px)] flex flex-col md:flex-row items-stretch justify-between">
+<div class="w-full md:w-1/2 h-[85vw] md:h-[calc(100vh-58px)] overflow-hidden relative">
+<img src=images/prof-manfred-krames-portrait.png alt=Portrait class="w-full h-full object-cover object-center">
+<div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-r from-transparent to-[var(--color-bg-light)] hidden md:block"></div>
+</div>
+<div class="w-full md:w-1/2 px-8 md:px-16 lg:px-24 py-16 md:py-0 flex flex-col justify-center items-center">
+<div class="max-w-xl w-full text-center flex flex-col items-center">
+<div class="space-y-10 w-full mb-12">
+<div>
+<p class="text-[26px] md:text-[30px] font-serif-elegant italic text-[var(--color-text-lila)] leading-snug tracking-wide mx-auto max-w-md">
+„Ist die Seele <span style="color: #de9c40; font-size: 1.2em;">unglücklich</span>, <br><br> wird der Körper krank.“
+</p>
+</div>
+<br>
+<div>
+<p class="text-[26px] md:text-[30px] font-serif-elegant italic text-[var(--color-text-lila)] leading-snug tracking-wide mx-auto max-w-md">
+„Heilt die <span style="color: #de9c40; font-size: 1.2em;">Seele</span> <br><br> dann heilt der Rest auch.“
+</p>
+</div>
+</div>
+<div class="relative w-40 h-50 border border-black/5 shadow-sm rounded-[4px] overflow-hidden bg-white/50 mt-12" id=book-gallery>
+<img src=images/books/Buch-ayurveda-1.png alt="Buch Ayurveda 1" class="book-slide active absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-100">
+<img src=images/books/Buch-ayurveda-2.png alt="Buch Ayurveda 2" class="book-slide absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-0 hidden">
+<img src=images/books/Buch-beethoven-1.png alt="Buch Beethoven 1" class="book-slide absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-0 hidden">
+<img src=images/books/buch-beethoven-japan.png alt="Buch Beethoven Japan" class="book-slide absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-0 hidden">
+<img src=images/books/buch-geistwesen.jpg alt="Buch Geistwesen" class="book-slide absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-0 hidden">
+<img src=images/books/buch-thai-1.gif alt="Buch Thai 1" class="book-slide absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-0 hidden">
+<img src=images/books/buch-vaata.png alt="Buch Vaata" class="book-slide absolute inset-0 w-full h-full object-contain p-1 transition-opacity duration-700 opacity-0 hidden">
+</div>
+</div>
+</div>
+</section>
+<div class="w-full overflow-hidden block select-none bg-[var(--color-bg-light)]">
+<img src=images/footer-pattern.png alt=Zierelement class="w-full h-auto min-h-[40px] max-h-[90px] object-cover object-center">
+</div>
+</div>
+<section class="relative py-36 px-8 md:px-16 lg:px-24">
+<div class="absolute inset-0 z-0">
+<img src=images/prof-manfredkrames-india-ayurveda.png alt="Manfred Krames Indien" class="w-full h-full object-cover object-center">
+<div class="absolute inset-0 bg-[var(--color-bg-dark)]/70"></div>
+</div>
+<div class="max-w-6xl mx-auto relative z-10 text-white">
+<div class="w-full text-center mb-24">
+<h2 class="text-4xl font-normal font-serif-elegant tracking-wide leading-tight">
+<span class="font-[700] block text-4xl md:text-5xl">Prof. h. c.</span>
+<span class="font-[700] block text-4xl md:text-5xl">Manfred Krames</span>
+</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+<div>
+<div class="flex flex-col mb-4">
+<div class="flex items-start gap-4 py-3.5 border-b border-white/20 text-base leading-[1.6]">
+<span class="text-[var(--color-gold)] text-base font-bold shrink-0 select-none">—</span>
+<span>Autor von 26 Sach- u. Fachbüchern in 5 Sprachen</span>
+</div>
+<div class="flex items-start gap-4 py-3.5 border-b border-white/20 text-base leading-[1.6]">
+<span class="text-[var(--color-gold)] text-base font-bold shrink-0 select-none">—</span>
+<span>Ausbilder von weltweit über 500 Therapeuten & Beratern</span>
+</div>
+<div class="flex items-start gap-4 py-3.5 border-b border-white/20 text-base leading-[1.6]">
+<span class="text-[var(--color-gold)] text-base font-bold shrink-0 select-none">—</span>
+<span>Langjährige Mitarbeit an Tokioter Psychosomatik-Klinik</span>
+</div>
+</div>
+<div id=accordion-target class=accordion-content>
+<div class="flex flex-col">
+<div class="flex items-start gap-4 py-3.5 border-b border-white/20 text-base leading-[1.6]">
+<span class="text-[var(--color-gold)] text-base font-bold shrink-0 select-none">—</span>
+<span>Dozent an indischen und sri lankischen Universitäten</span>
+</div>
+<div class="flex items-start gap-4 py-3.5 border-b border-white/20 text-base leading-[1.6]">
+<span class="text-[var(--color-gold)] text-base font-bold shrink-0 select-none">—</span>
+<span>Gründer: International Academy for Mental Health</span>
+</div>
+<div class="flex items-start gap-4 py-3.5 border-b border-white/20 text-base leading-[1.6]">
+<span class="text-[var(--color-gold)] text-base font-bold shrink-0 select-none">—</span>
+<span>Ehemaliger Leiter einer großen Kuranlage auf Sri Lanka</span>
+</div>
+</div>
+</div>
+<button id=accordion-btn class="inline-flex items-center gap-2 text-base font-bold hover:text-[var(--color-gold)] transition-colors cursor-pointer mt-8">
+<span id=btn-text>Vollständigen Werdegang anzeigen</span>
+<span id=btn-arrow class="inline-block transition-transform duration-300">↓</span>
+</button>
+</div>
+<div class="relative w-full aspect-[4/3] rounded-[16px] overflow-hidden border border-white/10 shadow-md cursor-pointer" id=person-gallery>
+<img src=images/profmanfredkrames-gremium-ayurveda-mentalegesundheit.jpg alt="Gremium Ayurveda" class="person-slide active object-cover object-center">
+<img src=images/profmanfredkrames-gremium-fernoestliche-medizin.png alt="Gremium Fernöstliche Medizin" class="person-slide object-cover object-center">
+</div>
+</div>
+</div>
+</section>
+<section id=fachpublikum class="bg-[var(--color-bg-dark)] text-[var(--color-light)] py-[140px] px-8 md:px-16 lg:px-24">
+<div class="max-w-6xl mx-auto px-8">
+<div class="w-full text-center mb-16">
+<h2 class="text-4xl mb-14  text-[var(--color-gold)] font-normal font-serif-elegant tracking-wide  inline-block">
+<b>Für Fachpublikum</b>
+</h2>
+<div class="w-[60px] h-[2px] bg-[var(--color-lila)] my-6"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-[var(--color-bg-light)] text-[var(--color-dark-alt)] border border-white/10 rounded-[12px] p-8 flex flex-col justify-start shadow-md">
+<span class="font-serif-elegant text-[24px] text-[var(--bg-dark)] mb-4 block leading-none"><b>Information/<br>Aufklärung</b></span>
+<p class="text-base leading-[1.7] font-light">
+für Mediziner & Psychologen über Pathogenese, Diagnose und Therapie psychosomatischer Morbidität gemäß der traditionellen Medizin des Ostens.
+</p>
+</div>
+<div class="bg-[var(--color-bg-light)] text-[var(--color-dark-alt)] border border-white/10 rounded-[12px] p-8 flex flex-col justify-start shadow-md">
+<span class="font-serif-elegant text-[24px] text-[var(--bg-dark)] mb-4 block leading-none"><b>Seminare</b></span>
+<p class="text-base leading-[1.7] font-light">
+zum Erlernen diverser Techniken zum Einsparen von Zeit bei Anamnese & Diagnose bei psychischen und psychosomatischen Erkrankungen.
+</p>
+</div>
+<div class="bg-[var(--color-bg-light)] text-[var(--color-dark-alt)] border border-white/10 rounded-[12px] p-8 flex flex-col justify-start shadow-md">
+<span class="font-serif-elegant text-[24px] text-[var(--bg-dark)] mb-4 block leading-none"><b>Ayurveda</b></span>
+<p class="text-base leading-[1.7] font-light">
+Warum Ayurveda die geistig-seelische Gesundheit besser, tiefgründiger und effizienter anspricht als rein westlich geprägte Psychologie.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section class="relative bg-[var(--color-bg-violett)] text-[var(--color-bg-dark)] py-[100px] px-8 md:px-16 lg:px-24 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center mix-blend-multiply opacity-[0.04] pointer-events-none" style="background-image:url('images/hintergrund-japan.jpg')"></div>
+<div class="max-w-4xl mx-auto relative z-1">
+<h2 class="text-2xl font-normal font-serif-elegant text-[var(--color-bg-dark)] mb-8 text-center">
+<b><span style="color: #de9c40; font-size: 1.2em;">Vorträge</span>&nbsp; für Laien, Interessierte und Betroffene</b>
+</h2>
+<div class="flex flex-col items-center w-full">
+<div class="flex flex-col sm:flex-row gap-3 sm:gap-5 py-3 border-b border-white/30 w-full sm:w-auto items-start sm:items-center">
+<span class="text-base font-semibold text-[var(--color-bg-dark)]/40 min-w-[20px] pt-0.5">A</span>
+<span class="text-base leading-[1.6] text-[var(--color-bg-dark)]/85">Hilfe zur Selbsthilfe bei Stress, Schlafstörungen, ADHS, Depressionen, Burnout u. dgl.</span>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 sm:gap-5 py-3 border-b border-white/30 w-full sm:w-auto items-start sm:items-center">
+<span class="text-base font-semibold text-[var(--color-bg-dark)]/40 min-w-[20px] pt-0.5">B</span>
+<span class="text-base leading-[1.6] text-[var(--color-bg-dark)]/85">Aufklärung & Information bei schlechter geistig-seelischer Gesundheit und Krisen</span>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 sm:gap-5 py-3 border-b border-white/30 w-full sm:w-auto items-start sm:items-center">
+<span class="text-base font-semibold text-[var(--color-bg-dark)]/40 min-w-[20px] pt-0.5">C</span>
+<span class="text-base leading-[1.6] text-[var(--color-bg-dark)]/85">Hilfestellung für Eltern betroffener Kinder im Falle von ADHS, Ängsten, Stress u. dgl.</span>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 sm:gap-5 py-3 border-b border-white/30 w-full sm:w-auto items-start sm:items-center">
+<span class="text-base font-semibold text-[var(--color-bg-dark)]/40 min-w-[20px] pt-0.5">D</span>
+<span class="text-base leading-[1.6] text-[var(--color-bg-dark)]/85">Warum Handys und Social Media krank machen. Eine Warnung an alle Über-Benutzer</span>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 sm:gap-5 py-3 border-b border-white/30 w-full sm:w-auto items-start sm:items-center">
+<span class="text-base font-semibold text-[var(--color-bg-dark)]/40 min-w-[20px] pt-0.5">E</span>
+<span class="text-base leading-[1.6] text-[var(--color-bg-dark)]/85">Warum Einsamkeit krank macht. Massagen als Therapie bei vorzeitiger Alterung.</span>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 sm:gap-5 py-3 border-b border-white/30 w-full sm:w-auto items-start sm:items-center">
+<span class="text-base font-semibold text-[var(--color-bg-dark)]/40 min-w-[20px] pt-0.5">F</span>
+<span class="text-base leading-[1.6] text-[var(--color-bg-dark)]/85">Wie man eine 4.000 Euro teure Ayurveda-Kur zu Hause selbst macht, für nur 50,- EUR</span>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 sm:gap-5 py-3 border-b border-white/30 w-full sm:w-auto items-start sm:items-center">
+<span class="text-base font-semibold text-[var(--color-bg-dark)]/40 min-w-[20px] pt-0.5">G</span>
+<span class="text-base leading-[1.6] text-[var(--color-bg-dark)]/85">Alles über Musik-, Farb-, Aroma-Therapie und Meditation. Hilfe zur Selbsthilfe.</span>
+</div>
+</div>
+</div>
+</section>
+<section id=kontakt class="py-36 bg-[var(--color-bg-dark)] text-[var(--color-bg-light)]">
+<div class="max-w-6xl mx-auto px-8">
+<div class="w-full text-center mb-16">
+<h2 class="text-4xl mb-14 font-normal font-serif-elegant text-[var(--color-gold)] tracking-wide inline-block">
+Kontakt & Buchung
+</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="w-full flex justify-center">
+<form class="space-y-8 w-full max-w-md" onsubmit=event.preventDefault()>
+<div class="w-full flex flex-col">
+<label class="text-base text-white font-medium mb-2">Vor- Nachname:</label>
+<input type=text required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[var(--color-lila)] transition-all focus:outline-none focus:border-[var(--color-lila)]">
+</div>
+<div class="w-full flex flex-col">
+<label class="text-base text-white font-medium mb-2">E-Mail-Adresse:</label>
+<input type=email required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[var(--color-lila)] transition-all focus:outline-none focus:border-[var(--color-lila)]">
+</div>
+<div class="w-full flex flex-col">
+<label class="text-base text-white font-medium mb-2">Land/Ort</label>
+<input type=text required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[var(--color-lila)] transition-all focus:outline-none focus:border-[var(--color-lila)]">
+</div>
+<div class="w-full flex flex-col">
+<label class="text-base text-white font-medium mb-2">Ihr Anliegen</label>
+<textarea rows=4 required class="w-full bg-transparent border-b border-white/30 py-2 text-base text-[var(--color-lila)] transition-all focus:outline-none focus:border-[var(--color-lila)] resize-none"></textarea>
+</div>
+<div class="w-full space-y-4 pt-4">
+<label class="flex items-start gap-3 cursor-pointer text-sm text-white/80 select-none">
+<input type=checkbox required class="mt-1 accent-[var(--color-lila)]">
+<span>Datenschutzvereinbarung zustimmen</span>
+</label>
+</div>
+<div class="w-full pt-4">
+<button type=submit class="w-full sm:w-auto px-12 py-4 rounded-[100px] text-base font-medium text-black bg-[var(--color-violet)] hover:bg-[var(--color-lila)]/90 transition-all shadow-none cursor-pointer tracking-[0.03em]">
+Anfrage senden
+</button>
+</div>
+</form>
+</div>
+<div class="w-full h-[300px] sm:h-[400px] lg:h-[500px] relative rounded-[16px] overflow-hidden block">
+<img src=images/prof-manfredkrames-kontaktanfrage-seminare.png alt="Japanischer Schrein Briefkasten" class="absolute inset-0 w-full h-full object-cover object-center opacity-65">
+<div class="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-[var(--color-charcoal)] via-[var(--color-charcoal)]/20 to-transparent"></div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-[var(--color-bg-light)] text-[var(--color-bg-dark)] py-20 px-8 md:px-16 lg:px-24 border-t border-black/5">
+<div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 md:gap-8 items-start">
+<div class="flex flex-col items-start space-y-4">
+<a href=#top class="inline-flex items-center gap-2 hover:text-[var(--violet)] transition-colors font-semibold text-base">
+Start
+<svg class="w-4 h-4" fill=none stroke=currentColor stroke-width=2 viewBox="0 0 24 24" xmlns=http://www.w3.org/2000/svg>
+<path stroke-linecap=round stroke-linejoin=round d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18"></path>
+</svg>
+</a>
+<div class="flex flex-col space-y-2 pt-2 text-[var(--color-bg-dark)]/85 text-base">
+<a href=# class="hover:text-[var(--color-violet)] transition-colors font-medium">Datenschutz</a>
+<a href=# class="hover:text-[var(--color-violet)] transition-colors font-medium">Impressum</a>
+</div>
+</div>
+<div class="w-full md:w-px h-px md:h-32 bg-[var(--color-bg-dark)]/10 self-center"></div>
+<div class="space-y-8 md:pl-12 justify-self-start md:justify-self-end w-full max-w-xs">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 text-[var(--color-purple)] shrink-0" fill=none stroke=currentColor stroke-width=1.5 viewBox="0 0 24 24" xmlns=http://www.w3.org/2000/svg>
+<path stroke-linecap=round stroke-linejoin=round d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.92V6.75"></path>
+</svg>
+<a href=mailto:manfredkrames@gmail.com class="text-base font-medium hover:text-[var(--color-purple)] transition-colors">manfredkrames@gmail.com</a>
+</div>
+<div class=w-full>
+<span class="block text-sm font-semibold tracking-wider text-[var(--color-bg-dark)]/60 mb-2 uppercase">Newsletter</span>
+<form class="flex items-center border-b border-[var(--color-bg-dark)]/30 focus-within:border-[var(--color-purple)] transition-colors py-1" onsubmit=event.preventDefault()>
+<input type=email placeholder="Ihre E-Mail-Adresse" required class="w-full bg-transparent text-base text-[var(--color-bg-dark)] placeholder-[var(--color-bg-dark)]/40 focus:outline-none pr-3">
+<button type=submit aria-label="Newsletter abonnieren" class="text-[var(--color-purple)] hover:text-[var(--color-purple)]/80 transition-colors cursor-pointer p-1">
+<svg class="w-5 h-5 transform rotate-45" fill=none stroke=currentColor stroke-width=2 viewBox="0 0 24 24" xmlns=http://www.w3.org/2000/svg>
+<path stroke-linecap=round stroke-linejoin=round d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L6 12zm0 0h7.5"></path>
+</svg>
+</button>
+</form>
+</div>
+</div>
+</div>
+</footer>
+<div class="bg-[var(--color-bg-dark)] py-4 px-8 text-[var(--color-bg-light)]/60 text-[11px] font-normal border-t border-white/5">
+<div class="max-w-6xl mx-auto flex justify-between items-center">
+<span>
+made by <a href=https://linktr.ee/kamalayan_digital target=_blank rel=noopener class="underline text-[var(--color-bg-light)] hover:text-[var(--color-purple)] transition-colors font-medium">KML Interfaces</a>
+</span>
+<span class=opacity-60>© 2026</span>
+<span class="w-24 hidden md:block"></span>
+</div>
+</div>
+<script>const mainNav=document.getElementById('main-nav');const navTitle=document.getElementById('nav-title');const navBtn=document.getElementById('nav-btn');const fachpublikumSection=document.getElementById('fachpublikum');window.addEventListener('scroll',()=>{if(fachpublikumSection){const rect=fachpublikumSection.getBoundingClientRect();if(rect.top<=58){mainNav.classList.remove('bg-[var(--color-bg-dark)]');mainNav.classList.add('bg-[var(--color-bg-light)]');navTitle.classList.remove('text-white');navTitle.classList.add('text-[var(--color-dark-alt)]');navBtn.classList.remove('text-white');navBtn.classList.add('text-[var(--color-dark-alt)]');}else{mainNav.classList.remove('bg-[var(--color-bg-light)]');mainNav.classList.add('bg-[var(--color-bg-dark)]');navTitle.classList.remove('text-[var(--color-dark-alt)]');navTitle.classList.add('text-white');navBtn.classList.remove('text-[var(--color-dark-alt)]');navBtn.classList.add('text-white');}}});const btn=document.getElementById('accordion-btn');const content=document.getElementById('accordion-target');const btnText=document.getElementById('btn-text');const btnArrow=document.getElementById('btn-arrow');let isAccordionOpen=false;btn.addEventListener('click',()=>{isAccordionOpen=!isAccordionOpen;if(isAccordionOpen){content.classList.add('open');btnText.textContent='Weniger Details anzeigen';btnArrow.style.transform='rotate(180deg)';}else{content.classList.remove('open');btnText.textContent='Vollständigen Werdegang anzeigen';btnArrow.style.transform='rotate(0deg)';}});const personGallery=document.getElementById('person-gallery');const personSlides=personGallery.getElementsByClassName('person-slide');let currentPersonIndex=0;function nextPersonSlide(){personSlides[currentPersonIndex].classList.remove('active');currentPersonIndex=(currentPersonIndex+1)%personSlides.length;personSlides[currentPersonIndex].classList.add('active');}
+personGallery.addEventListener('click',nextPersonSlide);setInterval(nextPersonSlide,5000);const bookSlides=document.querySelectorAll('.book-slide');let currentBookIndex=0;function nextBookSlide(){const current=bookSlides[currentBookIndex];current.classList.remove('opacity-100');current.classList.add('opacity-0');setTimeout(()=>{current.classList.add('hidden');currentBookIndex=(currentBookIndex+1)%bookSlides.length;const next=bookSlides[currentBookIndex];next.classList.remove('hidden');next.offsetHeight;next.classList.remove('opacity-0');next.classList.add('opacity-100');},700);}
+setInterval(nextBookSlide,5000);</script>
 </body>
 </html>
